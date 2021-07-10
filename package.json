@@ -4,7 +4,11 @@
   "description": "The perfect set and all the friends you've met along the way",
   "main": "server.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "react-dev": "webpack --mode=development --watch",
+    "react-prod": "webpack --mode=production",
+    "server-dev": "nodemon server/server.js",
+    "server-prod": "node server/server.js"
   },
   "repository": {
     "type": "git",
