@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS users (
 );
 
 CREATE TABLE IF NOT EXISTS follows (
-  id SERIAL PRIMARY KEY,
+  follow_id SERIAL PRIMARY KEY,
   fan_id INT,
   artist_id INT,
   CONSTRAINT fk_fan
