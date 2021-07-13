@@ -21,17 +21,14 @@ CREATE TABLE IF NOT EXISTS users (
   user_id SERIAL PRIMARY KEY,
   user_name VARCHAR (150) NOT NULL,
   user_password VARCHAR (50) NOT NULL,
-  is_artist BOOLEAN NOT NULL DEFAULT false,
+  is_artist BOOLEAN NOT NULL DEFAULT false
 );
 
 CREATE TABLE IF NOT EXISTS follows (
   follow_id SERIAL PRIMARY KEY,
   fan_id INT NOT NULL,
-  artist_id INT NOT NULL,
-  CONSTRAINT fk_fan
-    FOREIGN KEY (fan_id)
-      REFERENCES users(user_id)
-  CONSTRAINT fk_artist
-    FOREIGN KEY (artist_id)
-      REFERENCES users(user_id)
-)
+  artist_id INT NOT NULL
+);
+
+ALTER TABLE follows ADD CONSTRAINT fk_fan FOREIGN KEY (fan_id) REFERENCES users (user_id);
+ALTER TABLE follows ADD CONSTRAINT fk_artist FOREIGN KEY (artist_id) REFERENCES users (user_id);

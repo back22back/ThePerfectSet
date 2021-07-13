@@ -7,6 +7,6 @@ router.get('/booking/view', getBookings);
 
 router.post('/booking/newbooking', postBooking);
 
-router.get('/follows/:user_id', getFollows);
+router.get('/follows/', getFollows);
 
 module.exports = router;

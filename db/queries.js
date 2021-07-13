@@ -12,10 +12,7 @@ const addBooking = (date, type, id, lat, lon) => {
 };
 
 const fetchFollows = (user_id) => {
-	const queryStr = `
-	json_agg(
-		SELECT artist_id FROM follows WHERE fan_id=$1
-	)`
+	const queryStr = `SELECT json_agg(artist_id) FROM follows WHERE fan_id=$1`;
 	return pool.query(queryStr, [user_id]).then((response) => response);
 };
 

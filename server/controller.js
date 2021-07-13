@@ -48,7 +48,8 @@ const getBookings = (req, res) => {
 };
 
 const getFollows = (req, res) => {
-  fetchFollows(req.query.user_id)
+	console.log(req.query.user_id);
+  fetchFollows('user', req.query.user_id)
 	.then((data) => res.status(200).send(data))
 	.catch((err) => {
 		res.status(500).send(`Error fetching artists the fan follows: ${err}`);
