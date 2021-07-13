@@ -1,5 +1,5 @@
 const { fetchBusinesses, fetchSpecificBusiness } = require('../db/apiqueries.js');
-const { addBooking, fetchBookings } = require('../db/queries.js');
+const { addBooking, fetchBookings, fetchFollows } = require('../db/queries.js');
 
 const getBusinesses = (req, res) => {
 	fetchBusinesses(req.query.location, req.query.categories)
@@ -47,8 +47,18 @@ const getBookings = (req, res) => {
 		});
 };
 
+const getFollows = (req, res) => {
+  fetchFollows(req.query.user_id)
+	.then((data) => res.status(200).send(data))
+	.catch((err) => {
+		res.status(500).send(`Error fetching artists the fan follows: ${err}`);
+		console.error(`Error fetching artists the fan follows: ${err}\n\n${err.stack}`);
+	});
+}
+
 module.exports = {
 	getBusinesses,
 	postBooking,
-	getBookings
+	getBookings,
+	getFollows,
 };
