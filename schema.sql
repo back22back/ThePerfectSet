@@ -9,10 +9,29 @@ to create the tables within that database
 */
 
 CREATE TABLE IF NOT EXISTS bookings (
-  id SERIAL PRIMARY KEY,
+  booking_id SERIAL PRIMARY KEY,
   booking_date DATE NOT NULL,
   booking_type VARCHAR(50) NOT NULL,
   business_id VARCHAR(150) NOT NULL,
   latitude NUMERIC(10, 5) NOT NULL,
   longitude NUMERIC(10, 5) NOT NULL
 );
+
+CREATE TABLE IF NOT EXISTS users (
+  user_id SERIAL PRIMARY KEY,
+  username VARCHAR (150) NOT NULL,
+  password VARCHAR (50) NOT NULL,
+  is_artist BOOLEAN NOT NULL DEFAULT false,
+);
+
+CREATE TABLE IF NOT EXISTS follows (
+  id SERIAL PRIMARY KEY,
+  fan_id INT,
+  artist_id INT,
+  CONSTRAINT fk_fan
+    FOREIGN KEY (fan_id)
+      REFERENCES users(user_id)
+  CONSTRAINT fk_artist
+    FOREIGN KEY (artist_id)
+      REFERENCES users(user_id)
+)
