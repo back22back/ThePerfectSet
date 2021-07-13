@@ -1,5 +1,5 @@
-const { fetchBusinesses, fetchSpecificBusiness } = require("../db/apiqueries.js");
-const { addBooking, fetchBookings } = require("../db/queries.js");
+const { fetchBusinesses, fetchSpecificBusiness } = require('../db/apiqueries.js');
+const { addBooking, fetchBookings } = require('../db/queries.js');
 
 const getBusinesses = (req, res) => {
 	fetchBusinesses(req.query.location, req.query.categories)
@@ -11,7 +11,13 @@ const getBusinesses = (req, res) => {
 };
 
 const postBooking = (req, res) => {
-	addBooking(req.body.booking_type, req.body.business_id, req.body.latitude, req.body.longitude)
+	addBooking(
+		req.body.booking_date,
+		req.body.booking_type,
+		req.body.business_id,
+		req.body.latitude,
+		req.body.longitude
+	)
 		.then((response) =>
 			res.status(200).send(`Successfully added booking! System message:${response}`)
 		)
