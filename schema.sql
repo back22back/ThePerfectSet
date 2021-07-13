@@ -10,7 +10,7 @@ to create the tables within that database
 
 CREATE TABLE IF NOT EXISTS bookings (
   id SERIAL PRIMARY KEY,
-  booking_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  booking_date DATE NOT NULL,
   booking_type VARCHAR(50) NOT NULL,
   business_id VARCHAR(150) NOT NULL,
   latitude NUMERIC(10, 5) NOT NULL,

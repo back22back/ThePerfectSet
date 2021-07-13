@@ -6,8 +6,8 @@ const fetchBookings = () => {
 };
 
 const addBooking = (type, id, lat, lon) => {
-	const queryStr = `INSERT INTO bookings (booking_type, business_id, latitude, longitude) \
-                    VALUES ($1, $2, $3, $4)`;
+	const queryStr = `INSERT INTO bookings (booking_date, booking_type, business_id, latitude, longitude) \
+                    VALUES ($1, $2, $3, $4, $5)`;
 	return pool.query(queryStr, [type, id, lat, lon]).then((response) => response);
 };
 
