@@ -11,7 +11,13 @@ const addBooking = (date, type, id, lat, lon, time) => {
 	return pool.query(queryStr, [date, type, id, lat, lon]).then((response) => response);
 };
 
+const removeBooking = (id) => {
+	const queryStr = 'DELETE FROM bookings WHERE business_id = $1';
+	return pool.query(queryStr, [id]).then((response) => response);
+};
+
 module.exports = {
 	addBooking,
-	fetchBookings
+	fetchBookings,
+	removeBooking
 };
