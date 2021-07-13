@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS bookings (
 CREATE TABLE IF NOT EXISTS users (
   user_id SERIAL PRIMARY KEY,
   username VARCHAR (150) NOT NULL,
-  password VARCHAR (50) NOT NULL,
+  user_password VARCHAR (50) NOT NULL,
   is_artist BOOLEAN NOT NULL DEFAULT false,
 );
 
