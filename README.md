@@ -8,7 +8,7 @@ If you haven't already, fork the repository on GitHub and clone your newly creat
 After you fork, set this repo as an upstream with `git remote add upstream https://github.com/TeamJeeJava/ThePerfectSet.git`
 
 ## Pull From Upstream Master Daily
-Before you begin coding for the day, pull from the upstream main branch with `git pull upstream main`.
+Before you begin coding for the day, pull from the upstream main branch with `git pull upstream master`.
 
 ## How to Run
 Navigate to the root directory of ThePerfectSet, then install the required packages by running `npm install` in your terminal. To begin, first compile the client-side files by running `npm run react-dev`, then start the server by running `npm run server-dev`. Lastly, navigate to `http://localhost:4545` in your browser.
