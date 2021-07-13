@@ -26,8 +26,8 @@ CREATE TABLE IF NOT EXISTS users (
 
 CREATE TABLE IF NOT EXISTS follows (
   follow_id SERIAL PRIMARY KEY,
-  fan_id INT,
-  artist_id INT,
+  fan_id INT NOT NULL,
+  artist_id INT NOT NULL,
   CONSTRAINT fk_fan
     FOREIGN KEY (fan_id)
       REFERENCES users(user_id)
