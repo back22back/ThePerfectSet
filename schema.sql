@@ -14,5 +14,6 @@ CREATE TABLE IF NOT EXISTS bookings (
   booking_type VARCHAR(50) NOT NULL,
   business_id VARCHAR(150) NOT NULL,
   latitude NUMERIC(10, 5) NOT NULL,
-  longitude NUMERIC(10, 5) NOT NULL
+  longitude NUMERIC(10, 5) NOT NULL,
+  booking_time TIME NOT NULL
 );

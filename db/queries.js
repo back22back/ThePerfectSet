@@ -5,13 +5,19 @@ const fetchBookings = () => {
 	return pool.query(queryStr).then((data) => data.rows);
 };
 
-const addBooking = (date, type, id, lat, lon) => {
-	const queryStr = `INSERT INTO bookings (booking_date, booking_type, business_id, latitude, longitude) \
-                    VALUES ($1, $2, $3, $4, $5)`;
+const addBooking = (date, type, id, lat, lon, time) => {
+	const queryStr = `INSERT INTO bookings (booking_date, booking_type, business_id, latitude, longitude, booking_time) \
+                    VALUES ($1, $2, $3, $4, $5, $6)`;
 	return pool.query(queryStr, [date, type, id, lat, lon]).then((response) => response);
+};
+
+const removeBooking = (id) => {
+	const queryStr = 'DELETE FROM bookings WHERE business_id = $1';
+	return pool.query(queryStr, [id]).then((response) => response);
 };
 
 module.exports = {
 	addBooking,
-	fetchBookings
+	fetchBookings,
+	removeBooking
 };
