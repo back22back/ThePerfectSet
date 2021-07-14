@@ -3,3 +3,5 @@ bundle.js.br
 node_modules
 package-lock.json
 .env
+config.js
+.DS_Store

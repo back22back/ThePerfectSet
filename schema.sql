@@ -21,9 +21,12 @@ CREATE TABLE IF NOT EXISTS users (
 CREATE TABLE IF NOT EXISTS bookings (
   booking_id SERIAL PRIMARY KEY,
   booking_date DATE NOT NULL,
+  booking_time TIME NOT NULL,
   booking_type VARCHAR(50) NOT NULL,
   business_id VARCHAR(150) NOT NULL,
   business_name TEXT NOT NULL,
+  price VARCHAR(5),
+  rating NUMERIC(5,2),
   latitude NUMERIC(10, 5) NOT NULL,
   longitude NUMERIC(10, 5) NOT NULL,
   user_id INT NOT NULL
@@ -37,3 +40,4 @@ CREATE TABLE IF NOT EXISTS follows (
   FOREIGN KEY (fan_id) REFERENCES users (user_id)
   FOREIGN KEY (artist_id) REFERENCES users (user_id)
 );
+
