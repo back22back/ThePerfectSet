@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { getBusinesses, postBooking, getBookings, getFollows } = require('./controller.js');
+const { getBusinesses, postBooking, getBookings, getFollows, getTourdates } = require('./controller.js');
 
 router.get('/businesses', getBusinesses);
 
