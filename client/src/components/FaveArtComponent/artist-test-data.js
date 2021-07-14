@@ -121,3 +121,5 @@ const artistData = [
 		]
 	}
 ];
+
+export default artistData;
