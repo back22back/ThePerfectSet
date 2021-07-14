@@ -1,5 +1,5 @@
 const { fetchBusinesses, fetchSpecificBusiness } = require('../db/apiqueries.js');
-const { addBooking, fetchBookings } = require('../db/queries.js');
+const { addBooking, fetchBookings, removeBooking } = require('../db/queries.js');
 
 const getBusinesses = (req, res) => {
 	fetchBusinesses(req.query.location, req.query.categories)
@@ -12,11 +12,12 @@ const getBusinesses = (req, res) => {
 
 const postBooking = (req, res) => {
 	addBooking(
-		req.body.booking_date,
-		req.body.booking_type,
-		req.body.business_id,
-		req.body.latitude,
-		req.body.longitude
+		req.query.booking_date,
+		req.query.booking_type,
+		req.query.business_id,
+		req.query.latitude,
+		req.query.longitude,
+		req.query.booking_time
 	)
 		.then((response) =>
 			res.status(200).send(`Successfully added booking! System message:${response}`)
@@ -47,8 +48,20 @@ const getBookings = (req, res) => {
 		});
 };
 
+const deleteBooking = (req, res) => {
+	removeBooking(req.query.business_id)
+		.then((response) =>
+			res.status(200).send(`Successfully canceled booking! System message:${response}`)
+		)
+		.catch((err) => {
+			res.status(500).send(`Error canceling booking: ${err}`);
+			console.error(`Error canceling booking: ${err}\n\n${err.stack}`);
+		});
+};
+
 module.exports = {
 	getBusinesses,
 	postBooking,
-	getBookings
+	getBookings,
+	deleteBooking
 };
