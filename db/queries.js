@@ -16,8 +16,24 @@ const fetchFollows = (user_id) => {
 	return pool.query(queryStr, [user_id]).then((response) => response);
 };
 
+const fetchTourdates = (artist_id, start_date, end_date) => {
+	const queryStr = `SELECT user_name AS artist_name, bio, portrait_url, website,
+	  (
+			SELECT json_agg(row_to_json(a))
+			FROM
+			(
+				SELECT business_name AS location_name, booking_date AS date
+				FROM bookings
+				WHERE user_id=$1 AND booking_date>=$2 AND booking_date<=$3
+			) a
+		) AS tour_dates
+		FROM users WHERE user_id=$1`;
+		return pool.query(queryStr, [artist_id, start_date, end_date]).then((response) => response);
+}
+
 module.exports = {
 	addBooking,
 	fetchBookings,
-	fetchFollows
+	fetchFollows,
+	fetchTourdates
 };

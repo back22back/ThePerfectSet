@@ -9,4 +9,6 @@ router.post('/booking/newbooking', postBooking);
 
 router.get('/follows/', getFollows);
 
+router.get('/tourdates/', getTourdates);
+
 module.exports = router;
