@@ -12,12 +12,12 @@ const getBusinesses = (req, res) => {
 
 const postBooking = (req, res) => {
 	addBooking(
-		req.body.booking_date,
-		req.body.booking_type,
-		req.body.business_id,
-		req.body.latitude,
-		req.body.longitude,
-		req.body.booking_time
+		req.query.booking_date,
+		req.query.booking_type,
+		req.query.business_id,
+		req.query.latitude,
+		req.query.longitude,
+		req.query.booking_time
 	)
 		.then((response) =>
 			res.status(200).send(`Successfully added booking! System message:${response}`)
