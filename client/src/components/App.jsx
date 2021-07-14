@@ -1,14 +1,13 @@
 import React from 'react';
-import ArtistSearch from './Fan/ArtistSearch.jsx';
-import FavoriteArtists from './FaveArtComponent/FavoriteArtists.jsx'
-// import 'bootstrap/dist/css/bootstrap.min.css';
+
+import Home from './Artists/ArtistHome.jsx';
 
 const App = () => {
 
   return (
     <>
-    {/* <FavoriteArtists /> */}
-    <ArtistSearch />
+    Hello World!
+    <Home />
     </>
   )
 };
