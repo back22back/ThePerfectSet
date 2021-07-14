@@ -5,10 +5,10 @@ const fetchBookings = () => {
 	return pool.query(queryStr).then((data) => data.rows);
 };
 
-const addBooking = (date, type, id, lat, lon, time) => {
-	const queryStr = `INSERT INTO bookings (booking_date, booking_type, business_id, latitude, longitude, booking_time) \
-                    VALUES ($1, $2, $3, $4, $5, $6)`;
-	return pool.query(queryStr, [date, type, id, lat, lon]).then((response) => response);
+const addBooking = (date, type, id, lat, lon, time, name) => {
+	const queryStr = `INSERT INTO bookings (booking_date, booking_type, business_id, latitude, longitude, booking_time, business_name) \
+                    VALUES ($1, $2, $3, $4, $5, $6, $7)`;
+	return pool.query(queryStr, [date, type, id, lat, lon, time, name]).then((response) => response);
 };
 
 const removeBooking = (id) => {

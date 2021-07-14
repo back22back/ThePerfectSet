@@ -17,7 +17,8 @@ const postBooking = (req, res) => {
 		req.query.business_id,
 		req.query.latitude,
 		req.query.longitude,
-		req.query.booking_time
+		req.query.booking_time,
+		req.query.business_name
 	)
 		.then((response) =>
 			res.status(200).send(`Successfully added booking! System message:${response}`)
