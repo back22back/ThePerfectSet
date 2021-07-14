@@ -49,7 +49,7 @@ const getBookings = (req, res) => {
 };
 
 const deleteBooking = (req, res) => {
-	removeBooking(req.body.business_id)
+	removeBooking(req.query.business_id)
 		.then((response) =>
 			res.status(200).send(`Successfully canceled booking! System message:${response}`)
 		)
