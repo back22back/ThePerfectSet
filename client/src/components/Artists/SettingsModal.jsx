@@ -19,16 +19,15 @@ const SettingsModal = () => {
       </Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
-          <Button variant="secondary" onClick={handleClose}>
+          <Modal.Title>Settings</Modal.Title>
+          <IoMdCloseCircle variant="secondary" onClick={handleClose}>
             Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
+          </IoMdCloseCircle>
         </Modal.Header>
         <Modal.Body>
-          {/* settings modal */}
+          {/* Name */}
+          {/* Website */}
+          {/* Bio */}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleLogOut}>
