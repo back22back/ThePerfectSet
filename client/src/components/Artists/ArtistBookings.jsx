@@ -23,7 +23,7 @@ const Bookings = ( {booking} ) => {
             </Accordion.Toggle>
             <Accordion.Collapse eventKey={`${i}`}>
               <Card.Body>
-                <Card.Img variant="top" src={`https://s3-media2.fl.yelpcdn.com/bphoto/VWRMSQYJRnHDZCeIdQoRSQ/o.jpg`} />
+                <Card.Img variant="top" src={`${each.image_url}`} className="cardimg" />
                 <Card.Subtitle>{each.type}</Card.Subtitle>
                 <Card.Text>{each.address}</Card.Text>
                 <Card.Text>{each.phone}</Card.Text>
