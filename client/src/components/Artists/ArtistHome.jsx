@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ReactDom from 'react-dom';
+import ReactDom, { render } from 'react-dom';
 import { Container, Row, Button } from 'react-bootstrap';
 import {
   BrowserRouter as Router,
@@ -11,8 +11,11 @@ import {
 import Bookings from './ArtistBookings.jsx';
 import Recommendations from './ArtistRecommendations.jsx';
 import GoogleMap from './GoogleMap.jsx';
+import { withScriptjs } from "react-google-maps";
+import Map from './Map.jsx';
 
-const Home = ( {booking} ) => {
+const Home = ( {bookings} ) => {
+  console.log(bookings);
   const [currentLocation,setCurrentLocation] = useState();
   const [home, setHome] = useState(true);
 
@@ -23,7 +26,11 @@ const Home = ( {booking} ) => {
                 width: '350px',
                 height: '300px'
               }}>
-            <GoogleMap/>
+            <Map
+              bookings={bookings}
+              googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3G_J5X-Mn0e5gVnvOT8IfOz6ZY5ugchE"
+              loadingElement={<div style={{ height: `100%` }} />}
+            />
         </Row>
         <Row >
           <Button onClick={()=>setHome(false)}
@@ -55,7 +62,7 @@ const Home = ( {booking} ) => {
 
       <Switch>
         <Route path="/Artists/Bookings">
-          <Bookings booking={booking} />
+          <Bookings bookings={bookings} />
         </Route>
         <Route path="/Artists/Recommendations">
           <Recommendations />
