@@ -54,18 +54,14 @@ const Home = ( {booking} ) => {
       <hr />
 
       <Switch>
-        <Route path="/Artists/Home">
-          <Home />
-        </Route>
         <Route path="/Artists/Bookings">
           <Bookings booking={booking} />
         </Route>
         <Route path="/Artists/Recommendations">
-          <Recommendations home={home} setHome={setHome}/>
+          <Recommendations />
         </Route>
       </Switch>
     </Router>
-
   );
 };
 

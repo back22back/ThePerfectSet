@@ -1,15 +1,17 @@
 import React, {useState, useEffect, useContext} from 'react';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
-import Image from 'react-bootstrap/Image'
+import Image from 'react-bootstrap/Image';
 import SplashPage from './registration-login/SplashPage.jsx'
 import Login from './registration-login/Login.jsx';
 import Register from './registration-login/Register.jsx';
 import RegistrationLogin from './registration-login/RegistrationLogin.jsx';
+
 import ArtistHome from './Artists/ArtistHome.jsx';
 import AppContext from './AppContext.js'
 import TestHome from './test/TestHome.jsx'
 import themes from './themes.js';
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -24,12 +26,14 @@ const App = () => {
   const [isArtist, setIsArtist] = useState('false');
   const serverUrl = 'serverurl';
   const [booking, setBooking] = useState();
+
   let theme = themes.neon
    
     useEffect(()=> {
     axios.get('/booking/view')
     .then((bookingPromise)=> {setBooking(bookingPromise.data)})
     .catch((err) => console.log(err));
+
     // setBooking([{
     //   id:1,
     //   name:'Hilton',
@@ -42,6 +46,7 @@ const App = () => {
     //   latitude: 123,
     //   longitude: 123,
     //   type: 'music venue'}])
+
   }, []);
  
   return (

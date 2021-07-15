@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
-import { GOOGLE_API } from '../../../../config.js';
+// import { GOOGLE_API } from '../../../../config.js';
 
 class GoogleMap extends Component {
    // state = currentLocation
@@ -25,7 +25,7 @@ class GoogleMap extends Component {
  }
 };
 
-export default GoogleApiWrapper({
-  apiKey: (GOOGLE_API)
- })(GoogleMap);
+// export default GoogleApiWrapper({
+//   apiKey: (GOOGLE_API)
+//  })(GoogleMap);
 
