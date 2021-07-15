@@ -6,7 +6,6 @@ const App = () => {
 
   return (
     <>
-    Hello World!
     <Home />
     </>
   )
