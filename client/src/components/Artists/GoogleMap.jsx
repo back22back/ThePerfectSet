@@ -3,7 +3,7 @@ import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 // import { GOOGLE_API } from '../../../../config.js';
 
 class GoogleMap extends Component {
-   // state = currentLocation
+
  render() {
    return (
       <>

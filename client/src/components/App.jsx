@@ -24,30 +24,24 @@ const App = () => {
   const [website, setWebsite] = useState('www.efgsdfg.com');
   const [isArtist, setIsArtist] = useState('false');
   const serverUrl = 'serverurl';
-  const [booking, setBooking] = useState();
-  let theme = themes.neon
+  const [bookings, setBookings] = useState();
+  const [user_id, setUser_id] = useState(1);
+  let theme = themes.neon;
 
-    useEffect(()=> {
-    axios.get('/booking/view')
-    .then((bookingPromise)=> {setBooking(bookingPromise.data)})
+  useEffect(()=> {
+    axios.get('/booking/view', {params:{user_id}})
+    .then((bookingPromise)=> {setBookings(bookingPromise.data)})
     .catch((err) => console.log(err));
-    // setBooking([{
-    //   id:1,
-    //   name:'Hilton',
-    //   address:'1234 hill',
-    //   phone:'1234567890',
-    //   yelp_url:'www',
-    //   image_url:'www',
-    //   rating: '4',
-    //   price:'$',
-    //   latitude: 123,
-    //   longitude: 123,
-    //   type: 'music venue'}])
+
   }, []);
+
+  if (!bookings) {
+    return <div>Loading...</div>
+  }
 
   return (
     <>
-    <ArtistSearch />
+    <ArtistHome bookings={bookings}/>
       {/* <AppContext.Provider value={{username, setUsername, bio, setBio, website, setWebsite, serverUrl, isArtist, setIsArtist, theme}} >
       <Router>
       <Switch>
@@ -55,6 +49,9 @@ const App = () => {
         <Route path="/Login" exact component={Login} />
         <Route path="/Register" exact component={Register} />
         <Route path="/TestHome" exact component={TestHome} />
+        <Route path="/Artist">
+          <ArtistHome bookings={bookings}/>
+        </Route>
       </Switch>
     </Router>
       </AppContext.Provider> */}
