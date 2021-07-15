@@ -1,6 +1,14 @@
 const { fetchBusinesses, fetchSpecificBusiness } = require('../db/apiqueries.js');
-const { addBooking, addUser, fetchBookings, fetchFollows, removeBooking, fetchTourdates, addFollow, removeFollow } = require('../db/queries.js');
-
+const {
+	addBooking,
+	addUser,
+	fetchBookings,
+	fetchFollows,
+	removeBooking,
+	addFollow,
+	removeFollow,
+	fetchUser
+} = require('../db/queries.js');
 
 const getBusinesses = (req, res) => {
 	fetchBusinesses(req.query.location, req.query.categories)
@@ -40,36 +48,36 @@ const postUser = (req, res) => {
 		req.query.portrait_url,
 		req.query.website
 	)
-	.then((response) => res.status(200).send(`Successfully added user! System message: ${response}`)
-	)
-	.catch((err) => {
-		res.status(500).send(`Error adding user: ${err}`);
+		.then((response) =>
+			res.status(200).send(`Successfully added user! System message: ${response}`)
+		)
+		.catch((err) => {
+			res.status(500).send(`Error adding user: ${err}`);
 			console.error(`Error adding user: ${err}\n\n${err.stack}`);
 		});
 };
 
 const postFollows = (req, res) => {
-	addFollow(
-		req.query.fan_id,
-		req.query.artist_id
-	)
-	.then((response) => res.status(200).send(`Successfully added follow! System message: ${response}`)
-	)
-	.catch((err) => {
-		res.status(500).send(`Error adding follow: ${err}`);
+	addFollow(req.query.fan_id, req.query.artist_id)
+		.then((response) =>
+			res.status(200).send(`Successfully added follow! System message: ${response}`)
+		)
+		.catch((err) => {
+			res.status(500).send(`Error adding follow: ${err}`);
 			console.error(`Error adding follow: ${err}\n\n${err.stack}`);
 		});
 };
 
 const deleteFollows = (req, res) => {
 	removeFollow(req.query.fan_id, req.query.artist_id)
-	.then((response) => res.status(200).send(`Successfully removed follow! System message: ${response}`)
-	)
-	.catch((err) => {
-		res.status(500).send(`Error removing follow: ${err}`);
+		.then((response) =>
+			res.status(200).send(`Successfully removed follow! System message: ${response}`)
+		)
+		.catch((err) => {
+			res.status(500).send(`Error removing follow: ${err}`);
 			console.error(`Error removing follow: ${err}\n\n${err.stack}`);
 		});
-}
+};
 
 const getBookings = (req, res) => {
 	fetchBookings(req.query.user_id)
@@ -95,19 +103,11 @@ const getBookings = (req, res) => {
 
 const getFollows = (req, res) => {
 	fetchFollows(req.query.user_id)
-		.then((data) => res.status(200).send(data))
+		.then((data) => {
+			res.status(200).send(data)})
 		.catch((err) => {
 			res.status(500).send(`Error fetching artists the fan follows: ${err}`);
 			console.error(`Error fetching artists the fan follows: ${err}\n\n${err.stack}`);
-		});
-};
-
-const getTourdates = (req, res) => {
-	fetchTourdates(req.query.artist_id, req.query.start_date, req.query.end_date)
-		.then((data) => res.status(200).send(data))
-		.catch((err) => {
-			res.status(500).send(`Error fetching tour dates: ${err}`);
-			console.error(`Error fetching tour dates: ${err}\n\n${err.stack}`);
 		});
 };
 
@@ -122,6 +122,15 @@ const deleteBooking = (req, res) => {
 		});
 };
 
+const getSingleUser = (req, res) => {
+	fetchUser(req.query.user_id)
+		.then((data) => res.status(200).send(data))
+		.catch((err) => {
+			res.status(500).send(`Error fetching user: ${err}`);
+			console.error(`Error fetching user: ${err}\n\n${err.stack}`);
+		});
+};
+
 module.exports = {
 	getBusinesses,
 	postBooking,
@@ -130,6 +139,6 @@ module.exports = {
 	getFollows,
 	postFollows,
 	deleteFollows,
-	getTourdates,
-	deleteBooking
+	deleteBooking,
+	getSingleUser
 };
