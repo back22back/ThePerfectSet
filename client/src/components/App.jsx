@@ -24,11 +24,11 @@ const App = () => {
   let [website, setWebsite] = useState('www.efgsdfg.com');
   let [isArtist, setIsArtist] = useState('false');
   let serverUrl = 'serverurl';
-  const [booking, setBooking] = useState();
+  const [bookings, setBookings] = useState();
 
   useEffect(()=> {
     axios.get('/booking/view')
-    .then((bookingPromise)=> {setBooking(bookingPromise.data)})
+    .then((bookingPromise)=> {setBookings(bookingPromise.data)})
     .catch((err) => console.log(err));
     // setBooking([{
     //   id:1,
@@ -43,13 +43,15 @@ const App = () => {
     //   longitude: 123,
     //   type: 'music venue'}])
   }, []);
-
+  if (!bookings) {
+    return <div>Loading...</div>
+  }
   return (
     <>
       {/* <AppContext.Provider value={{username, setUsername, bio, setBio, website, setWebsite, serverUrl, isArtist, setIsArtist}} >
         <RegistrationLogin/>
       </AppContext.Provider> */}
-      <ArtistHome booking={booking}/>
+      <ArtistHome bookings={bookings}/>
     </>
   )
 };
