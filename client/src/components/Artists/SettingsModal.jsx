@@ -1,33 +1,26 @@
-import React, { useState } from 'React'
-import ReactDom from 'react-dom';
+import React, { useState } from 'react'
 import { Button, Modal } from 'react-bootstrap';
 import { IoMdCloseCircle } from 'react-icons/Io'
 
-import ReactDom from 'react-dom';
-
-
-const SettingsModal = () => {
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+const SettingsModal = ({showSettings, setShowSettings, handleCloseSettings}) => {
   const handleLogOut = () => console.log('logged out');
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      {/* <Button variant="primary" onClick={handleShow}>
         Launch demo modal
-      </Button>
-      <Modal show={show} onHide={handleClose}>
+      </Button> */}
+      <Modal show={showSettings} onHide={handleCloseSettings}>
         <Modal.Header closeButton>
           <Modal.Title>Settings</Modal.Title>
-          <IoMdCloseCircle variant="secondary" onClick={handleClose}>
+          {/* <IoMdCloseCircle variant="secondary" onClick={handleCloseSettings}>
             Close
-          </IoMdCloseCircle>
+          </IoMdCloseCircle> */}
         </Modal.Header>
         <Modal.Body>
-          {/* Name */}
-          {/* Website */}
-          {/* Bio */}
+          <b>Username</b>: Username1 <br/>
+          <b>Website</b>: http://rocker.com <br/>
+          <b>Bio</b>: I always turn it up to 11
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleLogOut}>
@@ -39,6 +32,6 @@ const SettingsModal = () => {
   );
 }
 
-render(<SettingsModal />);
+// render(<SettingsModal />);
 
 export default SettingsModal;
