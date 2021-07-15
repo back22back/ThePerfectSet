@@ -1,6 +1,15 @@
 const router = require('express').Router();
-const { getBusinesses, postBooking, postFollows, deleteFollows, getBookings, deleteBooking, getFollows, getTourdates, postUser } = require('./controller.js');
-
+const {
+	getBusinesses,
+	postBooking,
+	postFollows,
+	deleteFollows,
+	getBookings,
+	deleteBooking,
+	getFollows,
+	getTourdates,
+	postUser
+} = require('./controller.js');
 
 router.get('/businesses', getBusinesses);
 
@@ -14,9 +23,9 @@ router.post('/booking/newbooking', postBooking);
 
 router.post('/user', postUser);
 
-router.post('/follows', postFollow);
+router.post('/follows', postFollows);
 
-router.delete('/follows', deleteFollow);
+router.delete('/follows', deleteFollows);
 
 router.delete('/booking/cancel', deleteBooking);
 
