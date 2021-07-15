@@ -33,7 +33,7 @@ const fetchFollows = (user_id) => {
   FROM users WHERE user_id IN (
 		SELECT artist_id FROM follows WHERE fan_id=$1
 	)`;
-	return pool.query(queryStr, [user_id]).then((response) => response);
+	return pool.query(queryStr, [user_id]).then((response) => response.rows);
 };
 
 module.exports = {
