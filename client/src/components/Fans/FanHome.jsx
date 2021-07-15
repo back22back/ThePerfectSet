@@ -2,10 +2,10 @@ import React from 'react';
 import { Container, Column, Button, Image } from 'react-bootstrap';
 
 const FanHome = () => {
-  return (
-    <>
-      <style type="text/css">
-        {`
+	return (
+		<>
+			<style type='text/css'>
+				{`
         .btn-black {
           background-color: black;
           color: white;
@@ -22,22 +22,28 @@ const FanHome = () => {
           width: 6rem;
         }
         `}
-      </style>
-      <Container>
-        <Image src="background-url" fluid />
-        <Container>
-          <Row>
-            <Col>
-              <Button variant="black" size="xxl">Favorite Artists</Button>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <Button variant="white" size="xxl">Artist Search</Button>
-            </Col>
-          </Row>
-        </Container>
-      </Container>
-    </>
-  )
-}
+			</style>
+			<Container>
+				<Image src='background-url' fluid />
+				<Container>
+					<Row>
+						<Col>
+							<Button variant='black' size='xxl'>
+								Favorite Artists
+							</Button>
+						</Col>
+					</Row>
+					<Row>
+						<Col>
+							<Button variant='white' size='xxl'>
+								Artist Search
+							</Button>
+						</Col>
+					</Row>
+				</Container>
+			</Container>
+		</>
+	);
+};
+
+export default FanHome;
