@@ -7,6 +7,7 @@ import { VscSettings } from 'react-icons/Vsc';
 import axios from 'axios';
 import GoogleMap from './GoogleMap.jsx';
 import SettingsModal from './SettingsModal.jsx';
+// import DatePickerModal from './DatePickerModal.jsx';
 
 const ArtistRecommendations = ({home, setHome}) => {
   const [search, setSearch] = useState(false);
@@ -73,7 +74,11 @@ const ArtistRecommendations = ({home, setHome}) => {
           setShowSettings={setShowSettings}
           handleCloseSettings={handleCloseSettings}
         />
-        <DatePickerModal/>
+        {/* <DatePickerModal
+          showDatePicker={showDatePicker}
+          setShowDatePicker={setShowDatePicker}
+          handleCloseDatePicker={handleCloseDatePicker}
+        /> */}
         <Row className='justify-content-between'>
           <div>
             <IoMdArrowBack

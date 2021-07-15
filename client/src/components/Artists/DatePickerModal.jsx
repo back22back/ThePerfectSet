@@ -1,29 +1,16 @@
 import React, { useState } from 'react';
-import ReactDom from 'react-dom';
 import { Button, Modal } from 'react-bootstrap';
 import DateTimePicker from 'react-datetime-picker';
 
 
-const DatePickerModal = () => {
+const DatePickerModal = ({showDatePicker, setShowDatePicker, handleCloseDatePicker}) => {
   const [value, onChange] = useState(new Date());
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
-      </Button>
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleCloseDatePicker}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
+          <Modal.Title>Date Time Picker</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <DateTimePicker
@@ -32,7 +19,7 @@ const DatePickerModal = () => {
           />
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="secondary" onClick={handleCloseDatePicker}>
             Select
           </Button>
         </Modal.Footer>
@@ -40,7 +27,5 @@ const DatePickerModal = () => {
     </>
   );
 }
-
-render(<DatePickerModal />);
 
 export default DatePickerModal;
