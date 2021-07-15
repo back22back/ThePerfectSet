@@ -4,14 +4,11 @@ import { Container, Button, Accordion, Card, Image, Row } from 'react-bootstrap'
 import { IoMdArrowBack, IoMdCloseCircle } from 'react-icons/Io';
 import { VscSettings } from 'react-icons/Vsc';
 
-//need to import fan home page and fan search page
-
 import artistData from './artist-test-data.js';
 import placeholder from './placeholder.png';
 
 const FavoriteArtists = () => {
 	return (
-		// <Router>
 		<Container>
 			<nav>
 				{/* <Link to='/app' component={App}> */}
@@ -41,7 +38,6 @@ const FavoriteArtists = () => {
 				</div>
 			</Row>
 		</Container>
-		// </Router>
 	);
 };
 
