@@ -13,6 +13,23 @@ const addBooking = (date, type, id, lat, lon, time, name, user) => {
 		.then((response) => response);
 };
 
+const addUser = (user_name, password, is_artist, bio, portrait_url, website) => {
+	const queryStr = `INSERT INTO users (user_name, password, is_artist, bio, portrait_url, website) VALUES ($1, $2, $3, $4, $5, $6)`;
+	return pool
+		.query(queryStr, [user_name, password, is_artist, bio, portrait_url, website])
+		.then((response) => response);
+};
+
+const addFollow = (fan_id, artist_id) => {
+	const queryStr = `INSERT INTO follows (fan_id, artist_id) VALUES ($1, $2)`;
+	return pool.query(queryStr, [fan_id, artist_id]).then((response) => response);
+};
+
+const removeFollow = (fan_id, artist_id) => {
+	const queryStr = `DELETE FROM follows WHERE (fan_id=$1 AND artist_id=$2)`;
+	return pool.query(queryStr, [fan_id, artist_id]).then((response) => response);
+};
+
 const removeBooking = (id) => {
 	const queryStr = 'DELETE FROM bookings WHERE business_id = $1';
 	return pool.query(queryStr, [id]).then((response) => response);
@@ -36,9 +53,18 @@ const fetchFollows = (user_id) => {
 	return pool.query(queryStr, [user_id]).then((response) => response.rows);
 };
 
+const fetchUser = (user) => {
+	const queryStr = 'SELECT * FROM users WHERE user_id=$1';
+	return pool.query(queryStr, [user]).then((data) => data.rows);
+};
+
 module.exports = {
 	addBooking,
 	fetchBookings,
 	fetchFollows,
-	removeBooking
+	addFollow,
+	removeFollow,
+	removeBooking,
+	addUser,
+	fetchUser
 };

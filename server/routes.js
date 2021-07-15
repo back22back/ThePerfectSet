@@ -2,18 +2,30 @@ const router = require('express').Router();
 const {
 	getBusinesses,
 	postBooking,
+	postFollows,
+	deleteFollows,
 	getBookings,
 	deleteBooking,
 	getFollows,
+	postUser,
+	getSingleUser
 } = require('./controller.js');
 
 router.get('/businesses', getBusinesses);
 
 router.get('/booking/view', getBookings);
 
+router.get('/follows', getFollows);
+
+router.get('/user', getSingleUser);
+
 router.post('/booking/newbooking', postBooking);
 
-router.get('/follows/', getFollows);
+router.post('/user', postUser);
+
+router.post('/follows', postFollows);
+
+router.delete('/follows', deleteFollows);
 
 router.delete('/booking/cancel', deleteBooking);
 

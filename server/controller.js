@@ -1,9 +1,13 @@
 const { fetchBusinesses, fetchSpecificBusiness } = require('../db/apiqueries.js');
 const {
 	addBooking,
+	addUser,
 	fetchBookings,
 	fetchFollows,
 	removeBooking,
+	addFollow,
+	removeFollow,
+	fetchUser
 } = require('../db/queries.js');
 
 const getBusinesses = (req, res) => {
@@ -32,6 +36,46 @@ const postBooking = (req, res) => {
 		.catch((err) => {
 			res.status(500).send(`Error adding booking: ${err}`);
 			console.error(`Error adding booking: ${err}\n\n${err.stack}`);
+		});
+};
+
+const postUser = (req, res) => {
+	addUser(
+		req.query.user_name,
+		req.query.password,
+		req.query.is_artist,
+		req.query.bio,
+		req.query.portrait_url,
+		req.query.website
+	)
+		.then((response) =>
+			res.status(200).send(`Successfully added user! System message: ${response}`)
+		)
+		.catch((err) => {
+			res.status(500).send(`Error adding user: ${err}`);
+			console.error(`Error adding user: ${err}\n\n${err.stack}`);
+		});
+};
+
+const postFollows = (req, res) => {
+	addFollow(req.query.fan_id, req.query.artist_id)
+		.then((response) =>
+			res.status(200).send(`Successfully added follow! System message: ${response}`)
+		)
+		.catch((err) => {
+			res.status(500).send(`Error adding follow: ${err}`);
+			console.error(`Error adding follow: ${err}\n\n${err.stack}`);
+		});
+};
+
+const deleteFollows = (req, res) => {
+	removeFollow(req.query.fan_id, req.query.artist_id)
+		.then((response) =>
+			res.status(200).send(`Successfully removed follow! System message: ${response}`)
+		)
+		.catch((err) => {
+			res.status(500).send(`Error removing follow: ${err}`);
+			console.error(`Error removing follow: ${err}\n\n${err.stack}`);
 		});
 };
 
@@ -78,10 +122,23 @@ const deleteBooking = (req, res) => {
 		});
 };
 
+const getSingleUser = (req, res) => {
+	fetchUser(req.query.user_id)
+		.then((data) => res.status(200).send(data))
+		.catch((err) => {
+			res.status(500).send(`Error fetching user: ${err}`);
+			console.error(`Error fetching user: ${err}\n\n${err.stack}`);
+		});
+};
+
 module.exports = {
 	getBusinesses,
 	postBooking,
+	postUser,
 	getBookings,
 	getFollows,
-	deleteBooking
+	postFollows,
+	deleteFollows,
+	deleteBooking,
+	getSingleUser
 };
