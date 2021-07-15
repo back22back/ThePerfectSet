@@ -1,26 +1,28 @@
 import React, { useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
-import DateTimePicker from 'react-datetime-picker';
+import Calendar from 'react-calendar';
 
-
-const DatePickerModal = ({showDatePicker, setShowDatePicker, handleCloseDatePicker}) => {
-  const [value, onChange] = useState(new Date());
+const DatePickerModal = ({date, onDateChange, time, onTimeChange, showDatePicker, setShowDatePicker, handleCloseDatePicker, dateSelected, setDateSelected}) => {
 
   return (
     <>
-      <Modal show={show} onHide={handleCloseDatePicker}>
+      <Modal show={showDatePicker} onHide={handleCloseDatePicker} >
         <Modal.Header closeButton>
-          <Modal.Title>Date Time Picker</Modal.Title>
+          <Modal.Title>Date Picker</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          <DateTimePicker
-            onChange={onChange}
-            value={value}
+        <Modal.Body style={{height:'30vh', width:'auto'}}>
+          <Calendar
+            onChange={onDateChange}
+            value={date}
           />
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseDatePicker}>
-            Select
+          <Button variant="success" onClick={() => {
+            setDateSelected(true);
+            handleCloseDatePicker();
+            }
+          }>
+            Save Booking
           </Button>
         </Modal.Footer>
       </Modal>

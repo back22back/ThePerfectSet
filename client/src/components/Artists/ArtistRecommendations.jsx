@@ -7,7 +7,7 @@ import { VscSettings } from 'react-icons/Vsc';
 import axios from 'axios';
 import GoogleMap from './GoogleMap.jsx';
 import SettingsModal from './SettingsModal.jsx';
-// import DatePickerModal from './DatePickerModal.jsx';
+import DatePickerModal from './DatePickerModal.jsx';
 
 const ArtistRecommendations = ({home, setHome}) => {
   const [search, setSearch] = useState(false);
@@ -16,12 +16,41 @@ const ArtistRecommendations = ({home, setHome}) => {
   const [bookingType, setBookingType] = useState('musicvenues');
   const [showSettings, setShowSettings] = useState(false);
   const [showDatePicker, setShowDatePicker] = useState(false);
+  const [date, onDateChange] = useState(new Date());
+  const [time, onTimeChange] = useState('10:00:00');
+  const [dateSelected, setDateSelected] = useState(false);
+  const [businessId, setBusinessId] = useState('aijfs394');
+  const [businessName, setBusinessName] = useState('Big Bear Cafe');
+  const [lat, setLat] = useState(349.359);
+  const [lng, setLng] = useState(-21.398);
 
   useEffect(() => {
+    console.log(recommendedList);
     if (recommendedList.length !== 0) {
       setSearch(true);
     }
   }, [recommendedList])
+
+  useEffect(() => {
+    if (dateSelected) {
+      axios.post('/booking/newbooking',
+      { params:
+        {
+          booking_date: date,
+          booking_type: bookingType,
+          business_id: businessId,
+          latitude: lat,
+          longitude: lng,
+          booking_time: time,
+          business_name: businessName,
+          user_id: 1
+        }
+      }).then((response) => {
+        console.log(response);
+        setDateSelected(false);
+      })
+    }
+  }, [dateSelected])
 
   const handleCloseSettings = () => setShowSettings(false);
   const handleShowSettings = () => setShowSettings(true);
@@ -46,23 +75,7 @@ const ArtistRecommendations = ({home, setHome}) => {
 
   const handleAddBooking = (e) => {
     setShowDatePicker(true);
-    /*
-    axios.post('/booking/newbooking’,
-    { params:
-      {
-        booking_date: 2021-07-13,
-        booking_type: ‘hotel’,
-        business_id: ‘aijfs394’,
-        latitude: 349.359,
-        longitude: -21.398,
-        booking_time: 00:00:00,
-        business_name: ‘Big Bear Cafe’,
-        user_id: 1
-      }
-    }).then((response) => {
-      console.log(response);
-    })
-    */
+
   }
 
   return (
@@ -74,11 +87,17 @@ const ArtistRecommendations = ({home, setHome}) => {
           setShowSettings={setShowSettings}
           handleCloseSettings={handleCloseSettings}
         />
-        {/* <DatePickerModal
+        <DatePickerModal
           showDatePicker={showDatePicker}
           setShowDatePicker={setShowDatePicker}
           handleCloseDatePicker={handleCloseDatePicker}
-        /> */}
+          date={date}
+          onDateChange={onDateChange}
+          time={time}
+          onTimeChange={onTimeChange}
+          dateSelected={dateSelected}
+          setDateSelected={setDateSelected}
+        />
         <Row className='justify-content-between'>
           <div>
             <IoMdArrowBack
