@@ -1,14 +1,31 @@
 const pool = require('./index.js');
 
-const fetchBookings = () => {
-	const queryStr = 'SELECT business_id, booking_type FROM bookings';
-	return pool.query(queryStr).then((data) => data.rows);
+const fetchBookings = (user) => {
+	const queryStr = 'SELECT * FROM bookings WHERE user_id = $1 ORDER BY booking_date, booking_time';
+	return pool.query(queryStr, [user]).then((data) => data.rows);
 };
 
-const addBooking = (date, type, id, lat, lon, time, name) => {
-	const queryStr = `INSERT INTO bookings (booking_date, booking_type, business_id, latitude, longitude, booking_time, business_name) \
-                    VALUES ($1, $2, $3, $4, $5, $6, $7)`;
-	return pool.query(queryStr, [date, type, id, lat, lon, time, name]).then((response) => response);
+const addBooking = (date, type, id, lat, lon, time, name, user) => {
+	const queryStr = `INSERT INTO bookings (booking_date, booking_type, business_id, latitude, longitude, booking_time, business_name, user_id) \
+                    VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`;
+	return pool
+		.query(queryStr, [date, type, id, lat, lon, time, name, user])
+		.then((response) => response);
+};
+
+const addUser = (user_name, password, is_artist, bio, portrait_url, website) => {
+	const queryStr = `INSERT INTO users (user_name, password, is_artist, bio, portrait_url, website) VALUES ($1, $2, $3, $4, $5, $6)`;
+	return pool.query(queryStr, [user_name, password, is_artist, bio, portrait_url, website]).then((response) => response);
+};
+
+const addFollow = (fan_id, artist_id) => {
+	const queryStr = `INSERT INTO follows (fan_id, artist_id) VALUES ($1, $2)`;
+	return pool.query(queryStr, [fan_id, artist_id]).then((response) => response);
+};
+
+const removeFollow = (fan_id, artist_id) => {
+	const queryStr = `DELETE FROM follows WHERE (fan_id=$1 AND artist_id=$2)`;
+	return pool.query(queryStr, [fan_id, artist_id]).then((response) => response);
 };
 
 const removeBooking = (id) => {
@@ -34,13 +51,16 @@ const fetchTourdates = (artist_id, start_date, end_date) => {
       ) a
     ) AS tour_dates
   FROM users WHERE user_id=$1`;
-  return pool.query(queryStr, [artist_id, start_date, end_date]).then((response) => response);
-}
+	return pool.query(queryStr, [artist_id, start_date, end_date]).then((response) => response);
+};
 
 module.exports = {
 	addBooking,
 	fetchBookings,
 	fetchFollows,
+	addFollow,
+	removeFollow,
 	fetchTourdates,
-	removeBooking
+	removeBooking,
+	addUser,
 };
