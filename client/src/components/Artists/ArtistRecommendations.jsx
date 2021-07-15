@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import { Container, Button, Accordion, Card, Image, Row, Col, Form } from 'react-bootstrap';
 import { IoMdArrowBack, IoMdCloseCircle } from 'react-icons/Io';
+import { AiFillPlusCircle } from 'react-icons/Ai'
 import { VscSettings } from 'react-icons/Vsc';
 import axios from 'axios';
 import GoogleMap from './GoogleMap.jsx';
@@ -13,6 +14,7 @@ const ArtistRecommendations = ({home, setHome}) => {
   const [cityName, setCityName] = useState('');
   const [bookingType, setBookingType] = useState('musicvenues');
   const [showSettings, setShowSettings] = useState(false);
+  const [showDatePicker, setShowDatePicker] = useState(false);
 
   useEffect(() => {
     if (recommendedList.length !== 0) {
@@ -22,6 +24,8 @@ const ArtistRecommendations = ({home, setHome}) => {
 
   const handleCloseSettings = () => setShowSettings(false);
   const handleShowSettings = () => setShowSettings(true);
+  const handleCloseDatePicker = () => setShowDatePicker(false);
+  const handleShowDatePicker = () => setShowDatePicker(true);
 
   const handleCityChange = (e) => {
     setCityName(e.target.value);
@@ -33,11 +37,31 @@ const ArtistRecommendations = ({home, setHome}) => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    console.log(`searching for city: ${cityName} and category: ${bookingType}`);
     axios.get('/businesses', { params: {location: cityName, categories: bookingType}})
     . then((results) => {
       setRecommendedList(results.data);
     });
+  }
+
+  const handleAddBooking = (e) => {
+    setShowDatePicker(true);
+    /*
+    axios.post('/booking/newbooking’,
+    { params:
+      {
+        booking_date: 2021-07-13,
+        booking_type: ‘hotel’,
+        business_id: ‘aijfs394’,
+        latitude: 349.359,
+        longitude: -21.398,
+        booking_time: 00:00:00,
+        business_name: ‘Big Bear Cafe’,
+        user_id: 1
+      }
+    }).then((response) => {
+      console.log(response);
+    })
+    */
   }
 
   return (
@@ -49,6 +73,7 @@ const ArtistRecommendations = ({home, setHome}) => {
           setShowSettings={setShowSettings}
           handleCloseSettings={handleCloseSettings}
         />
+        <DatePickerModal/>
         <Row className='justify-content-between'>
           <div>
             <IoMdArrowBack
@@ -109,9 +134,16 @@ const ArtistRecommendations = ({home, setHome}) => {
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey={index + 1}>
                       <Card.Body>
+                        <Card.Link href={recommendedItem.yelp_url}>Website Link</Card.Link> <br/>
                         <b>Address</b>: {recommendedItem.address} <br/>
                         <b>Phone</b> : {recommendedItem.phone} <br/>
-                        <Card.Link href={recommendedItem.yelp_url}>Website Link</Card.Link>
+                        <Button
+                          variant="success"
+                          value={recommendedItem.id}
+                          onClick={handleAddBooking}
+                        >
+                          Add to Bookings
+                        </Button>
                       </Card.Body>
                     </Accordion.Collapse>
                   </Card>
@@ -123,7 +155,6 @@ const ArtistRecommendations = ({home, setHome}) => {
                 <Image src="https://cdn.wallpapersafari.com/98/86/BF0GtP.jpg"></Image>
               </Row>
           }
-
       </Container>
         : null
       }
