@@ -68,10 +68,14 @@ const FavoriteArtists = () => {
 									{artist.name}
 								</Accordion.Toggle>
 								<Accordion.Collapse eventKey={i + 1}>
-									<Card.Body>
-										<div>{artist.bio}</div>
-										<a href={artist.website}>{artist.website}</a>
-										<div> Tours </div>
+									<Card.Body style={{ fontSize: '0.8em' }}>
+										<Container className='justify-content-around'>
+											<Row style={{ marginBottom: '1em' }}>
+												<a href={artist.website}>{artist.website}</a>
+											</Row>
+											<Row>{artist.bio}</Row>
+											<Row> Tours </Row>
+										</Container>
 									</Card.Body>
 								</Accordion.Collapse>
 							</Card>
