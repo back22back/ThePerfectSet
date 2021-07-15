@@ -14,9 +14,9 @@ router.post('/booking/newbooking', postBooking);
 
 router.post('/user', postUser);
 
-router.post('/follows', postFollow);
+router.post('/follows', postFollows);
 
-router.delete('/follows', deleteFollow);
+router.delete('/follows', deleteFollows);
 
 router.delete('/booking/cancel', deleteBooking);
 
