@@ -8,7 +8,7 @@ import Register from './registration-login/Register.jsx';
 import RegistrationLogin from './registration-login/RegistrationLogin.jsx';
 import AppContext from './AppContext.js';
 import TestHome from './test/TestHome.jsx';
-import ArtistSearch from './Fan/ArtistSearch.jsx';
+import ArtistSearch from './Fans/ArtistSearch.jsx';
 import {
   BrowserRouter as Router,
   Switch,
