@@ -8,7 +8,8 @@ const {
 	deleteBooking,
 	getFollows,
 	getTourdates,
-	postUser
+	postUser,
+	getSingleUser
 } = require('./controller.js');
 
 router.get('/businesses', getBusinesses);
@@ -18,6 +19,8 @@ router.get('/booking/view', getBookings);
 router.get('/follows', getFollows);
 
 router.get('/tourdates/', getTourdates);
+
+router.get('/user', getSingleUser);
 
 router.post('/booking/newbooking', postBooking);
 
