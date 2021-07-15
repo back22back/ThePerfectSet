@@ -4,7 +4,6 @@ const {
 	fetchBookings,
 	fetchFollows,
 	removeBooking,
-	fetchTourdates
 } = require('../db/queries.js');
 
 const getBusinesses = (req, res) => {
@@ -60,19 +59,11 @@ const getBookings = (req, res) => {
 
 const getFollows = (req, res) => {
 	fetchFollows(req.query.user_id)
-		.then((data) => res.status(200).send(data))
+		.then((data) => {
+			res.status(200).send(data)})
 		.catch((err) => {
 			res.status(500).send(`Error fetching artists the fan follows: ${err}`);
 			console.error(`Error fetching artists the fan follows: ${err}\n\n${err.stack}`);
-		});
-};
-
-const getTourdates = (req, res) => {
-	fetchTourdates(req.query.artist_id, req.query.start_date, req.query.end_date)
-		.then((data) => res.status(200).send(data))
-		.catch((err) => {
-			res.status(500).send(`Error fetching tour dates: ${err}`);
-			console.error(`Error fetching tour dates: ${err}\n\n${err.stack}`);
 		});
 };
 
@@ -92,6 +83,5 @@ module.exports = {
 	postBooking,
 	getBookings,
 	getFollows,
-	getTourdates,
 	deleteBooking
 };
