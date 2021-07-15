@@ -1,5 +1,5 @@
 const { fetchBusinesses, fetchSpecificBusiness } = require('../db/apiqueries.js');
-const { addBooking, addUser, fetchBookings, fetchFollows, removeBooking, fetchTourdates } = require('../db/queries.js');
+const { addBooking, addUser, fetchBookings, fetchFollows, removeBooking, fetchTourdates, addFollow, removeFollow } = require('../db/queries.js');
 
 
 const getBusinesses = (req, res) => {
@@ -47,6 +47,29 @@ const postUser = (req, res) => {
 			console.error(`Error adding user: ${err}\n\n${err.stack}`);
 		});
 };
+
+const postFollows = (req, res) => {
+	addFollow(
+		req.query.fan_id,
+		req.query.artist_id
+	)
+	.then((response) => res.status(200).send(`Successfully added follow! System message: ${response}`)
+	)
+	.catch((err) => {
+		res.status(500).send(`Error adding follow: ${err}`);
+			console.error(`Error adding follow: ${err}\n\n${err.stack}`);
+		});
+};
+
+const deleteFollows = (req, res) => {
+	removeFollow(req.query.fan_id, req.query.artist_id)
+	.then((response) => res.status(200).send(`Successfully removed follow! System message: ${response}`)
+	)
+	.catch((err) => {
+		res.status(500).send(`Error removing follow: ${err}`);
+			console.error(`Error removing follow: ${err}\n\n${err.stack}`);
+		});
+}
 
 const getBookings = (req, res) => {
 	fetchBookings(req.query.user_id)
@@ -105,6 +128,8 @@ module.exports = {
 	postUser,
 	getBookings,
 	getFollows,
+	postFollows,
+	deleteFollows,
 	getTourdates,
 	deleteBooking
 };
