@@ -30,6 +30,18 @@ const App = () => {
     axios.get('/booking/view')
     .then((bookingPromise)=> {setBooking(bookingPromise.data)})
     .catch((err) => console.log(err));
+    // setBooking([{
+    //   id:1,
+    //   name:'Hilton',
+    //   address:'1234 hill',
+    //   phone:'1234567890',
+    //   yelp_url:'www',
+    //   image_url:'www',
+    //   rating: '4',
+    //   price:'$',
+    //   latitude: 123,
+    //   longitude: 123,
+    //   type: 'music venue'}])
   }, []);
 
   return (
