@@ -8,7 +8,7 @@ import { VscSettings } from 'react-icons/Vsc';
 import artistData from '../FaveArtComponent/artist-test-data.js';
 
 const ArtistSearch = () => {
-  const [searchResults, setSearchResults] = useState(artistData);
+  // const [searchResults, setSearchResults] = useState(artistData);
   const [input, setInput] = useState('');
 
   const handleSearch = (searchInput) => {
@@ -16,6 +16,13 @@ const ArtistSearch = () => {
       ? setInput(searchInput)
       : setInput('');
   };
+
+	const handleFocus = (event) => {
+    event.preventDefault();
+    const { target } = event;
+    target.setSelectionRange(0, target.value.length);
+  };
+
 
   const fetchArtistData = () => {
     // TODO: rewrite to fetch from DB
@@ -29,9 +36,55 @@ const ArtistSearch = () => {
       <VscSettings/>
       <Row>
         {/* <Image src={'FILL_ME_IN'} width={'100%'} height={'auto'}></Image> */}
+				<div className='container-fluid'>
+					<div className="input-group-prepend">
+						<input type="text"
+							className="form-control"
+							placeholder="Search for Artists"
+							aria-label="Search for Artists"
+							onChange={event => handleSearch(event.target.value)}
+							onFocus={handleFocus}>
+						</input>
+					</div>
+				</div>
       </Row>
-			{searchResults.map((artist, key) => (
+			{input.length
+				? artistData.filter(art => {
+					if (art.name.toLowerCase().includes(input.toLowerCase())) {
+						return art;
+					}
+				})
+				.map((artist, key) => (
+					<Row>
+						<div className='container-fluid'>
+							<Accordion>
+								<Card>
+									<Card.Header>
+										<Accordion.Toggle as={Button}
+										variant='link'
+										eventKey='0'>
+											{artist.name}
+										</Accordion.Toggle>
+									</Card.Header>
+									<Accordion.Collapse eventKey='0'>
+										<Card.Body>
+											<p>{artist.bio}</p>
+											<h4>Tours</h4>
+											<ul className='list-group'>
+											{artist.tour.map(loc => (
+												<li><a href={loc.url} target='_blank'>{loc.event}</a></li>
+											))}
+
+											</ul>
+										</Card.Body>
+									</Accordion.Collapse>
+								</Card>
+							</Accordion>
+						</div>
+					</Row>
+			)) : artistData.map((artist, key) => (
 				<Row>
+				<div className='container-fluid'>
 					<Accordion>
 						<Card>
 							<Card.Header>
@@ -41,17 +94,21 @@ const ArtistSearch = () => {
 							</Card.Header>
 							<Accordion.Collapse eventKey='0'>
 								<Card.Body>
-									<h4>Tours:</h4>
+									<p>{artist.bio}</p>
+									<h4>Tours</h4>
+									<ul className='list-group'>
 									{artist.tour.map(loc => (
-										<a href={loc.url} target='_blank'>{loc.event}</a>
+										<li><a href={loc.url} target='_blank'>{loc.event}</a></li>
 									))}
+									</ul>
 								</Card.Body>
 							</Accordion.Collapse>
 						</Card>
 					</Accordion>
-				</Row>
+				</div>
+			</Row>
 			))}
-    </Container>
+		</Container>
   );
 
 }
