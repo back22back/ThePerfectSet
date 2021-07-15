@@ -5,7 +5,7 @@ import { IoMdArrowBack, IoMdCloseCircle } from 'react-icons/Io';
 import { VscSettings } from 'react-icons/Vsc';
 
 import artistData from './artist-test-data.js';
-import placeholder from './placeholder.png';
+import fanfave from './fanfave.jpeg';
 
 const FavoriteArtists = () => {
 	return (
@@ -18,7 +18,7 @@ const FavoriteArtists = () => {
 			</nav>
 			<Row>
 				<div className='container-fluid'>
-					<Image src={placeholder} style={{ width: '100%', height: 'auto' }}></Image>
+					<Image src={fanfave} style={{ width: '100%', height: 'auto' }}></Image>
 				</div>
 			</Row>
 			<Row>
