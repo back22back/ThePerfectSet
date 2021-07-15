@@ -6,7 +6,7 @@ import SplashPage from './registration-login/SplashPage.jsx'
 import Login from './registration-login/Login.jsx';
 import Register from './registration-login/Register.jsx';
 import RegistrationLogin from './registration-login/RegistrationLogin.jsx';
-import ArtistHome from './Artists/ArtistHome.jsx';
+import Home from './Artists/ArtistHome.jsx';
 import AppContext from './AppContext.js'
 import TestHome from './test/TestHome.jsx'
 import themes from './themes.js';
@@ -48,14 +48,14 @@ const App = () => {
     <>
       <AppContext.Provider value={{username, setUsername, bio, setBio, website, setWebsite, serverUrl, isArtist, setIsArtist, theme}} >
         <Home />
-        <Router>
+        {/* <Router>
           <Switch>
             <Route path="/" exact component={SplashPage} />
             <Route path="/Login" exact component={Login} />
             <Route path="/Register" exact component={Register} />
             <Route path="/TestHome" exact component={TestHome} />
           </Switch>
-        </Router>
+        </Router> */}
       </AppContext.Provider>
     </>
   )
