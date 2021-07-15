@@ -26,10 +26,10 @@ const App = () => {
 
   return (
     <>
-    <Home />
-    <AppContext.Provider value={{username, setUsername, bio, setBio, website, setWebsite, serverUrl, isArtist, setIsArtist}} >
-      <RegistrationLogin/>
-    </AppContext.Provider>
+      <AppContext.Provider value={{username, setUsername, bio, setBio, website, setWebsite, serverUrl, isArtist, setIsArtist}} >
+        <Home />
+        {/* <RegistrationLogin/> */}
+      </AppContext.Provider>
     </>
   )
 };

@@ -9,9 +9,16 @@ import SettingsModal from './SettingsModal.jsx';
 
 const ArtistRecommendations = ({home, setHome}) => {
   const [search, setSearch] = useState(false);
+  const [recommendedList, setRecommendedList] = useState([]);
   const [cityName, setCityName] = useState('');
   const [bookingType, setBookingType] = useState('musicvenues');
   const [showSettings, setShowSettings] = useState(false);
+
+  useEffect(() => {
+    if (recommendedList.length !== 0) {
+      setSearch(true);
+    }
+  }, [recommendedList])
 
   const handleCloseSettings = () => setShowSettings(false);
   const handleShowSettings = () => setShowSettings(true);
@@ -26,12 +33,12 @@ const ArtistRecommendations = ({home, setHome}) => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    console.log(`searching for city: ${cityName} and booking type: ${bookingType}`)
+    console.log(`searching for city: ${cityName} and category: ${bookingType}`);
+    axios.get('/businesses', { params: {location: cityName, categories: bookingType}})
+    . then((results) => {
+      setRecommendedList(results.data);
+    });
   }
-
-  // useEffect(() => {
-
-  // }, [])
 
   return (
     <>
@@ -43,14 +50,16 @@ const ArtistRecommendations = ({home, setHome}) => {
           handleCloseSettings={handleCloseSettings}
         />
         <Row className='justify-content-between'>
-          <IoMdArrowBack
-            style={{margin:'.5vh', fontSize: '3vh'}}
-            onClick={()=>setHome(true)>
-            <Link to="/Artists/Home">Home</Link>}
-          />
-          <h3>Recommendations</h3>
+          <div>
+            <IoMdArrowBack
+              style={{margin:'.5vh', fontSize: '3vh', color: '#fff'}}
+              onClick={()=>setHome(true)}
+            />
+            <Link to="/Artists/Home"></Link>
+          </div>
+          <h3 style={{color: '#fff'}}>Recommendations</h3>
           <VscSettings
-            style={{margin:'.5vh', fontSize: '3vh'}}
+            style={{margin:'.5vh', fontSize: '3vh', color: '#fff'}}
             onClick={handleShowSettings}
           />
         </Row>
@@ -62,7 +71,7 @@ const ArtistRecommendations = ({home, setHome}) => {
             <hr/>
         </Row>
         <Row >
-          <Form style={{zIndex:10}} onSubmit={handleSearch}>
+          <Form style={{zIndex:10, width:'375px'}} onSubmit={handleSearch}>
             <Form.Row className="align-items-center">
               <Form.Control type="text" placeholder="Enter city name" onChange={handleCityChange}/>
               <Form.Control
@@ -71,7 +80,7 @@ const ArtistRecommendations = ({home, setHome}) => {
                 custom
                 onChange={handleBookingTypeChange}
               >
-                <option value="musicvenues">Select type of booking</option>
+                <option value="musicvenues">Select a category...</option>
                 <option value="musicvenues">Venues</option>
                 <option value="restaurants">Restaurants</option>
                 <option value="hotels">Hotels</option>
@@ -80,36 +89,41 @@ const ArtistRecommendations = ({home, setHome}) => {
             <Button
               type="submit"
               variant='dark'
-              onClick={() => setSearch(true)}
-              style={{width:'100%'}}
+              style={{width:'375px'}}
             >
               Search
             </Button>
           </Form>
         </Row>
-        { search ?
+          { search ?
           <Row>
-          <Accordion defaultActiveKey="0" style={{width:'100%'}}>
-            <Card>
-              <Accordion.Toggle as={Card.Header} eventKey="0" variant='dark' >
-                Recommended 1
-              </Accordion.Toggle>
-              <Accordion.Collapse eventKey="0">
-                <Card.Body variant='dark'>Hello! I'm the body</Card.Body>
-              </Accordion.Collapse>
-            </Card>
-            <Card>
-              <Accordion.Toggle as={Card.Header} eventKey="1" variant='dark'>
-                Recommended 2
-              </Accordion.Toggle>
-              <Accordion.Collapse eventKey="1">
-                <Card.Body>Hello! I'm another body</Card.Body>
-              </Accordion.Collapse>
-            </Card>
+            <Accordion style={{width:'375px'}}>
+              {recommendedList.map((recommendedItem, index) => {
+                return (
+                  <Card key={index}
+                    bg={'dark'}
+                    text={'light'}
+                  >
+                    <Accordion.Toggle as={Card.Header} eventKey={index + 1}>
+                      {recommendedItem.name}
+                    </Accordion.Toggle>
+                    <Accordion.Collapse eventKey={index + 1}>
+                      <Card.Body>
+                        <b>Address</b>: {recommendedItem.address} <br/>
+                        <b>Phone</b> : {recommendedItem.phone} <br/>
+                        <Card.Link href={recommendedItem.yelp_url}>Website Link</Card.Link>
+                      </Card.Body>
+                    </Accordion.Collapse>
+                  </Card>
+                )
+              })}
           </Accordion>
-          </Row>
-          : null
-        }
+        </Row>
+            : <Row>
+                <Image src="https://cdn.wallpapersafari.com/98/86/BF0GtP.jpg"></Image>
+              </Row>
+          }
+
       </Container>
         : null
       }
