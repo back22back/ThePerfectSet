@@ -21,7 +21,8 @@ const ArtistSearch = () => {
     const { target } = event;
     target.setSelectionRange(0, target.value.length);
   };
-
+// container relative position
+// abs position on input
   return (
     <Container>
       <Row className='justify-content-between container-fluid'>
@@ -55,20 +56,20 @@ const ArtistSearch = () => {
             <div className='container-fluid'>
               <Accordion>
                 <Card>
-                  <Card.Header>
-                    <Accordion.Toggle as={Button}
-                    variant='link'
-                    eventKey='0'>
+                  <Card.Header className='card text-white bg-dark'>
+                    <Accordion.Toggle as={Card.Header}
+                    eventKey='0'
+                    className='card text-white bg-secondary text-center'>
                       {artist.name}
                     </Accordion.Toggle>
                   </Card.Header>
                   <Accordion.Collapse eventKey='0'>
-                    <Card.Body>
+                    <Card.Body className='card text-white bg-secondary'>
                       <p>{artist.bio}</p>
                       <h4>Tours</h4>
                       <ul className='list-group'>
                       {artist.tour.map(loc => (
-                        <li><a href={loc.url} target='_blank'>{loc.event}</a></li>
+                        <li><a href={loc.url} target='_blank' className='text-white'>{loc.event}</a></li>
                       ))}
                       </ul>
                     </Card.Body>
@@ -82,18 +83,21 @@ const ArtistSearch = () => {
         <div className='container-fluid'>
           <Accordion>
             <Card>
-              <Card.Header>
-                <Accordion.Toggle as={Button} variant='link' eventKey='0'>
+              <Card.Header className='card text-white bg-dark'>
+                <Accordion.Toggle
+                  as={Card.Header}
+                  eventKey='0'
+                  className='card text-white bg-secondary text-center'>
                   {artist.name}
                 </Accordion.Toggle>
               </Card.Header>
               <Accordion.Collapse eventKey='0'>
-                <Card.Body>
+                <Card.Body className='card text-white bg-secondary'>
                   <p>{artist.bio}</p>
                   <h4>Tours</h4>
                   <ul className='list-group'>
                   {artist.tour.map(loc => (
-                    <li><a href={loc.url} target='_blank'>{loc.event}</a></li>
+                    <li><a href={loc.url} target='_blank' className='text-white'>{loc.event}</a></li>
                   ))}
                   </ul>
                 </Card.Body>
