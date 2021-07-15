@@ -30,6 +30,23 @@ const postBooking = (req, res) => {
 		});
 };
 
+const postUser = (req, res) => {
+	addUser(
+		req.query.user_name,
+		req.query.password,
+		req.query.is_artist,
+		req.query.bio,
+		req.query.portrait_url,
+		req.query.website
+	)
+	.then((response) => res.status(200).send(`Successfully added user! System message: ${response}`)
+	)
+	.catch((err) => {
+		res.status(500).send(`Error adding user: ${err}`);
+			console.error(`Error adding user: ${err}\n\n${err.stack}`);
+		});
+};
+
 const getBookings = (req, res) => {
 	fetchBookings()
 		.then((data) => {

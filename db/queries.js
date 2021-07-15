@@ -11,6 +11,11 @@ const addBooking = (date, type, id, lat, lon, time, name) => {
 	return pool.query(queryStr, [date, type, id, lat, lon, time, name]).then((response) => response);
 };
 
+const addUser = (user_name, password, is_artist, bio, portrait_url, website) => {
+	const queryStr = `INSERT INTO users (user_name, password, is_artist, bio, portrait_url, website) VALUES ($1, $2, $3, $4, $5, $6)`;
+	return pool.query(queryStr, [user_name, password, is_artist, bio, portrait_url, website]).then((response) => response);
+}
+
 const removeBooking = (id) => {
 	const queryStr = 'DELETE FROM bookings WHERE business_id = $1';
 	return pool.query(queryStr, [id]).then((response) => response);
