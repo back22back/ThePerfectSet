@@ -6,8 +6,10 @@ import SplashPage from './registration-login/SplashPage.jsx'
 import Login from './registration-login/Login.jsx';
 import Register from './registration-login/Register.jsx';
 import RegistrationLogin from './registration-login/RegistrationLogin.jsx';
-import AppContext from './AppContext.js';
-import TestHome from './test/TestHome.jsx';
+import ArtistHome from './Artists/ArtistHome.jsx';
+import AppContext from './AppContext.js'
+import TestHome from './test/TestHome.jsx'
+import themes from './themes.js';
 import {
   BrowserRouter as Router,
   Switch,
@@ -15,18 +17,16 @@ import {
   Link
 } from "react-router-dom";
 
-import ArtistHome from './Artists/ArtistHome.jsx';
-
 const App = () => {
-
-  let [username, setUsername] = useState('Your Google Account');
-  let [bio, setBio] = useState('Tell Us About Yourself');
-  let [website, setWebsite] = useState('www.efgsdfg.com');
-  let [isArtist, setIsArtist] = useState('false');
-  let serverUrl = 'serverurl';
+  const [username, setUsername] = useState('Your Google Account');
+  const [bio, setBio] = useState('Tell Us About Yourself');
+  const [website, setWebsite] = useState('www.efgsdfg.com');
+  const [isArtist, setIsArtist] = useState('false');
+  const serverUrl = 'serverurl';
   const [booking, setBooking] = useState();
-
-  useEffect(()=> {
+  let theme = themes.neon
+   
+    useEffect(()=> {
     axios.get('/booking/view')
     .then((bookingPromise)=> {setBooking(bookingPromise.data)})
     .catch((err) => console.log(err));
@@ -43,13 +43,19 @@ const App = () => {
     //   longitude: 123,
     //   type: 'music venue'}])
   }, []);
-
+ 
   return (
     <>
-      {/* <AppContext.Provider value={{username, setUsername, bio, setBio, website, setWebsite, serverUrl, isArtist, setIsArtist}} >
-        <RegistrationLogin/>
-      </AppContext.Provider> */}
-      <ArtistHome booking={booking}/>
+      <AppContext.Provider value={{username, setUsername, bio, setBio, website, setWebsite, serverUrl, isArtist, setIsArtist, theme}} >
+      <Router>
+      <Switch>
+        <Route path="/" exact component={SplashPage} />
+        <Route path="/Login" exact component={Login} />
+        <Route path="/Register" exact component={Register} />
+        <Route path="/TestHome" exact component={TestHome} />
+      </Switch>
+    </Router>
+      </AppContext.Provider>
     </>
   )
 };
