@@ -27,15 +27,14 @@ CREATE TABLE IF NOT EXISTS bookings (
   business_name TEXT NOT NULL,
   latitude NUMERIC(10, 5) NOT NULL,
   longitude NUMERIC(10, 5) NOT NULL,
-  user_id INT NOT NULL
+  user_id INT NOT NULL,
   FOREIGN KEY (user_id) REFERENCES users (user_id)
 );
 
 CREATE TABLE IF NOT EXISTS follows (
   follow_id SERIAL PRIMARY KEY,
   fan_id INT NOT NULL,
-  artist_id INT NOT NULL
-  FOREIGN KEY (fan_id) REFERENCES users (user_id)
+  artist_id INT NOT NULL,
+  FOREIGN KEY (fan_id) REFERENCES users (user_id),
   FOREIGN KEY (artist_id) REFERENCES users (user_id)
 );
-

@@ -5,8 +5,8 @@ import { IoMdArrowBack } from 'react-icons/Io';
 import { VscSettings } from 'react-icons/Vsc';
 
 // query database and display artists from there
-import fansearch from '../FaveArtComponent/fansearch.jpeg';
-import artistData from '../FaveArtComponent/artist-test-data.js';
+import fansearch from '../Fans/fansearch.jpeg';
+import artistData from '../Fans/artist-test-data.js';
 
 const ArtistSearch = () => {
   // const [searchResults, setSearchResults] = useState(artistData);
