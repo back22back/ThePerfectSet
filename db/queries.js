@@ -16,6 +16,16 @@ const addUser = (user_name, password, is_artist, bio, portrait_url, website) => 
 	return pool.query(queryStr, [user_name, password, is_artist, bio, portrait_url, website]).then((response) => response);
 };
 
+const addFollow = (fan_id, artist_id) => {
+	const queryStr = `INSERT INTO follows (fan_id, artist_id) VALUES ($1, $2)`;
+	return pool.query(queryStr, [fan_id, artist_id]).then((response) => response);
+};
+
+const removeFollow = (fan_id, artist_id) => {
+	const queryStr = `DELETE FROM follows WHERE (fan_id=$1 AND artist_id=$2)`;
+	return pool.query(queryStr, [fan_id, artist_id]).then((response) => response);
+};
+
 const removeBooking = (id) => {
 	const queryStr = 'DELETE FROM bookings WHERE business_id = $1';
 	return pool.query(queryStr, [id]).then((response) => response);
@@ -46,7 +56,9 @@ module.exports = {
 	addBooking,
 	fetchBookings,
 	fetchFollows,
+	addFollow,
+	removeFollow,
 	fetchTourdates,
 	removeBooking,
-	addUser
+	addUser,
 };
