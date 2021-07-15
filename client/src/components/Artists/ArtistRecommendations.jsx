@@ -4,6 +4,7 @@ import { Container, Button, Accordion, Card, Image, Row, Col, Form } from 'react
 import { IoMdArrowBack, IoMdCloseCircle } from 'react-icons/Io';
 import { VscSettings } from 'react-icons/Vsc';
 import axios from 'axios';
+import GoogleMap from './GoogleMap.jsx';
 
 const ArtistRecommendations = () => {
   // useEffect(() => {
@@ -16,18 +17,27 @@ const ArtistRecommendations = () => {
         <IoMdArrowBack style={{margin:'.5vh', fontSize: '3vh'}}/>
         <VscSettings style={{margin:'.5vh', fontSize: '3vh'}}/>
       </Row>
-      <Row >
-        <Image src={'https://assets-global.website-files.com/6050a76fa6a633d5d54ae714/609147088669907f652110b0_report-an-issue(about-maps).jpeg'} width={'100%'} height={'auto'}></Image>
+      <Row style={{
+                width: '350px',
+                height: '300px'
+              }}>
+          <GoogleMap style={{margin:'1px'}}/>
       </Row>
       <Row>
         <Form>
-          <Form.Control type="text" placeholder="Enter city name" />
-          <Form.Select aria-label="Default select example">
-            <option>Select a booking type</option>
-            <option value="musicvenues">Venues</option>
-            <option value="restaurants">Restaurants</option>
-            <option value="hotels">Hotels</option>
-          </Form.Select>
+          <Form.Row className="align-items-center">
+            <Form.Control type="text" placeholder="Enter city name" />
+            <Form.Control
+              as="select"
+              id="inlineFormCustomSelect"
+              custom
+            >
+              <option value="0">Choose type of booking</option>
+              <option value="musicvenues">Venues</option>
+              <option value="restaurants">Restaurants</option>
+              <option value="hotels">Hotels</option>
+            </Form.Control>
+          </Form.Row>
         </Form>
       </Row>
       <Row className='justify-content-around'>
