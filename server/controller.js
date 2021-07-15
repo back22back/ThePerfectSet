@@ -1,11 +1,6 @@
 const { fetchBusinesses, fetchSpecificBusiness } = require('../db/apiqueries.js');
-const {
-	addBooking,
-	fetchBookings,
-	fetchFollows,
-	removeBooking,
-	fetchTourdates
-} = require('../db/queries.js');
+const { addBooking, addUser, fetchBookings, fetchFollows, removeBooking, fetchTourdates } = require('../db/queries.js');
+
 
 const getBusinesses = (req, res) => {
 	fetchBusinesses(req.query.location, req.query.categories)
@@ -33,6 +28,23 @@ const postBooking = (req, res) => {
 		.catch((err) => {
 			res.status(500).send(`Error adding booking: ${err}`);
 			console.error(`Error adding booking: ${err}\n\n${err.stack}`);
+		});
+};
+
+const postUser = (req, res) => {
+	addUser(
+		req.query.user_name,
+		req.query.password,
+		req.query.is_artist,
+		req.query.bio,
+		req.query.portrait_url,
+		req.query.website
+	)
+	.then((response) => res.status(200).send(`Successfully added user! System message: ${response}`)
+	)
+	.catch((err) => {
+		res.status(500).send(`Error adding user: ${err}`);
+			console.error(`Error adding user: ${err}\n\n${err.stack}`);
 		});
 };
 
@@ -90,6 +102,7 @@ const deleteBooking = (req, res) => {
 module.exports = {
 	getBusinesses,
 	postBooking,
+	postUser,
 	getBookings,
 	getFollows,
 	getTourdates,
