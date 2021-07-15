@@ -27,11 +27,11 @@ const Bookings = ( {booking} ) => {
                 <Card.Subtitle>{each.type}</Card.Subtitle>
                 <Card.Text>{each.address}</Card.Text>
                 <Card.Text>{each.phone}</Card.Text>
-                {/* <Nav>
+                <Nav>
                   <Nav.Item>
-                    <Nav.Link href="">Go to Yelp!</Nav.Link>
+                    <Nav.Link href={each.yelp_url}>Go to Yelp!</Nav.Link>
                   </Nav.Item>
-                </Nav> */}
+                </Nav>
               </Card.Body>
             </Accordion.Collapse>
           </Card>
