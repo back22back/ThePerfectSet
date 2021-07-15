@@ -55,7 +55,7 @@ const ArtistRecommendations = ({home, setHome}) => {
           />
         </Row>
         <Row style={{
-                  width: '350px',
+                  width: '375px',
                   height: '300px'
                 }}>
             <GoogleMap style={{zIndex:-1}}/>
