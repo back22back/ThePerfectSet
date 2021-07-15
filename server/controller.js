@@ -1,5 +1,5 @@
 const { fetchBusinesses, fetchSpecificBusiness } = require('../db/apiqueries.js');
-const { addBooking, fetchBookings, fetchFollows, removeBooking, fetchTourdates } = require('../db/queries.js');
+const { addBooking, addUser, fetchBookings, fetchFollows, removeBooking, fetchTourdates, addFollow, removeFollow } = require('../db/queries.js');
 
 
 const getBusinesses = (req, res) => {
@@ -19,7 +19,8 @@ const postBooking = (req, res) => {
 		req.query.latitude,
 		req.query.longitude,
 		req.query.booking_time,
-		req.query.business_name
+		req.query.business_name,
+		req.query.user_id
 	)
 		.then((response) =>
 			res.status(200).send(`Successfully added booking! System message:${response}`)
@@ -30,15 +31,57 @@ const postBooking = (req, res) => {
 		});
 };
 
+const postUser = (req, res) => {
+	addUser(
+		req.query.user_name,
+		req.query.password,
+		req.query.is_artist,
+		req.query.bio,
+		req.query.portrait_url,
+		req.query.website
+	)
+	.then((response) => res.status(200).send(`Successfully added user! System message: ${response}`)
+	)
+	.catch((err) => {
+		res.status(500).send(`Error adding user: ${err}`);
+			console.error(`Error adding user: ${err}\n\n${err.stack}`);
+		});
+};
+
+const postFollows = (req, res) => {
+	addFollow(
+		req.query.fan_id,
+		req.query.artist_id
+	)
+	.then((response) => res.status(200).send(`Successfully added follow! System message: ${response}`)
+	)
+	.catch((err) => {
+		res.status(500).send(`Error adding follow: ${err}`);
+			console.error(`Error adding follow: ${err}\n\n${err.stack}`);
+		});
+};
+
+const deleteFollows = (req, res) => {
+	removeFollow(req.query.fan_id, req.query.artist_id)
+	.then((response) => res.status(200).send(`Successfully removed follow! System message: ${response}`)
+	)
+	.catch((err) => {
+		res.status(500).send(`Error removing follow: ${err}`);
+			console.error(`Error removing follow: ${err}\n\n${err.stack}`);
+		});
+}
+
 const getBookings = (req, res) => {
-	fetchBookings()
+	fetchBookings(req.query.user_id)
 		.then((data) => {
 			const ids = data.map((business) => business.business_id);
 			const types = data.map((business) => business.booking_type);
+			const dates = data.map((business) => JSON.stringify(business.booking_date).slice(1, 11));
+			const times = data.map((business) => business.booking_time);
 
 			return Promise.all(ids.map((id) => fetchSpecificBusiness(id))).then((businessData) => {
 				const updatedData = businessData.map((business, i) => {
-					return { ...business, type: types[i] };
+					return { ...business, type: types[i], date: dates[i], time: times[i] };
 				});
 
 				res.status(200).send(updatedData);
@@ -51,22 +94,22 @@ const getBookings = (req, res) => {
 };
 
 const getFollows = (req, res) => {
-  fetchFollows(req.query.user_id)
-	.then((data) => res.status(200).send(data))
-	.catch((err) => {
-		res.status(500).send(`Error fetching artists the fan follows: ${err}`);
-		console.error(`Error fetching artists the fan follows: ${err}\n\n${err.stack}`);
-	});
-}
+	fetchFollows(req.query.user_id)
+		.then((data) => res.status(200).send(data))
+		.catch((err) => {
+			res.status(500).send(`Error fetching artists the fan follows: ${err}`);
+			console.error(`Error fetching artists the fan follows: ${err}\n\n${err.stack}`);
+		});
+};
 
 const getTourdates = (req, res) => {
-  fetchTourdates(req.query.artist_id, req.query.start_date, req.query.end_date)
-	.then((data) => res.status(200).send(data))
-	.catch((err) => {
-		res.status(500).send(`Error fetching tour dates: ${err}`);
-		console.error(`Error fetching tour dates: ${err}\n\n${err.stack}`);
-	});
-}
+	fetchTourdates(req.query.artist_id, req.query.start_date, req.query.end_date)
+		.then((data) => res.status(200).send(data))
+		.catch((err) => {
+			res.status(500).send(`Error fetching tour dates: ${err}`);
+			console.error(`Error fetching tour dates: ${err}\n\n${err.stack}`);
+		});
+};
 
 const deleteBooking = (req, res) => {
 	removeBooking(req.query.business_id)
@@ -79,12 +122,14 @@ const deleteBooking = (req, res) => {
 		});
 };
 
-
 module.exports = {
 	getBusinesses,
 	postBooking,
+	postUser,
 	getBookings,
 	getFollows,
+	postFollows,
+	deleteFollows,
 	getTourdates,
 	deleteBooking
 };
