@@ -1,15 +1,17 @@
 import React, {useState, useEffect, useContext} from 'react';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
-import Image from 'react-bootstrap/Image'
+import Image from 'react-bootstrap/Image';
 import SplashPage from './registration-login/SplashPage.jsx'
 import Login from './registration-login/Login.jsx';
 import Register from './registration-login/Register.jsx';
 import RegistrationLogin from './registration-login/RegistrationLogin.jsx';
+
 import ArtistHome from './Artists/ArtistHome.jsx';
 import AppContext from './AppContext.js'
 import TestHome from './test/TestHome.jsx'
 import themes from './themes.js';
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -31,6 +33,7 @@ const App = () => {
     axios.get('/booking/view', {params:{user_id}})
     .then((bookingPromise)=> {setBookings(bookingPromise.data)})
     .catch((err) => console.log(err));
+
   }, []);
 
   if (!bookings) {
