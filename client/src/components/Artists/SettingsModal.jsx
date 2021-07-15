@@ -7,15 +7,9 @@ const SettingsModal = ({showSettings, setShowSettings, handleCloseSettings}) => 
 
   return (
     <>
-      {/* <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
-      </Button> */}
       <Modal show={showSettings} onHide={handleCloseSettings}>
         <Modal.Header closeButton>
           <Modal.Title>Settings</Modal.Title>
-          {/* <IoMdCloseCircle variant="secondary" onClick={handleCloseSettings}>
-            Close
-          </IoMdCloseCircle> */}
         </Modal.Header>
         <Modal.Body>
           <b>Username</b>: Username1 <br/>
