@@ -1,5 +1,5 @@
 const { fetchBusinesses, fetchSpecificBusiness } = require('../db/apiqueries.js');
-const { addBooking, fetchBookings, fetchFollows, removeBooking, fetchTourdates } = require('../db/queries.js');
+const { addBooking, addUser, fetchBookings, fetchFollows, removeBooking, fetchTourdates } = require('../db/queries.js');
 
 
 const getBusinesses = (req, res) => {
@@ -100,6 +100,7 @@ const deleteBooking = (req, res) => {
 module.exports = {
 	getBusinesses,
 	postBooking,
+	postUser,
 	getBookings,
 	getFollows,
 	getTourdates,
