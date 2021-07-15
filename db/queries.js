@@ -15,7 +15,9 @@ const addBooking = (date, type, id, lat, lon, time, name, user) => {
 
 const addUser = (user_name, password, is_artist, bio, portrait_url, website) => {
 	const queryStr = `INSERT INTO users (user_name, password, is_artist, bio, portrait_url, website) VALUES ($1, $2, $3, $4, $5, $6)`;
-	return pool.query(queryStr, [user_name, password, is_artist, bio, portrait_url, website]).then((response) => response);
+	return pool
+		.query(queryStr, [user_name, password, is_artist, bio, portrait_url, website])
+		.then((response) => response);
 };
 
 const addFollow = (fan_id, artist_id) => {
@@ -54,6 +56,11 @@ const fetchTourdates = (artist_id, start_date, end_date) => {
 	return pool.query(queryStr, [artist_id, start_date, end_date]).then((response) => response);
 };
 
+const fetchUser = (user) => {
+	const queryStr = 'SELECT * FROM users WHERE user_id=$1';
+	return pool.query(queryStr, [user]).then((data) => data.rows);
+};
+
 module.exports = {
 	addBooking,
 	fetchBookings,
@@ -63,4 +70,5 @@ module.exports = {
 	fetchTourdates,
 	removeBooking,
 	addUser,
+	fetchUser
 };
