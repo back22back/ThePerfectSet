@@ -8,7 +8,7 @@ import axios from 'axios'
 const Register = (props) => {
 
   const {username, website, bio, setUsername, setBio, setWebsite, serverUrl, isArtist, setIsArtist} = useContext(AppContext)
-
+  const {page, form, button, selected} = useContext(AppContext).theme;
   const handleAccountNameChange = (e) => {
     setUsername(e.target.value);
   }
@@ -23,14 +23,17 @@ const Register = (props) => {
 
   const handleRegister = () => {
 
-    // axios.post(serverUrl + '/user', {
-    //   username,
-    //   website,
-    //   bio,
-    //   isArtist,
-    // })
-    console.log ('posted', username, website, bio)
-    props.history.push('/TestHome')
+    axios.post(serverUrl + '/user', {
+      username,
+      website,
+      bio,
+      isArtist,
+    })
+    .then(
+      props.history.push('/TestHome')
+
+    )
+    // console.log ('posted', username, website, bio)
   }
 
 const handleArtist = (bool) => {
@@ -38,11 +41,11 @@ const handleArtist = (bool) => {
 }
 
   return (
-    <div className="rl">
-    <h1>Register</h1>
+    <div className="rl" style={page}>
     <Link to="/">Back</Link>
-    <button onClick={()=> {handleArtist(true)}} className={isArtist ? "btn-selected" : ''}>Artist</button>
-    <button onClick={()=> {handleArtist(false)}} className={!isArtist ? "btn-selected" : ''}>Fan</button>
+    <h1>Register</h1>
+    <button className="reg-page-buttons" style={button} onClick={()=> {handleArtist(true)}} className={isArtist ? "btn-selected" : ''}>Artist</button>
+    <button className="reg-page-buttons" style={button} onClick={()=> {handleArtist(false)}} className={!isArtist ? "btn-selected" : ''}>Fan</button>
     <input type="text" value={username} onChange={handleAccountNameChange}></input>
     <input type="text" value={website} onChange={handleWebsiteChange}></input>
     <input type="textarea" value={bio} onChange={handleBioChange}></input>

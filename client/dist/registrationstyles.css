@@ -1,40 +1,35 @@
 body {
   background-color: black;
 }
-
+#app {
+  height: 100%;
+}
 .rl {
   margin: 0;
   padding: 0;
-  border: 0;
-  font-family: 'Poppins', 'sans-serif';
-  background-color: black;
-  color: lawngreen;
-}
-.rl-title {
-  font-family: 'Tourney', cursive;
+
 }
 .rl-img {
   width: 100%;
   position: relative;
 }
-
+h1 {
+  color: lawngreen;
+}
 .splash-page-buttons {
   position: relative;
   width: 12em;
   height: 10em;
   margin: 1em;
   display: inline;
-  font-weight: bold;
-  background-color: black;
-  color: lawngreen;
-  border: thick double lawngreen;
 }
-
-.btn-selected {
-  color: violet;
-  border-color: violet;
+.reg-page-buttons {
+  position: relative;
+  width: 10em;
+  height: 5em;
+  margin: 1em;
+  display: inline;
 }
-
 .btn-container {
   display: flex;
   justify-content: center;
@@ -46,11 +41,43 @@ body {
   text-align: center;
   top: 4em;
   position: relative;
-  border: solid lightblue;
-  text-decoration: none;
-  color: lightblue;
 }
 
 .splash-title {
   text-align: center;
+  font-family: 'Tourney', cursive;
+}
+/*
+.page {
+  border: 0;
+  font-family: 'Poppins', 'sans-serif';
+  background-color: black;
+  color: lawngreen;
+}
+.form {
+
+}
+.btn {
+  font-weight: bold;
+  background-color: black;
+  color: lawngreen;
+  border: thick double lawngreen;
+}
+.btn-selected {
+  color: violet;
+  border-color: violet;
+}
+.link {
+  border: solid lightblue;
+  text-decoration: none;
+  color: lightblue;
+} */
+input {
+  display: block;
+  margin: .5em;
+}
+button {
+  margin: 2em;
+  height: 4em;
+  width: 7em;
 }

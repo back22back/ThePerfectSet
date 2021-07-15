@@ -5,9 +5,11 @@ import {Route, BrowserRouter as Router, Switch, Link } from 'react-router-dom';
 import SplashPage from './SplashPage.jsx';
 import Login from './Login.jsx';
 import Register from './Register.jsx';
-import TestHome from './../test/TestHome.jsx'
-
+import TestHome from './../test/TestHome.jsx';
+import AppContext from './../AppContext.js';
 const RegistrationLogin = () => {
+
+  const {page, form, button, selected} = useContext(AppContext).theme;
   let [component, setComponent] = useState([''])
 
   var pageChanger = (page) => {
@@ -30,7 +32,7 @@ const RegistrationLogin = () => {
 //   }
 // }
   return (
-    <div className="rl">
+    <div className="rl" style={page}>
     <Router>
       <Switch>
         <Route path="/" exact component={SplashPage} />
