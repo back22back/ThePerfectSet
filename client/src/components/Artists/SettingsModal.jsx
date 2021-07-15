@@ -1,7 +1,7 @@
-import React, { useState } from 'React'
+import React, { useState } from 'react';
 import ReactDom from 'react-dom';
 import { Button, Modal } from 'react-bootstrap';
-import { IoMdCloseCircle } from 'react-icons/Io'
+import { IoMdCloseCircle } from 'react-icons/Io';
 
 import ReactDom from 'react-dom';
 

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { Link } from "react-router-dom";
 import { Container, Button, Accordion, Card, Image, Row } from 'react-bootstrap';
 import { IoMdArrowBack } from 'react-icons/Io';
@@ -44,7 +43,7 @@ const ArtistSearch = () => {
 								<Card.Body>
 									<h4>Tours:</h4>
 									{artist.tour.map(loc => (
-										<p>Location: {loc.event}</p>
+										<a href={loc.url} target='_blank'>{loc.event}</a>
 									))}
 								</Card.Body>
 							</Accordion.Collapse>
