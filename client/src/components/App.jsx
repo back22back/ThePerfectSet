@@ -6,8 +6,10 @@ import SplashPage from './registration-login/SplashPage.jsx'
 import Login from './registration-login/Login.jsx';
 import Register from './registration-login/Register.jsx';
 import RegistrationLogin from './registration-login/RegistrationLogin.jsx';
-import AppContext from './AppContext.js';
-import TestHome from './test/TestHome.jsx';
+import ArtistHome from './Artists/ArtistHome.jsx';
+import AppContext from './AppContext.js'
+import TestHome from './test/TestHome.jsx'
+import themes from './themes.js';
 import {
   BrowserRouter as Router,
   Switch,
@@ -15,43 +17,42 @@ import {
   Link
 } from "react-router-dom";
 
-import ArtistHome from './Artists/ArtistHome.jsx';
-
 const App = () => {
-
-  let [username, setUsername] = useState('Your Google Account');
-  let [bio, setBio] = useState('Tell Us About Yourself');
-  let [website, setWebsite] = useState('www.efgsdfg.com');
-  let [isArtist, setIsArtist] = useState('false');
-  let serverUrl = 'serverurl';
+  const [username, setUsername] = useState('Your Google Account');
+  const [bio, setBio] = useState('Tell Us About Yourself');
+  const [website, setWebsite] = useState('www.efgsdfg.com');
+  const [isArtist, setIsArtist] = useState('false');
+  const serverUrl = 'serverurl';
   const [bookings, setBookings] = useState();
+  const [user_id, setUser_id] = useState(1);
+  let theme = themes.neon;
 
   useEffect(()=> {
-    axios.get('/booking/view')
+    axios.get('/booking/view', {params:{user_id}})
     .then((bookingPromise)=> {setBookings(bookingPromise.data)})
     .catch((err) => console.log(err));
-    // setBooking([{
-    //   id:1,
-    //   name:'Hilton',
-    //   address:'1234 hill',
-    //   phone:'1234567890',
-    //   yelp_url:'www',
-    //   image_url:'www',
-    //   rating: '4',
-    //   price:'$',
-    //   latitude: 123,
-    //   longitude: 123,
-    //   type: 'music venue'}])
   }, []);
+
   if (!bookings) {
     return <div>Loading...</div>
   }
+
   return (
     <>
-      {/* <AppContext.Provider value={{username, setUsername, bio, setBio, website, setWebsite, serverUrl, isArtist, setIsArtist}} >
-        <RegistrationLogin/>
+    <ArtistHome bookings={bookings}/>
+      {/* <AppContext.Provider value={{username, setUsername, bio, setBio, website, setWebsite, serverUrl, isArtist, setIsArtist, theme}} >
+      <Router>
+      <Switch>
+        <Route path="/" exact component={SplashPage} />
+        <Route path="/Login" exact component={Login} />
+        <Route path="/Register" exact component={Register} />
+        <Route path="/TestHome" exact component={TestHome} />
+        <Route path="/Artist">
+          <ArtistHome bookings={bookings}/>
+        </Route>
+      </Switch>
+    </Router>
       </AppContext.Provider> */}
-      <ArtistHome bookings={bookings}/>
     </>
   )
 };

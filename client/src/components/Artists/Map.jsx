@@ -42,7 +42,7 @@ const Map = ({ bookings }) => {
   const GoogleMapExample = withGoogleMap(props => (
     <GoogleMap
       defaultCenter={{ lat: 37.784172, lng: -122.433104 }}
-      defaultZoom={7}
+      defaultZoom={5}
     >
       <DirectionsRenderer
         directions={directions}
