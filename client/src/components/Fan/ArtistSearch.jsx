@@ -5,6 +5,7 @@ import { IoMdArrowBack } from 'react-icons/Io';
 import { VscSettings } from 'react-icons/Vsc';
 
 // query database and display artists from there
+import fansearch from '../FaveArtComponent/fansearch.jpeg';
 import artistData from '../FaveArtComponent/artist-test-data.js';
 
 const ArtistSearch = () => {
@@ -32,11 +33,15 @@ const ArtistSearch = () => {
 
   return (
     <Container>
-      <IoMdArrowBack/>
-      <VscSettings/>
+      <Row className='justify-content-between container-fluid'>
+				{/* <Link to='/app' component={App}> */}
+				<IoMdArrowBack style={{margin:'.5vh', fontSize: '3vh', color: 'white'}}/>
+				{/* </Link> */}
+				<VscSettings style={{margin:'.5vh', fontSize: '3vh', color: 'white'}}/>
+			</Row>
       <Row>
-        {/* <Image src={'FILL_ME_IN'} width={'100%'} height={'auto'}></Image> */}
 				<div className='container-fluid'>
+        <Image src={fansearch} width={'100%'} height={'auto'}></Image>
 					<div className="input-group-prepend">
 						<input type="text"
 							className="form-control"
@@ -74,7 +79,6 @@ const ArtistSearch = () => {
 											{artist.tour.map(loc => (
 												<li><a href={loc.url} target='_blank'>{loc.event}</a></li>
 											))}
-
 											</ul>
 										</Card.Body>
 									</Accordion.Collapse>
@@ -110,7 +114,6 @@ const ArtistSearch = () => {
 			))}
 		</Container>
   );
-
 }
 
 export default ArtistSearch;

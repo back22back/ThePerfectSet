@@ -11,7 +11,7 @@ class GoogleMap extends Component {
             google={this.props.google}
             zoom={19}
             style={{
-               width: '350px',
+               width: '375px',
                height: '300px'
             }}
             initialCenter={{

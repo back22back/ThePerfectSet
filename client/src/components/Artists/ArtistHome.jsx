@@ -10,7 +10,7 @@ import {
 
 import Bookings from './ArtistBookings.jsx';
 import Recommendations from './ArtistRecommendations.jsx';
-// import GoogleMap from './GoogleMap.jsx';
+import GoogleMap from './GoogleMap.jsx';
 
 const Home = () => {
   const [currentLocation,setCurrentLocation] = useState();
@@ -23,7 +23,7 @@ const Home = () => {
                 width: '350px',
                 height: '300px'
               }}>
-            {/* <GoogleMap/> */}
+            <GoogleMap/>
         </Row>
         <Row >
           <Button onClick={()=>setHome(false)}
