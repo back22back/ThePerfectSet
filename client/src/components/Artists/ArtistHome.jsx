@@ -12,7 +12,7 @@ import Bookings from './ArtistBookings.jsx';
 import Recommendations from './ArtistRecommendations.jsx';
 import GoogleMap from './GoogleMap.jsx';
 
-const Home = () => {
+const Home = ( {booking} ) => {
   const [currentLocation,setCurrentLocation] = useState();
   const [home, setHome] = useState(true);
 
@@ -54,14 +54,18 @@ const Home = () => {
       <hr />
 
       <Switch>
+        <Route path="/Artists/Home">
+          <Home />
+        </Route>
         <Route path="/Artists/Bookings">
-          <Bookings />
+          <Bookings booking={booking} />
         </Route>
         <Route path="/Artists/Recommendations">
-          <Recommendations />
+          <Recommendations home={home} setHome={setHome}/>
         </Route>
       </Switch>
     </Router>
+
   );
 };
 
