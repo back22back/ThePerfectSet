@@ -26,8 +26,6 @@ const App = () => {
   const [user_id, setUser_id] = useState(1);
   let theme = themes.neon;
 
-
-
   return (
     <>
     <ArtistHome user_id={user_id}/>
