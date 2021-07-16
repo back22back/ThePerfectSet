@@ -1,10 +1,12 @@
 import React, {useState, useEffect, useContext} from 'react';
+import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
 import SplashPage from './registration-login/SplashPage.jsx'
 import Login from './registration-login/Login.jsx';
 import Register from './registration-login/Register.jsx';
 import RegistrationLogin from './registration-login/RegistrationLogin.jsx';
+import ArtistRecommendations from './Artists/ArtistRecommendations.jsx'
 import ArtistHome from './Artists/ArtistHome.jsx';
 import AppContext from './AppContext.js'
 import TestHome from './test/TestHome.jsx'
@@ -28,8 +30,20 @@ const App = () => {
   const [website, setWebsite] = useState('www.efgsdfg.com');
   const [isArtist, setIsArtist] = useState('false');
   const serverUrl = 'serverurl';
+  const [bookings, setBookings] = useState();
   const [user_id, setUser_id] = useState(1);
   let theme = themes.neon;
+
+  // useEffect(()=> {
+  //   axios.get('/booking/view', {params:{user_id}})
+  //   .then((bookingPromise)=> {setBookings(bookingPromise.data)})
+  //   .catch((err) => console.log(err));
+
+  // }, []);
+
+  // if (!bookings) {
+  //   return <div>Loading...</div>
+  // }
 
   return (
     <>
@@ -48,9 +62,6 @@ const App = () => {
         }} >
         <Router>
           <Switch>
-            <Route path="/" exact component={SplashPage} />
-            <Route path="/Login" exact component={Login} />
-            <Route path="/Register" exact component={Register} />
             <Route path="/Artists/Home" exact component={ArtistHome} />
               <ArtistHome user_id={user_id} />
             <Route />
@@ -65,7 +76,7 @@ const App = () => {
         </Router>
       </AppContext.Provider>
     </>
-  );
+  )
 };
 
 

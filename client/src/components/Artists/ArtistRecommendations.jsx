@@ -5,7 +5,7 @@ import { IoMdArrowBack, IoMdCloseCircle } from 'react-icons/Io';
 import { AiFillPlusCircle } from 'react-icons/Ai'
 import { VscSettings } from 'react-icons/Vsc';
 import axios from 'axios';
-// import GoogleMap from './GoogleMap.jsx';
+import GoogleMap from './GoogleMap.jsx';
 import SettingsModal from './SettingsModal.jsx';
 import DatePickerModal from './DatePickerModal.jsx';
 
