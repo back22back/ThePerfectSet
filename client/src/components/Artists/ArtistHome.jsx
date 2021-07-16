@@ -15,24 +15,12 @@ import { withScriptjs } from "react-google-maps";
 import Map from './Map.jsx';
 
 const ArtistHome = ({ user_id, bookings }) => {
-  const [home, setHome] = useState(true);
-
-  useEffect(()=> {
-    // axios.get('/booking/view', {params:{user_id}})
-    // .then((bookingPromise)=> {
-    //   console.log(bookingPromise);
-    //   const sorted = bookingPromise.data.sort((a, b) => a.date - b.date);
-    //   setBookings(sorted);
-    // })
-    // .catch((err) => console.log(err));
-  }, [user_id]);
-
   if (!bookings) {
     return <div>Loading...</div>
   }
 
   return (
-    <Container fluid >
+    <Container fluid style={{overflow:'scroll'}}>
       <Row >
           <Map
             bookings={bookings}
