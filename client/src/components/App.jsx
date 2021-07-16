@@ -5,7 +5,6 @@ import Image from 'react-bootstrap/Image';
 import SplashPage from './registration-login/SplashPage.jsx'
 import Login from './registration-login/Login.jsx';
 import Register from './registration-login/Register.jsx';
-import RegistrationLogin from './registration-login/RegistrationLogin.jsx';
 import ArtistHome from './Artists/ArtistHome.jsx';
 import AppContext from './AppContext.js'
 import TestHome from './test/TestHome.jsx'
@@ -34,7 +33,8 @@ const App = () => {
   let theme = themes.neon;
 
   return (
-    <div style={theme.page}>
+    // <div style={theme.page}>
+      <div className={'neon-page'}>
       <AppContext.Provider value={{
         user_id,
         username,
@@ -54,6 +54,8 @@ const App = () => {
             <Route path="/Login" exact component={Login} />
             <Route path="/Register" exact component={Register} />
             <Route path="/Artists/Home" exact component={ArtistHome} />
+              <ArtistHome user_id={user_id} />
+            <Route />
             <Route path="/Fans/Home" exact component={FanHome} />
             <Route path="/Fans/FavoriteArtists" exact component={FavoriteArtists} />
             <Route path="/Artists/Recommendations" exact>

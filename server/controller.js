@@ -125,6 +125,7 @@ const deleteBooking = (req, res) => {
 };
 
 const getSingleUser = (req, res) => {
+	console.log('got here', )
 	fetchUser(req.query.user_id)
 		.then((data) => res.status(200).send(data))
 		.catch((err) => {

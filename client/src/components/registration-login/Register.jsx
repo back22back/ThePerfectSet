@@ -8,7 +8,7 @@ import axios from 'axios'
 const Register = (props) => {
 
   const {username, website, bio, setUsername, setBio, setWebsite, serverUrl, isArtist, setIsArtist} = useContext(AppContext)
-  const {page, form, button, selected} = useContext(AppContext).theme;
+  const {page, form, button, selected, heading} = useContext(AppContext).theme;
   const [password, setPassword] = useState('password');
   const [portrait_url, setPortraitUrl] = useState('my-portrait.png')
 
@@ -52,9 +52,9 @@ const handleArtist = (bool) => {
 }
 
   return (
-    <div className="rl" style={page}>
+    <div className="rl">
     <Link to="/">Back</Link>
-    <h1>Register</h1>
+    <h1 style={heading} className="rl-title">Register</h1>
     <div className="btn-container">
       <button className="reg-page-buttons"  onClick={()=> {handleArtist(true)}} style={isArtist ? selected : button}>Artist</button>
       <button className="reg-page-buttons"  onClick={()=> {handleArtist(false)}} style={!isArtist ? selected : button}>Fan</button>
@@ -64,7 +64,9 @@ const handleArtist = (bool) => {
     <input type="text" value={website} onChange={handleWebsiteChange} className="rl-input" style={form}></input>
     <input type="textarea" value={bio} onChange={handleBioChange} className="rl-input" style={form}></input>
     <input type="textarea" value={portrait_url} onChange={handlePortraitUrlChange} className="rl-input" style={form}></input>
-    <button onClick={handleRegister}>Create Account</button>
+    <div className="btn-container">
+    <button className="rl-lower-btn" style={button} onClick={handleRegister}>Create Account</button>
+    </div>
     </div>
   )
 
