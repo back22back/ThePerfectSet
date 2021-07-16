@@ -16,6 +16,7 @@ import Map from './Map.jsx';
 import AppContext from './../AppContext.js'
 
 const ArtistHome = ({ user_id, bookings }) => {
+<<<<<<< HEAD
   const [home, setHome] = useState(true);
   const {page, form, button, selected, heading} = useContext(AppContext).theme;
 
@@ -30,12 +31,14 @@ const ArtistHome = ({ user_id, bookings }) => {
     // .catch((err) => console.log(err));
   }, [user_id]);
 
+=======
+>>>>>>> 4208b656e39a3311ec46268e539b033ec334dcca
   if (!bookings) {
     return <div>Loading...</div>
   }
 
   return (
-    <Container fluid >
+    <Container fluid style={{overflow:'scroll'}}>
       <Row >
           <Map
             bookings={bookings}
@@ -44,7 +47,11 @@ const ArtistHome = ({ user_id, bookings }) => {
           />
       </Row>
       <Row className='justify-content-center'>
+<<<<<<< HEAD
       <Button style={button}
+=======
+      <Button style={{zIndex:10, marginTop:'10vh'}}
+>>>>>>> 4208b656e39a3311ec46268e539b033ec334dcca
             variant="secondary"
             size="lg"
             >
@@ -52,7 +59,11 @@ const ArtistHome = ({ user_id, bookings }) => {
           </Button>{' '}
       </Row>
       <Row className='justify-content-center'>
+<<<<<<< HEAD
         <Button style={button}
+=======
+        <Button style={{zIndex:10, marginTop:'10vh'}}
+>>>>>>> 4208b656e39a3311ec46268e539b033ec334dcca
           variant="danger"
           size="lg"
           >

@@ -1,16 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Button, Accordion, Card, Image, Row, Col } from 'react-bootstrap';
 import { IoMdArrowBack, IoMdCloseCircle } from 'react-icons/io';
 import { VscSettings } from 'react-icons/vsc';
 import axios from 'axios';
 import fanfave from './fanfave.jpeg';
+import AppContext from './../AppContext.js';
 
 const FavoriteArtists = () => {
+  const { user_id, setUser_id } = useContext(AppContext);
   const [artistList, setArtistList] = useState([]);
+
   const fetchArtists = () => {
     axios
-      .get('/follows', { params: { user_id: 3 } })
+      .get('/follows', { params: { user_id } })
       .then((data) => setArtistList(data.data))
       .catch((err) => console.log(`Error fetching favorite artists: ${err}`));
   };
@@ -26,10 +29,10 @@ const FavoriteArtists = () => {
           className='inline-flex justify-content-between align-items-center'
           style={{ height: '3em' }}
         >
-          {/* <Link to='/fanhome'> */}
-          <IoMdArrowBack style={{ color: '#EFEFEF' }} />
-          {/* </Link> */}
-          <span style={{ color: '#EFEFEF' }}>Favorite Artists</span>
+          <Link to='/Fans/Home'>
+            <IoMdArrowBack style={{ color: '#EFEFEF' }} />
+          </Link>
+          <h3 style={{ color: '#EFEFEF' }}>Favorite Artists</h3>
           <VscSettings style={{ color: '#EFEFEF' }} />
         </Row>
       </Container>

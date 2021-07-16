@@ -51,13 +51,13 @@ const Bookings = ( {bookings} ) => {
   return (
     <Container fluid>
       <Row className="justify-content-between inline-flex">
-          <Link to="/Artists/Home">
-            <IoMdArrowBack
-              style={{margin:'.5vh', fontSize: '3vh', color: 'white', zIndex: '2'}}
-              onClick={()=>setHome(true)}
-            />
-          </Link>
-        <h3 style={button}>Bookings</h3>
+        <Link to="/Artists/Home">
+          <IoMdArrowBack
+            style={{margin:'.5vh', fontSize: '3vh', color: 'white', zIndex: '2'}}
+            onClick={()=>setHome(true)}
+          />
+        </Link>
+        <h3 style={{color: 'white'}}>Bookings</h3>
         <VscSettings
           style={{margin:'.5vh', fontSize: '3vh', color: 'white', zIndex: '2'}}
           onClick={handleShowSettings}
@@ -65,7 +65,7 @@ const Bookings = ( {bookings} ) => {
       </Row>
       <Row style={{
               width: '375px',
-              height: '220px'
+              height: '260px'
             }}>
       <Calendar onChange={(e)=> {
         const calendarDate = formatDate(e);

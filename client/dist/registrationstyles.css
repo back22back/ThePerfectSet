@@ -4,6 +4,13 @@
 #app {
   height: 100%;
 }
+.rocker-page {
+  height: 812px;
+width: 375px;
+border: 0;
+font-family: 'Audiowide';
+  background-image: url('./images/scratched\ steel.jpeg');
+}
 .neon-page {
   height: 812px;
   width: 375px;
@@ -35,8 +42,8 @@
 }
 .theme-switch {
   position: relative;
-  top: 6.6em;
   display: flex;
+  top: 3em;
   justify-content: center;
   width: 33%;
 }
