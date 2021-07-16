@@ -74,7 +74,9 @@ const App = () => {
               <ArtistRecommendations />
             </Route>
             <Route path="/Artists/Bookings" exact component={ArtistBookings} />
-            <Route path="/Fans/ArtistSearch" exact componet={ArtistSearch} />
+            <Route path="/Fans/ArtistSearch" exact componet={ArtistSearch}>
+              <ArtistSearch />
+            </Route>
           </Switch>
         </Router>
       </AppContext.Provider>

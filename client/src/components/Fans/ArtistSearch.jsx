@@ -4,11 +4,16 @@ import { Link } from 'react-router-dom';
 import { Container, Button, Accordion, Card, Image, Row } from 'react-bootstrap';
 import { IoMdArrowBack } from 'react-icons/Io';
 import { VscSettings } from 'react-icons/Vsc';
-import fansearch from './fansearch.jpeg';
+import fanSearch from './fansearch.jpeg';
+import SettingsModal from '../Artists/SettingsModal.jsx';
 
 const ArtistSearch = () => {
   const [artists, setArtists] = useState([]);
   const [input, setInput] = useState('');
+  const [showSettings, setShowSettings] = useState(false);
+
+  const handleCloseSettings = () => setShowSettings(false);
+  const handleShowSettings = () => setShowSettings(true);
 
   const fetchArtists = () => {
     axios
@@ -36,15 +41,20 @@ const ArtistSearch = () => {
 // abs position on input
   return (
     <Container>
+      <SettingsModal
+          showSettings={showSettings}
+          setShowSettings={setShowSettings}
+          handleCloseSettings={handleCloseSettings}
+      />
       <Row className='justify-content-between container-fluid'>
-        <Link to='/app' component={App}>
+        {/* <Link to='/app' component={App}> */}
         <IoMdArrowBack style={{margin:'.5vh', fontSize: '3vh', color: 'white'}}/>
-        </Link>
-        <VscSettings style={{margin:'.5vh', fontSize: '3vh', color: 'white'}}/>
+        {/* </Link> */}
+        <VscSettings style={{margin:'.5vh', fontSize: '3vh', color: 'white'}} onClick={handleShowSettings}/>
       </Row>
       <Row>
         <div className='container-fluid'>
-        <Image src={fansearch} width={'100%'} height={'auto'}></Image>
+        <Image src={fanSearch} width={'100%'} height={'auto'}></Image>
           <div className='input-group-prepend'>
             <input type='text'
               className='form-control'
@@ -64,7 +74,7 @@ const ArtistSearch = () => {
         })
         .map((artist, key) => (
           <Row>
-            <div className='container-fluid'>
+            <div className='container-fluid' key={key}>
               <Accordion>
                 <Card>
                   <Card.Header className='card text-white bg-dark'>
@@ -80,8 +90,8 @@ const ArtistSearch = () => {
                       <p>{artist.bio}</p>
                       <h4>Tours</h4>
                       <ul className='list-group'>
-                      {artist.tour_dates.map(loc => (
-                        <li>
+                      {artist.tour_dates.map((loc, key) => (
+                        <li key={key}>
                           <p className='text-white'>{loc.location_name}</p>
                           <p className='text-white'>{loc.date}</p>
                         </li>
@@ -95,7 +105,7 @@ const ArtistSearch = () => {
           </Row>
       )) : artists.map((artist, key) => (
         <Row>
-        <div className='container-fluid'>
+        <div className='container-fluid' key={key}>
           <Accordion>
             <Card>
               <Card.Header className='card text-white bg-dark'>
@@ -112,8 +122,8 @@ const ArtistSearch = () => {
                   <p>{artist.bio}</p>
                   <h4>Tours</h4>
                   <ul className='list-group'>
-                  {artist.tour_dates.map(loc => (
-                    <li>
+                  {artist.tour_dates.map((loc, key) => (
+                    <li key={key}>
                       <p className='text-white'>{loc.location_name}</p>
                       <p className='text-white'>{loc.date}</p>
                     </li>
