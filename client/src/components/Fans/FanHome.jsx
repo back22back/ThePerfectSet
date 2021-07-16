@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Column, Button, Image, Row } from 'react-bootstrap';
+import { Container, Col, Button, Image, Row } from 'react-bootstrap';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 const FanHome = () => {
@@ -10,43 +10,42 @@ const FanHome = () => {
         .btn-black {
           background-color: black;
           color: white;
+          border-color: white;
         }
         .btn-white {
           background-color: white;
           color: black;
         }
         .btn-xxl {
-          margin: 1rem;
+          margin: 6rem;
           padding: 1.5rem 1.5rem;
           font-size: 1rem;
-          height: 6rem;
-          width: 6rem;
+          height: 8rem;
+          width: 8rem;
         }
         `}
 			</style>
-			<Container>
-				<Image src="./fanpage.jpeg" fluid />
-				<Container>
-					<Row>
-						<Col>
-              <Link to="/Fans/FavoriteArtists">
-                <Button variant='black' size='xxl'>
-                  Favorite Artists
-                </Button>
-              </Link>
-						</Col>
-					</Row>
-					<Row>
-						<Col>
-              <Link to="/Fans/ArtistSearch">
-                <Button variant='white' size='xxl'>
-                  Artist Search
-                </Button>
-              </Link>
-						</Col>
-					</Row>
-				</Container>
-			</Container>
+      <Container>
+      <Image src="https://www.chicagotribune.com/resizer/VrGevjJlxmK9BUvlTMZE-ufq43A=/800x600/top/arc-anglerfish-arc2-prod-tronc.s3.amazonaws.com/public/GOWRFIWXSFCETMZUKD5XWR657I.jpg" fluid />
+        <Row>
+          <Col>
+            <Link to="/Fans/FavoriteArtists">
+              <Button variant='black' size='xxl'>
+                Favorite Artists
+              </Button>
+            </Link>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Link to="/Fans/ArtistSearch">
+              <Button variant='white' size='xxl'>
+                Artist Search
+              </Button>
+            </Link>
+          </Col>
+        </Row>
+      </Container>
 		</>
 	);
 };

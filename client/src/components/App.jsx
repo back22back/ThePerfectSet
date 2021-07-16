@@ -26,10 +26,10 @@ const App = () => {
   const [username, setUsername] = useState('Your Google Account');
   const [bio, setBio] = useState('Tell Us About Yourself');
   const [website, setWebsite] = useState('www.efgsdfg.com');
-  const [isArtist, setIsArtist] = useState(true);
+  const [isArtist, setIsArtist] = useState(false);
   const serverUrl = 'serverurl';
   const [bookings, setBookings] = useState();
-  const [user_id, setUser_id] = useState(1);
+  const [user_id, setUser_id] = useState(3);
   let theme = themes.neon;
 
   return (
