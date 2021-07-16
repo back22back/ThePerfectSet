@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { Button, Modal } from 'react-bootstrap';
-import { IoMdCloseCircle } from 'react-icons/Io'
+import { IoMdCloseCircle } from 'react-icons/io'
 import AppContext from './../AppContext.js'
 
 const SettingsModal = ({showSettings, setShowSettings, handleCloseSettings}) => {

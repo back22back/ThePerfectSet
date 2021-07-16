@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Container, Button, Accordion, Card, Image, Row } from 'react-bootstrap';
-import { IoMdArrowBack } from 'react-icons/Io';
-import { VscSettings } from 'react-icons/Vsc';
+import { IoMdArrowBack } from 'react-icons/io';
+import { VscSettings } from 'react-icons/vsc';
 import fansearch from './fansearch.jpeg';
 
 const ArtistSearch = () => {
