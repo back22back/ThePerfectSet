@@ -47,15 +47,15 @@ const App = () => {
   return (
     <>
       <AppContext.Provider value={{username, setUsername, bio, setBio, website, setWebsite, serverUrl, isArtist, setIsArtist, theme}} >
-        <Home />
-        {/* <Router>
+        {/* <Home /> */}
+        <Router>
           <Switch>
             <Route path="/" exact component={SplashPage} />
             <Route path="/Login" exact component={Login} />
             <Route path="/Register" exact component={Register} />
             <Route path="/TestHome" exact component={TestHome} />
           </Switch>
-        </Router> */}
+        </Router>
       </AppContext.Provider>
     </>
   )
