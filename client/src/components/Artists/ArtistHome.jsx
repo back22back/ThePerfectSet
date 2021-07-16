@@ -15,7 +15,7 @@ import GoogleMap from './GoogleMap.jsx';
 import { withScriptjs } from "react-google-maps";
 import Map from './Map.jsx';
 
-const Home = ({ user_id }) => {
+const ArtistHome = ({ user_id }) => {
   const [home, setHome] = useState(true);
   const [bookings, setBookings] = useState();
 
@@ -30,6 +30,7 @@ const Home = ({ user_id }) => {
   }, [user_id]);
 
   if (!bookings) {
+    console.log('no booking');
     return <div>Loading...</div>
   }
 
@@ -88,4 +89,4 @@ const Home = ({ user_id }) => {
 
 // render(<Home />);
 
-export default Home;
+export default ArtistHome;

@@ -5,6 +5,7 @@ import Image from 'react-bootstrap/Image';
 import SplashPage from './registration-login/SplashPage.jsx'
 import Login from './registration-login/Login.jsx';
 import Register from './registration-login/Register.jsx';
+import RegistrationLogin from './registration-login/RegistrationLogin.jsx';
 import ArtistHome from './Artists/ArtistHome.jsx';
 import AppContext from './AppContext.js'
 import TestHome from './test/TestHome.jsx'
@@ -31,6 +32,17 @@ const App = () => {
   const [bookings, setBookings] = useState();
   const [user_id, setUser_id] = useState(1);
   let theme = themes.neon;
+
+  // useEffect(()=> {
+  //   axios.get('/booking/view', {params:{user_id}})
+  //   .then((bookingPromise)=> {setBookings(bookingPromise.data)})
+  //   .catch((err) => console.log(err));
+
+  // }, []);
+
+  // if (!bookings) {
+  //   return <div>Loading...</div>
+  // }
 
   return (
     // <div style={theme.page}>
