@@ -32,7 +32,7 @@ const RegistrationLogin = () => {
 //   }
 // }
   return (
-    <div className="rl" style={page}>
+    <div className="rl">
     <Router>
       <Switch>
         <Route path="/" exact component={SplashPage} />

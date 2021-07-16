@@ -25,7 +25,7 @@ const App = () => {
   const serverUrl = 'serverurl';
   const [booking, setBooking] = useState();
   let theme = themes.neon
-   
+
     useEffect(()=> {
     axios.get('/booking/view')
     .then((bookingPromise)=> {setBooking(bookingPromise.data)})
@@ -43,20 +43,19 @@ const App = () => {
     //   longitude: 123,
     //   type: 'music venue'}])
   }, []);
- 
+
   return (
-    <>
+    <div style={theme.page}>
       <AppContext.Provider value={{username, setUsername, bio, setBio, website, setWebsite, serverUrl, isArtist, setIsArtist, theme}} >
-      <Router>
-      <Switch>
-        <Route path="/" exact component={SplashPage} />
-        <Route path="/Login" exact component={Login} />
-        <Route path="/Register" exact component={Register} />
-        <Route path="/TestHome" exact component={TestHome} />
-      </Switch>
-    </Router>
+        <Router>
+          <Switch>
+            <Route path="/" exact component={SplashPage} />
+            <Route path="/Login" exact component={Login} />
+            <Route path="/Register" exact component={Register} />
+          </Switch>
+        </Router>
       </AppContext.Provider>
-    </>
+    </div>
   )
 };
 

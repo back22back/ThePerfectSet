@@ -13,9 +13,14 @@ const Login = (props) => {
   }
 
   const loginHandler = ()=> {
-    axios.get(`${serverUrl}/username?${username}`)
-    .then(()=>{props.history.push('/TestHome')})
-    .catch(()=>{alert('invalid username')})
+    // axios.get(`${serverUrl}/username?${username}`)
+    // .then(()=>{props.history.push('/TestHome')})
+    // .catch(()=>{alert('invalid username')})
+    if (isArtist) {
+      props.history.push('/ArtistHome')
+    } else {
+      props.history.push('/FanHome')
+    }
   }
 
   return (

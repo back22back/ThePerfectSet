@@ -8,7 +8,7 @@ const SplashPage = (props) => {
 
     return (
       <>
-      <h1 className="splash-title">The Perfect Set</h1>
+      <h1 className="splash-title title" style={button}>The Perfect Set</h1>
       <i></i>
         <img src='/images/coversplash.jpeg' className="rl rl-img"/>
         {/* <div className="btn-container">
