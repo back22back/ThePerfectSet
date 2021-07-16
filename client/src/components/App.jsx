@@ -65,7 +65,7 @@ const App = () => {
   const [username, setUsername] = useState('Your Google Account');
   const [bio, setBio] = useState('Tell Us About Yourself');
   const [website, setWebsite] = useState('www.efgsdfg.com');
-  const [isArtist, setIsArtist] = useState(true);
+  const [isArtist, setIsArtist] = useState(false);
   const serverUrl = 'serverurl';
   const [bookings, setBookings] = useState();
   const [user_id, setUser_id] = useState(3);
@@ -103,7 +103,7 @@ const App = () => {
             </Route>
             <Route path="/Fans/Home" exact component={FanHome} />
             <Route path="/Fans/FavoriteArtists" exact component={FavoriteArtists} />
-            <Route path="/Fans/ArtistSearch" exact componet={ArtistSearch} />
+            <Route path="/Fans/ArtistSearch" exact component={ArtistSearch} />
           </Switch>
         </Router>
       </AppContext.Provider>

@@ -1,52 +1,33 @@
-import React from 'react';
-import { Container, Column, Button, Image, Row } from 'react-bootstrap';
+import React, { useContext } from 'react';
+import { Container, Col, Button, Image, Row } from 'react-bootstrap';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import AppContext from './../AppContext.js';
 
 const FanHome = () => {
+  const {page, form, button, selected, heading} = useContext(AppContext).theme;
 	return (
 		<>
-			<style type='text/css'>
-				{`
-        .btn-black {
-          background-color: black;
-          color: white;
-        }
-        .btn-white {
-          background-color: white;
-          color: black;
-        }
-        .btn-xxl {
-          margin: 1rem;
-          padding: 1.5rem 1.5rem;
-          font-size: 1rem;
-          height: 6rem;
-          width: 6rem;
-        }
-        `}
-			</style>
-			<Container>
-				<Image src="./fanpage.jpeg" fluid />
-				<Container>
-					<Row>
-						<Col>
-              <Link to="/Fans/FavoriteArtists">
-                <Button variant='black' size='xxl'>
-                  Favorite Artists
-                </Button>
-              </Link>
-						</Col>
-					</Row>
-					<Row>
-						<Col>
-              <Link to="/Fans/ArtistSearch">
-                <Button variant='white' size='xxl'>
-                  Artist Search
-                </Button>
-              </Link>
-						</Col>
-					</Row>
-				</Container>
-			</Container>
+      <Image src="https://www.chicagotribune.com/resizer/VrGevjJlxmK9BUvlTMZE-ufq43A=/800x600/top/arc-anglerfish-arc2-prod-tronc.s3.amazonaws.com/public/GOWRFIWXSFCETMZUKD5XWR657I.jpg" fluid />
+      <Container>
+        <Row>
+          <Col>
+            <Link to="/Fans/FavoriteArtists">
+              <Button style={button} className="fanbutton">
+                Favorite Artists
+              </Button>
+            </Link>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Link to="/Fans/ArtistSearch">
+              <Button style={button} className="fanbutton">
+                Artist Search
+              </Button>
+            </Link>
+          </Col>
+        </Row>
+      </Container>
 		</>
 	);
 };
