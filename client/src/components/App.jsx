@@ -5,16 +5,16 @@ import Image from 'react-bootstrap/Image';
 import SplashPage from './registration-login/SplashPage.jsx'
 import Login from './registration-login/Login.jsx';
 import Register from './registration-login/Register.jsx';
-import RegistrationLogin from './registration-login/RegistrationLogin.jsx';
-import ArtistRecommendations from './Artists/ArtistRecommendations.jsx'
+import RegistrationLogin from './registration-login/Login.jsx';
 import ArtistHome from './Artists/ArtistHome.jsx';
 import AppContext from './AppContext.js'
 import TestHome from './test/TestHome.jsx'
 import themes from './themes.js';
-import FavoriteArtists from './Fans/FavoriteArtists.jsx';
 import FanHome from './Fans/FanHome.jsx';
-import ArtistBookings from './Artists/ArtistBookings.jsx';
+import FavoriteArtists from './Fans/FavoriteArtists.jsx';
 import ArtistSearch from './Fans/ArtistSearch.jsx';
+import ArtistRecommendations from './Artists/ArtistRecommendations.jsx'
+import ArtistBookings from './Artists/ArtistBookings.jsx'
 
 import {
   BrowserRouter as Router,
@@ -27,7 +27,7 @@ const App = () => {
   const [username, setUsername] = useState('Your Google Account');
   const [bio, setBio] = useState('Tell Us About Yourself');
   const [website, setWebsite] = useState('www.efgsdfg.com');
-  const [isArtist, setIsArtist] = useState('false');
+  const [isArtist, setIsArtist] = useState(true);
   const serverUrl = 'serverurl';
   const [bookings, setBookings] = useState();
   const [user_id, setUser_id] = useState(1);
@@ -45,7 +45,8 @@ const App = () => {
   // }
 
   return (
-    <>
+    // <div style={theme.page}>
+      <div className={'neon-page'}>
       <AppContext.Provider value={{
         user_id,
         username,
@@ -61,6 +62,9 @@ const App = () => {
         }} >
         <Router>
           <Switch>
+            <Route path="/" exact component={SplashPage} />
+            <Route path="/Login" exact component={Login} />
+            <Route path="/Register" exact component={Register} />
             <Route path="/Artists/Home" exact component={ArtistHome} />
               <ArtistHome user_id={user_id} />
             <Route />
@@ -74,8 +78,8 @@ const App = () => {
           </Switch>
         </Router>
       </AppContext.Provider>
-    </>
-  )
+    </div>
+  );
 };
 
 

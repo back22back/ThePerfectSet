@@ -4,17 +4,56 @@
 #app {
   height: 100%;
 }
+.neon-page {
+  height: 812px;
+  width: 375px;
+  border: 0;
+  font-family: 'Poppins, sans-serif';
+  background-image: url("./images/gradient.png");
+  background-color: lightblue;
+  animation: aurora 15s ease infinite;
+}
+@keyframes aurora {
+  from { background: lightblue;
+    background-image: url("./images/gradient.png");
+  }
+  25% {
+    background: violet;
+    background-image: url("./images/gradient.png");
+  }
+  50% {
+    background: lawngreen;
+    background-image: url("./images/gradient.png");
+  }
+  75% {
+    background-color: red;
+    background-image: url("./images/gradient.png");
+  }
+  to {background: lightblue;
+    background-image: url("./images/gradient.png");
+  }
+}
+.theme-switch {
+  position: relative;
+  top: 6.6em;
+  display: flex;
+  justify-content: center;
+  width: 33%;
+}
+
 .rl {
   margin: 0;
   padding: 0;
-
 }
 .rl-img {
   width: 100%;
   position: relative;
+  z-index: 1;
 }
-.title {
-  justify-self: end;
+.rl-title {
+  position: relative;
+  text-align: right;
+  padding-right: .5em;
 }
 .splash-page-buttons {
   position: relative;
@@ -38,6 +77,7 @@
 
 .splash-title {
   text-align: center;
+  z-index: 10;
   font-family: 'Tourney', cursive;
 }
 
@@ -52,9 +92,12 @@
 }
 .rl-input {
   display: block;
-  width: 10em;
+  width: 15em;
   height: 2em;
   padding: 1em;
   font-size: 1em;
   margin: .7em auto .7em auto;
+}
+.rl-lower-btn {
+  margin-top: 5em;
 }
