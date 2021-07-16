@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import { Container, Button, Accordion, Card, Image, Row } from 'react-bootstrap';
-import { IoMdArrowBack } from 'react-icons/Io';
-import { VscSettings } from 'react-icons/Vsc';
+import { IoMdArrowBack } from 'react-icons/io';
+import { VscSettings } from 'react-icons/vsc';
 
 import fansearch from './fansearch.jpeg';
 import artistData from './artist-test-data.js';

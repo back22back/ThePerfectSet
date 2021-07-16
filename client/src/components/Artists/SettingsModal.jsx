@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
-import { IoMdCloseCircle } from 'react-icons/Io';
+import { IoMdCloseCircle } from 'react-icons/io';
 
 const SettingsModal = ({showSettings, setShowSettings, handleCloseSettings}) => {
   const handleLogOut = () => console.log('logged out');

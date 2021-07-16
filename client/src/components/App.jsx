@@ -11,6 +11,9 @@ import ArtistHome from './Artists/ArtistHome.jsx';
 import AppContext from './AppContext.js'
 import TestHome from './test/TestHome.jsx'
 import themes from './themes.js';
+import FanHome from './Fans/FanHome.jsx';
+import ArtistSearch from './Fans/ArtistSearch.jsx';
+import FavoriteArtists from './Fans/FavoriteArtists.jsx';
 
 import {
   BrowserRouter as Router,
@@ -43,7 +46,7 @@ const App = () => {
   return (
     <>
     <ArtistHome bookings={bookings}/>
-      {/* <AppContext.Provider value={{username, setUsername, bio, setBio, website, setWebsite, serverUrl, isArtist, setIsArtist, theme}} >
+      {<AppContext.Provider value={{username, setUsername, bio, setBio, website, setWebsite, serverUrl, isArtist, setIsArtist, theme}} >
       <Router>
       <Switch>
         <Route path="/" exact component={SplashPage} />
@@ -53,9 +56,12 @@ const App = () => {
         <Route path="/Artist">
           <ArtistHome bookings={bookings}/>
         </Route>
+        <Route path="/FanHome" exact component={FanHome} />
+        <Route path="/ArtistSearch" exact component={ArtistSearch} />
+        <Route path="/FavoriteArtists" exact component={FavoriteArtists} />
       </Switch>
     </Router>
-      </AppContext.Provider> */}
+      </AppContext.Provider>}
     </>
   )
 };

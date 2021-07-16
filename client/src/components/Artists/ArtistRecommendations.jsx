@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import { Container, Button, Accordion, Card, Image, Row, Col, Form } from 'react-bootstrap';
-import { IoMdArrowBack, IoMdCloseCircle } from 'react-icons/Io';
-import { VscSettings } from 'react-icons/Vsc';
+import { IoMdArrowBack, IoMdCloseCircle } from 'react-icons/io';
+import { VscSettings } from 'react-icons/vsc';
 import axios from 'axios';
 import GoogleMap from './GoogleMap.jsx';
 import SettingsModal from './SettingsModal.jsx';
