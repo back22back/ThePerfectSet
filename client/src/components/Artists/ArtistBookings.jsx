@@ -47,20 +47,18 @@ const Bookings = ( {bookings} ) => {
 
   return (
     <Container fluid>
-      <Row >
-        <div>
+      <Row className="justify-content-between inline-flex">
           <Link to="/Artists/Home">
             <IoMdArrowBack
-              style={{margin:'.5vh', fontSize: '3vh', color: 'green', zIndex: '2'}}
+              style={{margin:'.5vh', fontSize: '3vh', color: 'white', zIndex: '2'}}
               onClick={()=>setHome(true)}
             />
           </Link>
-        </div>
-        <h3 style={{color: '#green'}}>Recommendations</h3>
+        <h3 style={{color: 'white'}}>Bookings</h3>
         <VscSettings
-          style={{margin:'.5vh', fontSize: '3vh', color: '#green'}}
+          style={{margin:'.5vh', fontSize: '3vh', color: 'white', zIndex: '2'}}
           onClick={handleShowSettings}
-        />
+          />
       </Row>
       <Row style={{
               width: '375px',
@@ -76,12 +74,11 @@ const Bookings = ( {bookings} ) => {
       </Row>
       <Accordion defaultActiveKey="0">
         {display.map((each, i) =>
-          <Card key={i}>
-            <Accordion.Toggle as={Card.Header} eventKey={`${i}`}>
-              {each.name}
-            </Accordion.Toggle>
-            <Accordion.Toggle as={Card.Header} eventKey={`${i}`}>
-              {`${each.date}  ${each.time}`}
+          <Card key={i}
+            bg={'dark'}
+            text={'light'}>
+            <Accordion.Toggle as={Card.Header} eventKey={`${i}`} >
+              <Row className="justify-content-between">{`${each.name}   ${each.date} ${each.time}`} </Row>
             </Accordion.Toggle>
             <Accordion.Collapse eventKey={`${i}`}>
               <Card.Body>
