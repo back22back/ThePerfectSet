@@ -29,7 +29,7 @@ const ArtistHome = ({ user_id, bookings }) => {
           />
       </Row>
       <Row className='justify-content-center'>
-      <Button style={{zIndex:10, marginTop:'1vh'}}
+      <Button style={{zIndex:10, marginTop:'10vh'}}
             variant="secondary"
             size="lg"
             >
@@ -37,7 +37,7 @@ const ArtistHome = ({ user_id, bookings }) => {
           </Button>{' '}
       </Row>
       <Row className='justify-content-center'>
-        <Button style={{zIndex:10, marginTop:'1vh'}}
+        <Button style={{zIndex:10, marginTop:'10vh'}}
           variant="danger"
           size="lg"
           >
