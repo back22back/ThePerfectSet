@@ -4,7 +4,7 @@ import { Container, Button, Accordion, Card, Image, Row, Col, Form } from 'react
 import { IoMdArrowBack, IoMdCloseCircle } from 'react-icons/Io';
 import { VscSettings } from 'react-icons/Vsc';
 import axios from 'axios';
-import GoogleMap from './GoogleMap.jsx';
+// import GoogleMap from './GoogleMap.jsx';
 import SettingsModal from './SettingsModal.jsx';
 
 const ArtistRecommendations = ({home, setHome}) => {
