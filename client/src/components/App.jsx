@@ -11,6 +11,10 @@ import ArtistHome from './Artists/ArtistHome.jsx';
 import AppContext from './AppContext.js'
 import TestHome from './test/TestHome.jsx'
 import themes from './themes.js';
+import FavoriteArtists from './Fans/FavoriteArtists.jsx';
+import FanHome from './Fans/FanHome.jsx';
+import ArtistRecommendations from './Artists/ArtistRecommendations.jsx';
+import ArtistBookings from './Artists/ArtistBookings.jsx';
 import ArtistSearch from './Fans/ArtistSearch.jsx';
 
 import {
@@ -43,20 +47,33 @@ const App = () => {
 
   return (
     <>
-      <AppContext.Provider value={{username, setUsername, bio, setBio, website, setWebsite, serverUrl, isArtist, setIsArtist, theme}} >
-        {/* <ArtistHome bookings={bookings}/>
-        <ArtistRecommendations/> */}
-        {/* <Router>
+      <AppContext.Provider value={{
+        user_id,
+        username,
+        setUsername,
+        bio,
+        setBio,
+        website,
+        setWebsite,
+        serverUrl,
+        isArtist,
+        setIsArtist,
+        theme
+        }} >
+        <Router>
           <Switch>
-            <Route path="/" exact component={SplashPage} />
-            <Route path="/Login" exact component={Login} />
-            <Route path="/Register" exact component={Register} />
-            <Route path="/TestHome" exact component={TestHome} />
-            <Route path="/Artist">
-              <ArtistHome bookings={bookings}/>
+            <Route path="/Artists/Home" exact component={ArtistHome} />
+              <ArtistHome user_id={user_id} />
+            <Route />
+            <Route path="/Fans/Home" exact component={FanHome} />
+            <Route path="/Fans/FavoriteArtists" exact component={FavoriteArtists} />
+            <Route path="/Artists/Recommendations" exact>
+              <ArtistRecommendations />
             </Route>
+            <Route path="/Artists/Bookings" exact component={ArtistBookings} />
+            <Route path="/Fans/ArtistSearch" exact componet={ArtistSearch} />
           </Switch>
-        </Router> */}
+        </Router>
       </AppContext.Provider>
     </>
   )
