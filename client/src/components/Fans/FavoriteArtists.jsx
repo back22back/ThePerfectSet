@@ -1,16 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Button, Accordion, Card, Image, Row, Col } from 'react-bootstrap';
 import { IoMdArrowBack, IoMdCloseCircle } from 'react-icons/io';
 import { VscSettings } from 'react-icons/vsc';
 import axios from 'axios';
 import fanfave from './fanfave.jpeg';
+import AppContext from './../AppContext.js';
 
 const FavoriteArtists = () => {
+  const { user_id, setUser_id } = useContext(AppContext);
   const [artistList, setArtistList] = useState([]);
+
   const fetchArtists = () => {
     axios
-      .get('/follows', { params: { user_id: 3 } })
+      .get('/follows', { params: { user_id } })
       .then((data) => setArtistList(data.data))
       .catch((err) => console.log(`Error fetching favorite artists: ${err}`));
   };
