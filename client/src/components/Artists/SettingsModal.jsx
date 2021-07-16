@@ -4,6 +4,7 @@ import { IoMdCloseCircle } from 'react-icons/Io';
 
 const SettingsModal = ({showSettings, setShowSettings, handleCloseSettings}) => {
   const handleLogOut = () => console.log('logged out');
+  const appContext = useContext(AppContext);
 
   return (
     <>
@@ -12,9 +13,9 @@ const SettingsModal = ({showSettings, setShowSettings, handleCloseSettings}) => 
           <Modal.Title>Settings</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <b>Username</b>: Username1 <br/>
-          <b>Website</b>: http://rocker.com <br/>
-          <b>Bio</b>: I always turn it up to 11
+          <b>Username</b>: {appContext.username} <br/>
+          <b>Website</b>: {appContext.website} <br/>
+          <b>Bio</b>: {appContext.bio}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleLogOut}>
@@ -25,7 +26,5 @@ const SettingsModal = ({showSettings, setShowSettings, handleCloseSettings}) => 
     </>
   );
 }
-
-// render(<SettingsModal />);
 
 export default SettingsModal;

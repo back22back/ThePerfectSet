@@ -1,14 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { Link } from "react-router-dom";
 import { Container, Button, Accordion, Card, Image, Row } from 'react-bootstrap';
 import { IoMdArrowBack } from 'react-icons/Io';
 import { VscSettings } from 'react-icons/Vsc';
-
 import fansearch from './fansearch.jpeg';
-import artistData from './artist-test-data.js';
 
 const ArtistSearch = () => {
+  const [artists, setArtists] = useState([]);
   const [input, setInput] = useState('');
+
+  const fetchArtists = () => {
+    axios
+      .get('/follows', { params: { user_id: 3 } })
+      .then((data) => setArtists(data.data))
+      .catch((err) => console.log(`Error fetching favorite artists: ${err}`));
+  };
+
+  useEffect(() => {
+    fetchArtists();
+  }, []);
 
   const handleSearch = (searchInput) => {
     searchInput.length > 0
@@ -33,10 +44,10 @@ const ArtistSearch = () => {
       </Row>
       <Row>
         <div className='container-fluid'>
-        <Image src={fansearch} width={'100%'} height={'auto'}></Image>
+        <Image src={fansearch} width={'100%'} height={'auto'} className='position-relative'></Image>
           <div className="input-group-prepend">
             <input type="text"
-              className="form-control"
+              className="form-control position-absolute"
               placeholder="Search for Artists"
               aria-label="Search for Artists"
               onChange={event => handleSearch(event.target.value)}
@@ -46,7 +57,7 @@ const ArtistSearch = () => {
         </div>
       </Row>
       {input.length
-        ? artistData.filter(art => {
+        ? artists.filter(art => {
           if (art.name.toLowerCase().includes(input.toLowerCase())) {
             return art;
           }
@@ -60,16 +71,20 @@ const ArtistSearch = () => {
                     <Accordion.Toggle as={Card.Header}
                     eventKey='0'
                     className='card text-white bg-secondary text-center'>
-                      {artist.name}
+                      {artist.artist_name}
                     </Accordion.Toggle>
                   </Card.Header>
                   <Accordion.Collapse eventKey='0'>
                     <Card.Body className='card text-white bg-secondary'>
+                      <h5 className='text-white'>{artist.website}</h5>
                       <p>{artist.bio}</p>
                       <h4>Tours</h4>
                       <ul className='list-group'>
-                      {artist.tour.map(loc => (
-                        <li><a href={loc.url} target='_blank' className='text-white'>{loc.event}</a></li>
+                      {artist.tour_dates.map(loc => (
+                        <li>
+                          <p className='text-white'>{loc.location_name}</p>
+                          <p className='text-white'>{loc.date}</p>
+                        </li>
                       ))}
                       </ul>
                     </Card.Body>
@@ -78,7 +93,7 @@ const ArtistSearch = () => {
               </Accordion>
             </div>
           </Row>
-      )) : artistData.map((artist, key) => (
+      )) : artists.map((artist, key) => (
         <Row>
         <div className='container-fluid'>
           <Accordion>
@@ -88,16 +103,20 @@ const ArtistSearch = () => {
                   as={Card.Header}
                   eventKey='0'
                   className='card text-white bg-secondary text-center'>
-                  {artist.name}
+                  {artist.artist_name}
                 </Accordion.Toggle>
               </Card.Header>
               <Accordion.Collapse eventKey='0'>
                 <Card.Body className='card text-white bg-secondary'>
+                  <h5 className='text-white'>{artist.website}</h5>
                   <p>{artist.bio}</p>
                   <h4>Tours</h4>
                   <ul className='list-group'>
-                  {artist.tour.map(loc => (
-                    <li><a href={loc.url} target='_blank' className='text-white'>{loc.event}</a></li>
+                  {artist.tour_dates.map(loc => (
+                    <li>
+                      <p className='text-white'>{loc.location_name}</p>
+                      <p className='text-white'>{loc.date}</p>
+                    </li>
                   ))}
                   </ul>
                 </Card.Body>

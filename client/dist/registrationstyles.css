@@ -1,40 +1,28 @@
-body {
+/* body {
   background-color: black;
+} */
+#app {
+  height: 100%;
 }
-
 .rl {
   margin: 0;
   padding: 0;
-  border: 0;
-  font-family: 'Poppins', 'sans-serif';
-  background-color: black;
-  color: lawngreen;
-}
-.rl-title {
-  font-family: 'Tourney', cursive;
+
 }
 .rl-img {
   width: 100%;
   position: relative;
 }
-
+.title {
+  justify-self: end;
+}
 .splash-page-buttons {
   position: relative;
   width: 12em;
   height: 10em;
   margin: 1em;
   display: inline;
-  font-weight: bold;
-  background-color: black;
-  color: lawngreen;
-  border: thick double lawngreen;
 }
-
-.btn-selected {
-  color: violet;
-  border-color: violet;
-}
-
 .btn-container {
   display: flex;
   justify-content: center;
@@ -46,11 +34,27 @@ body {
   text-align: center;
   top: 4em;
   position: relative;
-  border: solid lightblue;
-  text-decoration: none;
-  color: lightblue;
 }
 
 .splash-title {
   text-align: center;
+  font-family: 'Tourney', cursive;
+}
+
+.reg-page-buttons {
+  position: relative;
+  width: 10em;
+  height: 5em;
+  margin: 1em;
+  display: inline;
+  margin: 3em auto 5em auto;
+
+}
+.rl-input {
+  display: block;
+  width: 10em;
+  height: 2em;
+  padding: 1em;
+  font-size: 1em;
+  margin: .7em auto .7em auto;
 }

@@ -35,29 +35,20 @@ const App = () => {
 
   // }, []);
 
-  if (!bookings) {
-    return <div>Loading...</div>
-  }
-
   return (
     <>
-    <ArtistSearch />
-    {/* <ArtistHome bookings={bookings}/> */}
-      {/* <AppContext.Provider value={{username, setUsername, bio, setBio, website, setWebsite, serverUrl, isArtist, setIsArtist, theme}} >
-      <Router>
-      <Switch>
-        <Route path="/" exact component={SplashPage} />
-        <Route path="/Login" exact component={Login} />
-        <Route path="/Register" exact component={Register} />
-        <Route path="/TestHome" exact component={TestHome} />
-        <Route path="/Artist">
-          <ArtistHome bookings={bookings}/>
-        </Route>
-      </Switch>
-    </Router>
-      </AppContext.Provider> */}
+      <AppContext.Provider value={{username, setUsername, bio, setBio, website, setWebsite, serverUrl, isArtist, setIsArtist, theme}} >
+        <Router>
+          <Switch>
+            <Route path="/" exact component={SplashPage} />
+            <Route path="/Login" exact component={Login} />
+            <Route path="/Register" exact component={Register} />
+            <Route path="/TestHome" exact component={TestHome} />
+          </Switch>
+        </Router>
+      </AppContext.Provider>
     </>
-  )
+  );
 };
 
 
