@@ -68,8 +68,18 @@ const App = () => {
   const [isArtist, setIsArtist] = useState(false);
   const serverUrl = 'serverurl';
   const [bookings, setBookings] = useState();
-  const [user_id, setUser_id] = useState(3);
+  const [user_id, setUser_id] = useState(1);
   let theme = themes.neon;
+
+  useEffect(()=> {
+    axios.get('/booking/view', {params:{user_id}})
+    .then((bookingPromise)=> {
+      console.log(bookingPromise);
+      const sorted = bookingPromise.data.sort((a, b) => a.date - b.date);
+      setBookings(sorted);
+    })
+    .catch((err) => console.log(err));
+  }, []);
 
   return (
     // <div style={theme.page}>
@@ -95,11 +105,11 @@ const App = () => {
             <Route path="/Login" exact component={Login} />
             <Route path="/Register" exact component={Register} />
             <Route path="/Artists/Home" exact>
-              <ArtistHome user_id={user_id} bookings={safetynetData} />
+              <ArtistHome user_id={user_id} bookings={bookings} />
             </Route>
             <Route path="/Artists/Recommendations" exact component={ArtistRecommendations}/>
             <Route path="/Artists/Bookings" exact>
-              <ArtistBookings bookings={safetynetData} />
+              <ArtistBookings bookings={bookings} />
             </Route>
             <Route path="/Fans/Home" exact component={FanHome} />
             <Route path="/Fans/FavoriteArtists" exact component={FavoriteArtists} />
