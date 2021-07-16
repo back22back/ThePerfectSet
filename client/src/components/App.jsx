@@ -28,12 +28,12 @@ const App = () => {
   const [user_id, setUser_id] = useState(1);
   let theme = themes.neon;
 
-  // useEffect(()=> {
-  //   axios.get('/booking/view', {params:{user_id}})
-  //   .then((bookingPromise)=> {setBookings(bookingPromise.data)})
-  //   .catch((err) => console.log(err));
+  useEffect(()=> {
+    axios.get('/booking/view', {params:{user_id}})
+    .then((bookingPromise)=> {setBookings(bookingPromise.data)})
+    .catch((err) => console.log(err));
 
-  // }, []);
+  }, []);
 
   return (
     <>
