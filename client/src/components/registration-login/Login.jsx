@@ -13,14 +13,15 @@ const Login = (props) => {
   }
 
   const loginHandler = ()=> {
-    // axios.get(`${serverUrl}/username?${username}`)
-    // .then(()=>{props.history.push('/TestHome')})
-    // .catch(()=>{alert('invalid username')})
-    if (isArtist) {
-      props.history.push('/ArtistHome')
-    } else {
-      props.history.push('/FanHome')
-    }
+    axios.get(`${serverUrl}/username?${username}`)
+    .then(()=>{
+      if (isArtist) {
+        props.history.push('/ArtistHome')
+      } else {
+        props.history.push('/FanHome')
+      }
+    })
+    .catch(()=>{alert('invalid username')})
   }
 
   return (

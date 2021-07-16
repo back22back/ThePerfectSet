@@ -29,22 +29,21 @@ const Register = (props) => {
   }
   const handleRegister = () => {
 
-    axios.post('http://localhost:4545' + '/user', {
-      username,
-      password,
-      website,
-      bio,
-      portrait_url,
-      isArtist,
-    })
-    .then(
+    // axios.post('http://localhost:4545' + '/user', {
+    //   user_name: username,
+    //   password,
+    //   website,
+    //   bio,
+    //   portrait_url,
+    //   isArtist,
+    // })
+    // .then(() => {
       if (isArtist) {
         props.history.push('/ArtistHome')
       } else {
         props.history.push('/FanHome')
       }
-
-   )
+  //  })
     // console.log ('posted', username, website, bio)
   }
 
