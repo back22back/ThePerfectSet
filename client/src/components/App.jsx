@@ -62,7 +62,7 @@ const App = () => {
             <Route path="/Artists/Bookings" exact component={ArtistBookings} />
             <Route path="/Fans/Home" exact component={FanHome} />
             <Route path="/Fans/FavoriteArtists" exact component={FavoriteArtists} />
-            <Route path="/Fans/ArtistSearch" exact componet={ArtistSearch} />
+            <Route path="/Fans/ArtistSearch" exact component={ArtistSearch} />
           </Switch>
         </Router>
       </AppContext.Provider>
