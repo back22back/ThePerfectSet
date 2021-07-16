@@ -50,7 +50,7 @@ const ArtistHome = ({ user_id }) => {
             variant="secondary"
             size="lg"
             >
-              <Link to="/Artists/Bookings">Bookings</Link>
+            <Link to="/Artists/Bookings">Bookings</Link>
           </Button>{' '}
       </Row>
       <Row >

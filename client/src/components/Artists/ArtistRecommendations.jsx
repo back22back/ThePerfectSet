@@ -102,15 +102,11 @@ const ArtistRecommendations = ({home, setHome}) => {
         setDateSelected={setDateSelected}
       />
       <Row className='justify-content-between'>
-          {/* <Router> */}
-            <Link to="/Artists/Home"><IoMdArrowBack
+        <Link to="/Artists/Home">
+          <IoMdArrowBack
             style={{margin:'.5vh', fontSize: '3vh', color: '#fff'}}
-            // onClick={()=>setHome(true)}
-          /></Link>
-            {/* <Route path="/Artists/Home" exact>
-              <ArtistHome user_id={1} />
-            </Route>
-          </Router> */}
+          />
+        </Link>
         <h3 style={{color: '#fff'}}>Recommendations</h3>
         <VscSettings
           style={{margin:'.5vh', fontSize: '3vh', color: '#fff'}}
