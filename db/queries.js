@@ -14,7 +14,7 @@ const addBooking = (date, type, id, lat, lon, time, name, user) => {
 };
 
 const addUser = (user_name, password, is_artist, bio, portrait_url, website) => {
-	const queryStr = `INSERT INTO users (user_name, password, is_artist, bio, portrait_url, website) VALUES ($1, $2, $3, $4, $5, $6)`;
+	const queryStr = `INSERT INTO users (user_name, user_password, is_artist, bio, portrait_url, website) VALUES ($1, $2, $3, $4, $5, $6)`;
 	return pool
 		.query(queryStr, [user_name, password, is_artist, bio, portrait_url, website])
 		.then((response) => response);
