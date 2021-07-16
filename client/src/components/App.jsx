@@ -13,7 +13,6 @@ import TestHome from './test/TestHome.jsx'
 import themes from './themes.js';
 import FavoriteArtists from './Fans/FavoriteArtists.jsx';
 import FanHome from './Fans/FanHome.jsx';
-import ArtistRecommendations from './Artists/ArtistRecommendations.jsx';
 import ArtistBookings from './Artists/ArtistBookings.jsx';
 import ArtistSearch from './Fans/ArtistSearch.jsx';
 
