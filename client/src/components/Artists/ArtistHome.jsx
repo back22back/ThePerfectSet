@@ -30,42 +30,33 @@ const ArtistHome = ({ user_id }) => {
   // }, [user_id]);
 
   // if (!bookings) {
-  //   console.log('no booking');
   //   return <div>Loading...</div>
   // }
 
   return (
-      <Container >
-        {/* <Row style={{
-                width: '350px',
-                height: '300px'
-              }}>
-            <Map
-              bookings={bookings}
-              googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBr4eib21LxBX8r8L25DOSicVW9nHwmHXM"
-              loadingElement={<div style={{ height: `100%` }} />}
-            />
-        </Row> */}
-        <Row >
-          <Button onClick={()=>setHome(false)}
-            variant="primary"
-            size="lg"
-            style={{
-                position: 'absolute',
-                top: '60%',
-                left: '40%'
+    <Container >
+      {/* <Row style={{
+              width: '350px',
+              height: '300px'
             }}>
-            <Link to="/Artists/Bookings">Bookings</Link>
-          </Button>{' '}
-        </Row>
-        <Row>
-          <Button variant="danger"
+          <Map
+            bookings={bookings}
+            googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBr4eib21LxBX8r8L25DOSicVW9nHwmHXM"
+            loadingElement={<div style={{ height: `100%` }} />}
+          />
+      </Row> */}
+      <Row>
+      <Button onClick={()=>setHome(false)}
+            variant="secondary"
             size="lg"
-            style={{
-              position: 'absolute',
-              top: '80%',
-              left: '33%'
-            }}
+            >
+              <Link to="/Artists/Bookings">Bookings</Link>
+          </Button>{' '}
+      </Row>
+      <Row >
+        <Button onClick={()=>setHome(false)}
+          variant="danger"
+          size="lg"
           >
             <Link to="/Artists/Recommendations">Recommendations</Link>
           </Button>{' '}
