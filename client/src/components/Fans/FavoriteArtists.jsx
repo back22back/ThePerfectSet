@@ -29,9 +29,9 @@ const FavoriteArtists = () => {
           className='inline-flex justify-content-between align-items-center'
           style={{ height: '3em' }}
         >
-          {/* <Link to='/fanhome'> */}
-          <IoMdArrowBack style={{ color: '#EFEFEF' }} />
-          {/* </Link> */}
+          <Link to='/Fans/Home'>
+            <IoMdArrowBack style={{ color: '#EFEFEF' }} />
+          </Link>
           <h3 style={{ color: '#EFEFEF' }}>Favorite Artists</h3>
           <VscSettings style={{ color: '#EFEFEF' }} />
         </Row>
