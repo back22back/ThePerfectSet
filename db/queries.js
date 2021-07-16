@@ -54,7 +54,7 @@ const fetchFollows = (user_id) => {
 };
 
 const fetchUser = (user) => {
-	const queryStr = 'SELECT * FROM users WHERE user_id=$1';
+	const queryStr = 'SELECT * FROM users WHERE user_name=$1';
 	return pool.query(queryStr, [user]).then((data) => data.rows);
 };
 

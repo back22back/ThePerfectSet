@@ -125,8 +125,8 @@ const deleteBooking = (req, res) => {
 };
 
 const getSingleUser = (req, res) => {
-	console.log('got here', )
-	fetchUser(req.query.user_id)
+	console.log('got here', req.query )
+	fetchUser(req.query.user)
 		.then((data) => res.status(200).send(data))
 		.catch((err) => {
 			res.status(500).send(`Error fetching user: ${err}`);
