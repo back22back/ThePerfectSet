@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactDom from 'react-dom';
 import { Container, Row, Col, Accordion, Card, Nav } from 'react-bootstrap';
-import { IoMdArrowBack, IoMdCloseCircle } from 'react-icons/Io';
+import { IoMdArrowBack, IoMdCloseCircle } from 'react-icons/io';
 import Calendar from 'react-calendar';
 import SettingsModal from './SettingsModal.jsx';
 
