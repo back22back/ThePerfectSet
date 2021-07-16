@@ -58,13 +58,11 @@ const App = () => {
             <Route path="/Artists/Home" exact>
               <ArtistHome user_id={user_id} />
             </Route>
+            <Route path="/Artists/Recommendations" exact component={ArtistRecommendations}/>
+            <Route path="/Artists/Bookings" exact component={ArtistBookings} />
             <Route path="/Fans/Home" exact component={FanHome} />
             <Route path="/Fans/FavoriteArtists" exact component={FavoriteArtists} />
-            <Route path="/Fans/ArtistSearch" exact component={ArtistSearch} />
-            <Route path="/Artists/Recommendations" exact>
-              <ArtistRecommendations />
-            </Route>
-            <Route path="/Artists/Bookings" exact component={ArtistBookings} />
+            <Route path="/Fans/ArtistSearch" exact componet={ArtistSearch} />
           </Switch>
         </Router>
       </AppContext.Provider>
