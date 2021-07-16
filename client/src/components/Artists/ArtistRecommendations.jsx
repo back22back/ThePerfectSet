@@ -100,15 +100,15 @@ const ArtistRecommendations = ({home, setHome}) => {
         dateSelected={dateSelected}
         setDateSelected={setDateSelected}
       />
-      <Row className='justify-content-between'>
+      <Row className='justify-content-between align-items-center'>
         <Link to="/Artists/Home">
           <IoMdArrowBack
-            style={{margin:'.5vh', marginTop: '1vh', fontSize: '3vh', color: '#fff'}}
+            style={{margin:'.5vh', fontSize: '3vh', color: '#fff'}}
           />
         </Link>
-        <h3 style={{color: '#fff', marginTop: '.5vh'}}>Recommendations</h3>
+        <h3 style={{color: '#fff', margin: '.5vh'}}>Recommendations</h3>
         <VscSettings
-          style={{margin:'.5vh', marginTop: '1vh', fontSize: '3vh', color: '#fff'}}
+          style={{margin:'.5vh', fontSize: '3vh', color: '#fff'}}
           onClick={handleShowSettings}
         />
       </Row>

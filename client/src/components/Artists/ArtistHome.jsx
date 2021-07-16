@@ -8,46 +8,28 @@ import {
   Route,
   Link
 } from "react-router-dom";
-
 import Bookings from './ArtistBookings.jsx';
 import ArtistRecommendations from './ArtistRecommendations.jsx';
 import GoogleMap from './GoogleMap.jsx';
 import { withScriptjs } from "react-google-maps";
 import Map from './Map.jsx';
 
-const ArtistHome = ({ user_id }) => {
-  const [home, setHome] = useState(true);
-  const [bookings, setBookings] = useState();
-
-  // useEffect(()=> {
-  //   axios.get('/booking/view', {params:{user_id}})
-  //   .then((bookingPromise)=> {
-  //     const sorted = bookingPromise.data.sort((a, b) => a.date - b.date);
-  //     setBookings(sorted);
-  //   })
-  //   .catch((err) => console.log(err));
-
-  // }, [user_id]);
-
-  // if (!bookings) {
-  //   return <div>Loading...</div>
-  // }
+const ArtistHome = ({ user_id, bookings }) => {
+  if (!bookings) {
+    return <div>Loading...</div>
+  }
 
   return (
-    <Container fluid>
-      {/* <Row style={{
-              width: '350px',
-              height: '300px',
-              zIndex:-1
-            }}>
+    <Container fluid style={{overflow:'scroll'}}>
+      <Row >
           <Map
             bookings={bookings}
             googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBr4eib21LxBX8r8L25DOSicVW9nHwmHXM"
             loadingElement={<div style={{ height: `100%` }} />}
           />
-      </Row> */}
+      </Row>
       <Row className='justify-content-center'>
-      <Button style={{zIndex:10, marginTop:'1vh'}}
+      <Button style={{zIndex:10, marginTop:'10vh'}}
             variant="secondary"
             size="lg"
             >
@@ -55,7 +37,7 @@ const ArtistHome = ({ user_id }) => {
           </Button>{' '}
       </Row>
       <Row className='justify-content-center'>
-        <Button style={{zIndex:10, marginTop:'1vh'}}
+        <Button style={{zIndex:10, marginTop:'10vh'}}
           variant="danger"
           size="lg"
           >

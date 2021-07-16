@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import ReactDom from 'react-dom';
+import { Link } from "react-router-dom";
 import { Container, Row, Col, Accordion, Card, Nav } from 'react-bootstrap';
 import { IoMdArrowBack, IoMdCloseCircle } from 'react-icons/io';
+import { VscSettings } from 'react-icons/Vsc';
 import Calendar from 'react-calendar';
 import SettingsModal from './SettingsModal.jsx';
 
@@ -22,6 +24,10 @@ function formatDate(date) {
 const Bookings = ( {bookings} ) => {
   const [display, setDisplay] = useState();
   const [date, setDate] = useState();
+  const [showSettings, setShowSettings] = useState(false);
+
+  const handleCloseSettings = () => setShowSettings(false);
+  const handleShowSettings = () => setShowSettings(true);
 
   useEffect(()=> {
     const filtered = bookings.filter(each => {
@@ -41,10 +47,22 @@ const Bookings = ( {bookings} ) => {
 
   return (
     <Container fluid>
-      <IoMdArrowBack/>
+      <Row className="justify-content-between inline-flex">
+        <Link to="/Artists/Home">
+          <IoMdArrowBack
+            style={{margin:'.5vh', fontSize: '3vh', color: 'white', zIndex: '2'}}
+            onClick={()=>setHome(true)}
+          />
+        </Link>
+        <h3 style={{color: 'white'}}>Bookings</h3>
+        <VscSettings
+          style={{margin:'.5vh', fontSize: '3vh', color: 'white', zIndex: '2'}}
+          onClick={handleShowSettings}
+          />
+      </Row>
       <Row style={{
-               width: '375px',
-               height: '220px'
+              width: '375px',
+              height: '260px'
             }}>
       <Calendar onChange={(e)=> {
         const calendarDate = formatDate(e);
@@ -56,12 +74,11 @@ const Bookings = ( {bookings} ) => {
       </Row>
       <Accordion defaultActiveKey="0">
         {display.map((each, i) =>
-          <Card key={i}>
-            <Accordion.Toggle as={Card.Header} eventKey={`${i}`}>
-              {each.name}
-            </Accordion.Toggle>
-            <Accordion.Toggle as={Card.Header} eventKey={`${i}`}>
-              {`${each.date}  ${each.time}`}
+          <Card key={i}
+            bg={'dark'}
+            text={'light'}>
+            <Accordion.Toggle as={Card.Header} eventKey={`${i}`} >
+              <Row className="justify-content-between">{`${each.name}   ${each.date} ${each.time}`} </Row>
             </Accordion.Toggle>
             <Accordion.Collapse eventKey={`${i}`}>
               <Card.Body>
