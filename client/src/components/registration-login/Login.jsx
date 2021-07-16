@@ -6,30 +6,34 @@ import AppContext from './../AppContext.js';
 import axios from 'axios';
 
 const Login = (props) => {
-  const {username, website, bio, setUsername, setBio, setWebsite, serverUrl, isArtist, setIsArtist} = useContext(AppContext)
-  const {page, form, button, selected} = useContext(AppContext).theme;
+  const {user_id, username, website, bio, setUsername, setBio, setWebsite, serverUrl, isArtist, setIsArtist} = useContext(AppContext)
+  const {page, form, button, selected, heading} = useContext(AppContext).theme;
   const handleAccountNameChange = (e) => {
     setUsername(e.target.value);
   }
 
   const loginHandler = ()=> {
-    // axios.get(`${serverUrl}/username?${username}`)
-    // .then(()=>{
+    axios.get(`http://localhost:4545/user`)
+    .then(()=>{
+      console.log ('is artist:', isArtist)
       if (isArtist) {
-        props.history.push('/ArtistHome')
+        props.history.push('/Artists/Home')
       } else {
-        props.history.push('/FanHome')
-      }
-    // })
-    // .catch(()=>{alert('invalid username')})
+        props.history.push('/Fans/Home')
+     }
+    })
+    .catch(()=>{alert('invalid username')})
   }
 
   return (
     <div className="rl">
       <Link to="/">Back</Link>
+      <h1 style={heading}className="rl-title">Login</h1>
       <img src='/images/coversplash.jpeg' className="rl rl-img"/>
-      <input type="text" value={username} onChange={handleAccountNameChange}></input>
-      <button onClick={()=>{loginHandler()}}>Login</button>
+      <input className="rl-input" style={form} type="text" value={username} onChange={handleAccountNameChange}></input>
+      <div className="btn-container">
+        <button className="rl-lower-btn" style={button} onClick={()=>{loginHandler()}}>Login</button>
+      </div>
     </div>
   )
 

@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
 import {Route, BrowserRouter as Router, Switch, Link } from 'react-router-dom';
 import AppContext from './../AppContext.js';
+import ThemeSetter from './ThemeSetter.jsx';
 const SplashPage = (props) => {
    const {page, form, button, selected, link} = useContext(AppContext).theme;
 
@@ -17,6 +18,7 @@ const SplashPage = (props) => {
         </div> */}
           <Link to="/Register" className="splash-link rl" style={link} >Register</Link>
           <Link to="/Login" className="splash-link rl" style={link}>Login</Link>
+        <ThemeSetter/>
       </>
     )
 

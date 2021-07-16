@@ -1,5 +1,6 @@
 import React from 'react';
-import { Container, Column, Button, Image } from 'react-bootstrap';
+import { Container, Column, Button, Image, Row } from 'react-bootstrap';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 const FanHome = () => {
 	return (
@@ -24,20 +25,24 @@ const FanHome = () => {
         `}
 			</style>
 			<Container>
-				<Image src='background-url' fluid />
+				<Image src="./fanpage.jpeg" fluid />
 				<Container>
 					<Row>
 						<Col>
-							<Button variant='black' size='xxl'>
-								Favorite Artists
-							</Button>
+              <Link to="/Fans/FavoriteArtists">
+                <Button variant='black' size='xxl'>
+                  Favorite Artists
+                </Button>
+              </Link>
 						</Col>
 					</Row>
 					<Row>
 						<Col>
-							<Button variant='white' size='xxl'>
-								Artist Search
-							</Button>
+              <Link to="/Fans/ArtistSearch">
+                <Button variant='white' size='xxl'>
+                  Artist Search
+                </Button>
+              </Link>
 						</Col>
 					</Row>
 				</Container>
