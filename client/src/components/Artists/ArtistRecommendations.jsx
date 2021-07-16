@@ -34,7 +34,6 @@ const ArtistRecommendations = ({home, setHome}) => {
   useEffect(() => {
     if (dateSelected) {
       axios.post('/booking/newbooking',
-      { params:
         {
           booking_date: date,
           booking_type: bookingType,
@@ -44,8 +43,7 @@ const ArtistRecommendations = ({home, setHome}) => {
           booking_time: time,
           business_name: businessName,
           user_id: 1
-        }
-      }).then((response) => {
+        }).then((response) => {
         console.log(response);
         setDateSelected(false);
       })

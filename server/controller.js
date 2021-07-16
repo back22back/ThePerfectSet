@@ -20,15 +20,16 @@ const getBusinesses = (req, res) => {
 };
 
 const postBooking = (req, res) => {
+	console.log(`req.query: ${JSON.stringify(req.body)}`);
 	addBooking(
-		req.query.booking_date,
-		req.query.booking_type,
-		req.query.business_id,
-		req.query.latitude,
-		req.query.longitude,
-		req.query.booking_time,
-		req.query.business_name,
-		req.query.user_id
+		req.body.booking_date,
+		req.body.booking_type,
+		req.body.business_id,
+		req.body.latitude,
+		req.body.longitude,
+		req.body.booking_time,
+		req.body.business_name,
+		req.body.user_id
 	)
 		.then((response) =>
 			res.status(200).send(`Successfully added booking! System message:${response}`)
