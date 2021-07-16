@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -19,16 +19,18 @@ const ArtistRecommendations = ({home, setHome}) => {
   const [search, setSearch] = useState(false);
   const [recommendedList, setRecommendedList] = useState([]);
   const [cityName, setCityName] = useState('');
-  const [bookingType, setBookingType] = useState('musicvenues');
   const [showSettings, setShowSettings] = useState(false);
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [date, onDateChange] = useState(new Date());
   const [time, onTimeChange] = useState('10:00:00');
   const [dateSelected, setDateSelected] = useState(false);
-  const [businessId, setBusinessId] = useState('aijfs394');
-  const [businessName, setBusinessName] = useState('Big Bear Cafe');
-  const [lat, setLat] = useState(349.359);
-  const [lng, setLng] = useState(-21.398);
+  const [bookingType, setBookingType] = useState('hotels');
+  const [businessId, setBusinessId] = useState('Wxxvi3LZbHNIDwJ-ZimtnA');
+  const [businessName, setBusinessName] = useState('The Venetian Las Vegas');
+  const [lat, setLat] = useState(36.121189);
+  const [lng, setLng] = useState(-115.169657);
+  const {user_id, setUser_id, username, website, bio, setUsername, setBio, setWebsite, serverUrl, isArtist, setIsArtist} = useContext(AppContext)
+  const {page, form, button, selected, heading} = useContext(AppContext).theme;
 
   useEffect(() => {
     if (recommendedList.length !== 0) {
