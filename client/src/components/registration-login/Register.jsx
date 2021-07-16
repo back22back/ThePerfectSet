@@ -39,9 +39,9 @@ const Register = (props) => {
     // })
     // .then(() => {
       if (isArtist) {
-        props.history.push('/ArtistHome')
+        props.history.push('/Artists/Home')
       } else {
-        props.history.push('/FanHome')
+        props.history.push('/Fans/Home')
       }
   //  })
     // console.log ('posted', username, website, bio)

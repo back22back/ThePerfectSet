@@ -10,6 +10,11 @@ import ArtistHome from './Artists/ArtistHome.jsx';
 import AppContext from './AppContext.js'
 import TestHome from './test/TestHome.jsx'
 import themes from './themes.js';
+import FanHome from './Fans/FanHome.jsx';
+import FavoriteArtists from './Fans/FavoriteArtists.jsx';
+import ArtistSearch from './Fans/ArtistSearch.jsx';
+import ArtistRecommendations from './Artists/ArtistRecommendations.jsx'
+import ArtistBookings from './Artists/ArtistBookings.jsx'
 
 import {
   BrowserRouter as Router,
@@ -22,7 +27,7 @@ const App = () => {
   const [username, setUsername] = useState('Your Google Account');
   const [bio, setBio] = useState('Tell Us About Yourself');
   const [website, setWebsite] = useState('www.efgsdfg.com');
-  const [isArtist, setIsArtist] = useState('false');
+  const [isArtist, setIsArtist] = useState(true);
   const serverUrl = 'serverurl';
   const [bookings, setBookings] = useState();
   const [user_id, setUser_id] = useState(1);
@@ -37,17 +42,36 @@ const App = () => {
 
   return (
     <>
-      <AppContext.Provider value={{username, setUsername, bio, setBio, website, setWebsite, serverUrl, isArtist, setIsArtist, theme}} >
-        {/* <Home /> */}
+      <AppContext.Provider value={{
+        user_id,
+        username,
+        setUsername,
+        bio,
+        setBio,
+        website,
+        setWebsite,
+        serverUrl,
+        isArtist,
+        setIsArtist,
+        theme
+        }} >
         <Router>
           <Switch>
             <Route path="/" exact component={SplashPage} />
             <Route path="/Login" exact component={Login} />
             <Route path="/Register" exact component={Register} />
-            <Route path="/TestHome" exact component={TestHome} />
+            <Route path="/Artists/Home" exact component={ArtistHome} />
+            <Route path="/Fans/Home" exact component={FanHome} />
+            <Route path="/Fans/FavoriteArtists" exact component={FavoriteArtists} />
+            <Route path="/Artists/Recommendations" exact>
+              <ArtistRecommendations />
+            </Route>
+            <Route path="/Artists/Bookings" exact component={ArtistBookings} />
+            <Route path="/Fans/ArtistSearch" exact componet={ArtistSearch} />
           </Switch>
         </Router>
       </AppContext.Provider>
+    </>
   );
 };
 

@@ -15,10 +15,11 @@ const Login = (props) => {
   const loginHandler = ()=> {
     // axios.get(`${serverUrl}/username?${username}`)
     // .then(()=>{
-      if (isArtist) {
-        props.history.push('/ArtistHome')
-      } else {
-        props.history.push('/FanHome')
+      console.log ('is artist:', isArtist)
+      // if (isArtist) {
+      //   props.history.push('/Artists/Home')
+      // } else {
+        props.history.push('/Fans/Home')
       }
     // })
     // .catch(()=>{alert('invalid username')})
