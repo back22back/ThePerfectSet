@@ -52,6 +52,8 @@ const App = () => {
             <Route path="/Login" exact component={Login} />
             <Route path="/Register" exact component={Register} />
             <Route path="/Artists/Home" exact component={ArtistHome} />
+              <ArtistHome user_id={user_id} />
+            <Route />
             <Route path="/Fans/Home" exact component={FanHome} />
             <Route path="/Fans/FavoriteArtists" exact component={FavoriteArtists} />
             <Route path="/Artists/Recommendations" exact>
