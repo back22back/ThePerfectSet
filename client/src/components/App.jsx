@@ -1,5 +1,4 @@
 import React, {useState, useEffect, useContext} from 'react';
-import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
 import SplashPage from './registration-login/SplashPage.jsx'
@@ -24,16 +23,8 @@ const App = () => {
   const [website, setWebsite] = useState('www.efgsdfg.com');
   const [isArtist, setIsArtist] = useState('false');
   const serverUrl = 'serverurl';
-  const [bookings, setBookings] = useState();
   const [user_id, setUser_id] = useState(1);
   let theme = themes.neon;
-
-  useEffect(()=> {
-    axios.get('/booking/view', {params:{user_id}})
-    .then((bookingPromise)=> {setBookings(bookingPromise.data)})
-    .catch((err) => console.log(err));
-
-  }, []);
 
   return (
     <>
