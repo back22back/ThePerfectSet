@@ -53,7 +53,7 @@ const Map = ({ bookings }) => {
   return (
     <div>
       <GoogleMapExample
-        containerElement={<div style={{ height: `500px`, width: "500px" }} />}
+        containerElement={<div style={{ height: `500px`, width: "375px" }} />}
         mapElement={<div style={{ height: `100%` }} />}
       />
     </div>
