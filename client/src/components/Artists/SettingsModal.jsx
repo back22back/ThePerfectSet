@@ -26,7 +26,7 @@ const SettingsModal = ({showSettings, setShowSettings, handleCloseSettings}) => 
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleLogOut}>
-            <Link to="/">Log Out</Link>
+            <Link to="/" style={{color: '#fff'}}>Log Out</Link>
           </Button>
         </Modal.Footer>
       </Modal>
