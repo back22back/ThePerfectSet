@@ -102,7 +102,7 @@ const ArtistRecommendations = ({home, setHome}) => {
           <div>
             <IoMdArrowBack
               style={{margin:'.5vh', fontSize: '3vh', color: '#fff'}}
-              onClick={()=>setHome(true)}
+              // onClick={()=>setHome(true)}
             />
             <Link to="/Artists/Home"></Link>
           </div>
