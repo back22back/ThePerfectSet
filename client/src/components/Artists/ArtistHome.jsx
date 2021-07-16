@@ -10,7 +10,7 @@ import {
 } from "react-router-dom";
 
 import Bookings from './ArtistBookings.jsx';
-import Recommendations from './ArtistRecommendations.jsx';
+import ArtistRecommendations from './ArtistRecommendations.jsx';
 import GoogleMap from './GoogleMap.jsx';
 import { withScriptjs } from "react-google-maps";
 import Map from './Map.jsx';
@@ -19,71 +19,50 @@ const ArtistHome = ({ user_id }) => {
   const [home, setHome] = useState(true);
   const [bookings, setBookings] = useState();
 
-  useEffect(()=> {
-    axios.get('/booking/view', {params:{user_id}})
-    .then((bookingPromise)=> {
-      const sorted = bookingPromise.data.sort((a, b) => a.date - b.date);
-      setBookings(sorted);
-    })
-    .catch((err) => console.log(err));
+  // useEffect(()=> {
+  //   axios.get('/booking/view', {params:{user_id}})
+  //   .then((bookingPromise)=> {
+  //     const sorted = bookingPromise.data.sort((a, b) => a.date - b.date);
+  //     setBookings(sorted);
+  //   })
+  //   .catch((err) => console.log(err));
 
-  }, [user_id]);
+  // }, [user_id]);
 
-  if (!bookings) {
-    console.log('no booking');
-    return <div>Loading...</div>
-  }
+  // if (!bookings) {
+  //   return <div>Loading...</div>
+  // }
 
   return (
-    <Router>
-      { home ? <Container >
-        <Row style={{
-                width: '350px',
-                height: '300px'
-              }}>
-            {/* <Map
-              bookings={bookings}
-              googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3G_J5X-Mn0e5gVnvOT8IfOz6ZY5ugchE"
-              loadingElement={<div style={{ height: `100%` }} />}
-            /> */}
-        </Row>
-        <Row >
-          <Button onClick={()=>setHome(false)}
-            variant="primary"
-            size="lg"
-            style={{
-                position: 'absolute',
-                top: '60%',
-                left: '40%'
+    <Container fluid>
+      {/* <Row style={{
+              width: '350px',
+              height: '300px',
+              zIndex:-1
             }}>
-            <Link to="/Artists/Bookings">Bookings</Link>
-          </Button>{' '}
-        </Row>
-        <Row>
-          <Button variant="danger"
+          <Map
+            bookings={bookings}
+            googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBr4eib21LxBX8r8L25DOSicVW9nHwmHXM"
+            loadingElement={<div style={{ height: `100%` }} />}
+          />
+      </Row> */}
+      <Row className='justify-content-center'>
+      <Button style={{zIndex:10, marginTop:'1vh'}}
+            variant="secondary"
             size="lg"
-            style={{
-              position: 'absolute',
-              top: '80%',
-              left: '33%'
-            }}
-            onClick={()=>setHome(false)}>
-            <Link to="/Artists/Recommendations">Recommendations</Link>
+            >
+            <Link to="/Artists/Bookings" style={{color:'#fff'}}>Bookings</Link>
+          </Button>{' '}
+      </Row>
+      <Row className='justify-content-center'>
+        <Button style={{zIndex:10, marginTop:'1vh'}}
+          variant="danger"
+          size="lg"
+          >
+            <Link to="/Artists/Recommendations" style={{color:'#fff'}}>Recommendations</Link>
           </Button>{' '}
         </Row>
-      </Container> : null}
-
-      <hr />
-
-      <Switch>
-        <Route path="/Artists/Bookings">
-          <Bookings bookings={bookings} />
-        </Route>
-        <Route path="/Artists/Recommendations">
-          <Recommendations />
-        </Route>
-      </Switch>
-    </Router>
+      </Container>
   );
 };
 

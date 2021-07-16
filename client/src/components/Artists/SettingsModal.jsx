@@ -1,7 +1,13 @@
 import React, { useState, useContext } from 'react'
 import { Button, Modal } from 'react-bootstrap';
-import { IoMdCloseCircle } from 'react-icons/Io'
+import { IoMdCloseCircle } from 'react-icons/io'
 import AppContext from './../AppContext.js'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 const SettingsModal = ({showSettings, setShowSettings, handleCloseSettings}) => {
   const handleLogOut = () => console.log('logged out');
@@ -20,7 +26,7 @@ const SettingsModal = ({showSettings, setShowSettings, handleCloseSettings}) => 
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleLogOut}>
-            Log Out
+            <Link to="/" style={{color: '#fff'}}>Log Out</Link>
           </Button>
         </Modal.Footer>
       </Modal>
