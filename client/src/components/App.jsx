@@ -11,6 +11,7 @@ import ArtistHome from './Artists/ArtistHome.jsx';
 import AppContext from './AppContext.js'
 import TestHome from './test/TestHome.jsx'
 import themes from './themes.js';
+import ArtistSearch from './Fans/ArtistSearch.jsx';
 
 import {
   BrowserRouter as Router,
