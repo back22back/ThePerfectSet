@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -14,21 +14,23 @@ import GoogleMap from './GoogleMap.jsx';
 import SettingsModal from './SettingsModal.jsx';
 import DatePickerModal from './DatePickerModal.jsx';
 import ArtistHome from './ArtistHome.jsx';
+import AppContext from './../AppContext.js'
 
 const ArtistRecommendations = ({home, setHome}) => {
   const [search, setSearch] = useState(false);
   const [recommendedList, setRecommendedList] = useState([]);
   const [cityName, setCityName] = useState('');
-  const [bookingType, setBookingType] = useState('musicvenues');
   const [showSettings, setShowSettings] = useState(false);
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [date, onDateChange] = useState(new Date());
   const [time, onTimeChange] = useState('10:00:00');
   const [dateSelected, setDateSelected] = useState(false);
-  const [businessId, setBusinessId] = useState('aijfs394');
-  const [businessName, setBusinessName] = useState('Big Bear Cafe');
-  const [lat, setLat] = useState(349.359);
-  const [lng, setLng] = useState(-21.398);
+  const [bookingType, setBookingType] = useState('hotels');
+  const [businessId, setBusinessId] = useState('Wxxvi3LZbHNIDwJ-ZimtnA');
+  const [businessName, setBusinessName] = useState('The Venetian Las Vegas');
+  const [lat, setLat] = useState(36.121189);
+  const [lng, setLng] = useState(-115.169657);
+  const {page, form, button, selected, heading} = useContext(AppContext).theme;
 
   useEffect(() => {
     if (recommendedList.length !== 0) {
@@ -106,7 +108,7 @@ const ArtistRecommendations = ({home, setHome}) => {
             style={{margin:'.5vh', fontSize: '3vh', color: '#fff'}}
           />
         </Link>
-        <h3 style={{color: '#fff', margin: '.5vh'}}>Recommendations</h3>
+        <h3 style={button}>Recommendations</h3>
         <VscSettings
           style={{margin:'.5vh', fontSize: '3vh', color: '#fff'}}
           onClick={handleShowSettings}
@@ -165,6 +167,7 @@ const ArtistRecommendations = ({home, setHome}) => {
                         variant="success"
                         value={recommendedItem.id}
                         onClick={handleAddBooking}
+                        style={button}
                       >
                         Add to Bookings
                       </Button>

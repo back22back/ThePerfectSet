@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import ReactDom, { render } from 'react-dom';
 import axios from 'axios';
 import { Container, Row, Button } from 'react-bootstrap';
@@ -13,8 +13,11 @@ import ArtistRecommendations from './ArtistRecommendations.jsx';
 import GoogleMap from './GoogleMap.jsx';
 import { withScriptjs } from "react-google-maps";
 import Map from './Map.jsx';
+import AppContext from './../AppContext.js'
 
 const ArtistHome = ({ user_id, bookings }) => {
+  const {page, form, button, selected, heading} = useContext(AppContext).theme;
+
   if (!bookings) {
     return <div>Loading...</div>
   }
@@ -29,7 +32,7 @@ const ArtistHome = ({ user_id, bookings }) => {
           />
       </Row>
       <Row className='justify-content-center'>
-      <Button style={{zIndex:10, marginTop:'10vh'}}
+      <Button style={button}
             variant="secondary"
             size="lg"
             >
@@ -37,7 +40,7 @@ const ArtistHome = ({ user_id, bookings }) => {
           </Button>{' '}
       </Row>
       <Row className='justify-content-center'>
-        <Button style={{zIndex:10, marginTop:'10vh'}}
+        <Button style={button}
           variant="danger"
           size="lg"
           >
