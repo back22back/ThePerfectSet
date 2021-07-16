@@ -41,11 +41,11 @@ const ArtistHome = ({ user_id }) => {
                 width: '350px',
                 height: '300px'
               }}>
-            <Map
+            {/* <Map
               bookings={bookings}
               googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3G_J5X-Mn0e5gVnvOT8IfOz6ZY5ugchE"
               loadingElement={<div style={{ height: `100%` }} />}
-            />
+            /> */}
         </Row>
         <Row >
           <Button onClick={()=>setHome(false)}
