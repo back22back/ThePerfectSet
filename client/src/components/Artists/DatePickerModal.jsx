@@ -1,46 +1,33 @@
 import React, { useState } from 'react';
-import ReactDom from 'react-dom';
 import { Button, Modal } from 'react-bootstrap';
-import DateTimePicker from 'react-datetime-picker';
+import Calendar from 'react-calendar';
 
-
-const DatePickerModal = () => {
-  const [value, onChange] = useState(new Date());
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+const DatePickerModal = ({date, onDateChange, time, onTimeChange, showDatePicker, setShowDatePicker, handleCloseDatePicker, dateSelected, setDateSelected}) => {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
-      </Button>
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={showDatePicker} onHide={handleCloseDatePicker} >
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
+          <Modal.Title>Date Picker</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          <DateTimePicker
-            onChange={onChange}
-            value={value}
+        <Modal.Body style={{height:'30vh', width:'auto'}}>
+          <Calendar
+            onChange={onDateChange}
+            value={date}
           />
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Select
+          <Button variant="success" onClick={() => {
+            setDateSelected(true);
+            handleCloseDatePicker();
+            }
+          }>
+            Save Booking
           </Button>
         </Modal.Footer>
       </Modal>
     </>
   );
 }
-
-render(<DatePickerModal />);
 
 export default DatePickerModal;
