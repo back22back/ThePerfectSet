@@ -9,7 +9,7 @@ import ArtistHome from './Artists/ArtistHome.jsx';
 import AppContext from './AppContext.js'
 import TestHome from './test/TestHome.jsx'
 import themes from './themes.js';
-
+import ArtistSearch from './Fans/ArtistSearch.jsx';
 import {
   BrowserRouter as Router,
   Switch,
@@ -28,22 +28,18 @@ const App = () => {
 
   return (
     <>
-    <ArtistHome user_id={user_id}/>
-      {/* <AppContext.Provider value={{username, setUsername, bio, setBio, website, setWebsite, serverUrl, isArtist, setIsArtist, theme}} >
-      <Router>
-      <Switch>
-        <Route path="/" exact component={SplashPage} />
-        <Route path="/Login" exact component={Login} />
-        <Route path="/Register" exact component={Register} />
-        <Route path="/TestHome" exact component={TestHome} />
-        <Route path="/Artist">
-          <ArtistHome bookings={bookings}/>
-        </Route>
-      </Switch>
-    </Router>
-      </AppContext.Provider> */}
+      <AppContext.Provider value={{username, setUsername, bio, setBio, website, setWebsite, serverUrl, isArtist, setIsArtist, theme}} >
+        <Router>
+          <Switch>
+            <Route path="/" exact component={SplashPage} />
+            <Route path="/Login" exact component={Login} />
+            <Route path="/Register" exact component={Register} />
+            <Route path="/TestHome" exact component={TestHome} />
+          </Switch>
+        </Router>
+      </AppContext.Provider>
     </>
-  )
+  );
 };
 
 
