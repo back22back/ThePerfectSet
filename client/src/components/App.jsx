@@ -29,45 +29,45 @@ const App = () => {
   const [isArtist, setIsArtist] = useState(true);
   const serverUrl = 'serverurl';
   const [bookings, setBookings] = useState();
-  const [user_id, setUser_id] = useState(1);
+  const [user_id, setUser_id] = useState(3);
   let theme = themes.neon;
 
   return (
     // <div style={theme.page}>
-    // <ArtistHome user_id={user_id} />
-    <div className={'neon-page'}>
-      <AppContext.Provider value={{
-        user_id,
-        username,
-        setUsername,
-        bio,
-        setBio,
-        website,
-        setWebsite,
-        serverUrl,
-        isArtist,
-        setIsArtist,
-        theme
-        }} >
-        <Router>
-          <Switch>
-            <Route path="/" exact component={SplashPage} />
-            <Route path="/Login" exact component={Login} />
-            <Route path="/Register" exact component={Register} />
-            <Route path="/Artists/Home" exact>
-              <ArtistHome user_id={user_id} />
-            </Route >
-            <Route path="/Fans/Home" exact component={FanHome} />
-            <Route path="/Fans/FavoriteArtists" exact component={FavoriteArtists} />
-            <Route path="/Artists/Recommendations" exact>
-              <ArtistRecommendations />
-            </Route>
-            <Route path="/Artists/Bookings" exact component={ArtistBookings} />
-            <Route path="/Fans/ArtistSearch" exact componet={ArtistSearch} />
-          </Switch>
-        </Router>
-      </AppContext.Provider>
-    </div>
+    <ArtistHome user_id={user_id} />
+    // <div className={'neon-page'}>
+    //   <AppContext.Provider value={{
+    //     user_id,
+    //     username,
+    //     setUsername,
+    //     bio,
+    //     setBio,
+    //     website,
+    //     setWebsite,
+    //     serverUrl,
+    //     isArtist,
+    //     setIsArtist,
+    //     theme
+    //     }} >
+    //     <Router>
+    //       <Switch>
+    //         <Route path="/" exact component={SplashPage} />
+    //         <Route path="/Login" exact component={Login} />
+    //         <Route path="/Register" exact component={Register} />
+    //         <Route path="/Artists/Home" exact>
+    //           <ArtistHome user_id={user_id} />
+    //         </Route >
+    //         <Route path="/Fans/Home" exact component={FanHome} />
+    //         <Route path="/Fans/FavoriteArtists" exact component={FavoriteArtists} />
+    //         <Route path="/Artists/Recommendations" exact>
+    //           <ArtistRecommendations />
+    //         </Route>
+    //         <Route path="/Artists/Bookings" exact component={ArtistBookings} />
+    //         <Route path="/Fans/ArtistSearch" exact componet={ArtistSearch} />
+    //       </Switch>
+    //     </Router>
+    //   </AppContext.Provider>
+    // </div>
   );
 };
 
