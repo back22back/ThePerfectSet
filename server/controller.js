@@ -40,13 +40,15 @@ const postBooking = (req, res) => {
 };
 
 const postUser = (req, res) => {
+	console.log(req.query);
+	console.log(req.body);
 	addUser(
-		req.query.user_name,
-		req.query.password,
-		req.query.is_artist,
-		req.query.bio,
-		req.query.portrait_url,
-		req.query.website
+		req.body.user_name,
+		req.body.password,
+		req.body.is_artist,
+		req.body.bio,
+		req.body.portrait_url,
+		req.body.website
 	)
 		.then((response) =>
 			res.status(200).send(`Successfully added user! System message: ${response}`)

@@ -33,15 +33,8 @@ const App = () => {
   const [user_id, setUser_id] = useState(1);
   let theme = themes.neon;
 
-  useEffect(()=> {
-    axios.get('/booking/view', {params:{user_id}})
-    .then((bookingPromise)=> {setBookings(bookingPromise.data)})
-    .catch((err) => console.log(err));
-
-  }, []);
-
   return (
-    <>
+    <div style={theme.page}>
       <AppContext.Provider value={{
         user_id,
         username,
@@ -71,7 +64,7 @@ const App = () => {
           </Switch>
         </Router>
       </AppContext.Provider>
-    </>
+    </div>
   );
 };
 

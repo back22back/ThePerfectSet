@@ -6,7 +6,7 @@ import AppContext from './../AppContext.js';
 import axios from 'axios';
 
 const Login = (props) => {
-  const {username, website, bio, setUsername, setBio, setWebsite, serverUrl, isArtist, setIsArtist} = useContext(AppContext)
+  const {user_id, username, website, bio, setUsername, setBio, setWebsite, serverUrl, isArtist, setIsArtist} = useContext(AppContext)
   const {page, form, button, selected} = useContext(AppContext).theme;
   const handleAccountNameChange = (e) => {
     setUsername(e.target.value);
@@ -16,11 +16,11 @@ const Login = (props) => {
     // axios.get(`${serverUrl}/username?${username}`)
     // .then(()=>{
       console.log ('is artist:', isArtist)
-      // if (isArtist) {
-      //   props.history.push('/Artists/Home')
-      // } else {
+      if (isArtist) {
+        props.history.push('/Artists/Home')
+      } else {
         props.history.push('/Fans/Home')
-      }
+     }
     // })
     // .catch(()=>{alert('invalid username')})
   }
