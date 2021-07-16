@@ -66,7 +66,7 @@ const App = () => {
   const serverUrl = 'serverurl';
   const [bookings, setBookings] = useState();
   const [user_id, setUser_id] = useState(1);
-  let theme = themes.neon;
+  const [theme, setTheme] = useState(themes.rocker);
 
   useEffect(()=> {
     axios.get('/booking/view', {params:{user_id}})
@@ -81,7 +81,7 @@ const App = () => {
   return (
     // <div style={theme.page}>
     // <ArtistHome user_id={user_id} />
-    <div className={'neon-page'}>
+    <div className={theme === themes.rocker ? "rocker-page" : "neon-page"}>
       <AppContext.Provider
         value={{
           user_id,
@@ -95,9 +95,9 @@ const App = () => {
           serverUrl,
           isArtist,
           setIsArtist,
-          theme
+          theme,
+          setTheme
         }}
-      >
         <Router>
           <Switch>
             <Route path="/" exact component={SplashPage} />
