@@ -30,12 +30,13 @@ const App = () => {
   const serverUrl = 'serverurl';
   const [bookings, setBookings] = useState();
   const [user_id, setUser_id] = useState(3);
-  let theme = themes.neon;
-
+  const [theme, setTheme] = useState(themes.rocker)
+//neon-page
+//rocker-page
   return (
     // <div style={theme.page}>
     // <ArtistHome user_id={user_id} />
-    <div className={'neon-page'}>
+    <div className={theme === themes.rocker ? "rocker-page" : "neon-page"}>
       <AppContext.Provider value={{
         user_id,
         setUser_id,
@@ -48,7 +49,8 @@ const App = () => {
         serverUrl,
         isArtist,
         setIsArtist,
-        theme
+        theme,
+        setTheme
         }} >
         <Router>
           <Switch>

@@ -4,7 +4,7 @@ import Image from 'react-bootstrap/Image';
 import {Route, BrowserRouter as Router, Switch, Link } from 'react-router-dom';
 import AppContext from './../AppContext.js';
 import axios from 'axios';
-
+import ThemeSetter from './ThemeSetter.jsx';
 const Login = (props) => {
   const {user_id, setUser_id, username, website, bio, setUsername, setBio, setWebsite, serverUrl, isArtist, setIsArtist} = useContext(AppContext)
   const {page, form, button, selected, heading} = useContext(AppContext).theme;
@@ -48,6 +48,9 @@ console.log(isArtist)
       <input className="rl-input" style={form} type="text" value={username} onChange={handleAccountNameChange}></input>
       <div className="btn-container">
         <button className="rl-lower-btn" style={button} onClick={()=>{loginHandler()}}>Login</button>
+      </div>
+      <div className="btn-container">
+        <ThemeSetter/>
       </div>
     </div>
   )

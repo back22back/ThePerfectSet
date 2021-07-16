@@ -18,7 +18,9 @@ const SplashPage = (props) => {
         </div> */}
           <Link to="/Register" className="splash-link rl" style={link} >Register</Link>
           <Link to="/Login" className="splash-link rl" style={link}>Login</Link>
+          <div className="btn-container">
         <ThemeSetter/>
+          </div>
       </>
     )
 
