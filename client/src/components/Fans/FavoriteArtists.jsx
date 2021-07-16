@@ -32,7 +32,7 @@ const FavoriteArtists = () => {
           {/* <Link to='/fanhome'> */}
           <IoMdArrowBack style={{ color: '#EFEFEF' }} />
           {/* </Link> */}
-          <span style={{ color: '#EFEFEF' }}>Favorite Artists</span>
+          <h3 style={{ color: '#EFEFEF' }}>Favorite Artists</h3>
           <VscSettings style={{ color: '#EFEFEF' }} />
         </Row>
       </Container>
