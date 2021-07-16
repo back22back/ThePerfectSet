@@ -30,60 +30,44 @@ const ArtistHome = ({ user_id }) => {
   }, [user_id]);
 
   if (!bookings) {
-    console.log('no booking');
     return <div>Loading...</div>
   }
 
   return (
-    <Router>
-      { home ? <Container >
-        <Row style={{
-                width: '350px',
-                height: '300px'
-              }}>
-            {/* <Map
-              bookings={bookings}
-              googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3G_J5X-Mn0e5gVnvOT8IfOz6ZY5ugchE"
-              loadingElement={<div style={{ height: `100%` }} />}
-            /> */}
-        </Row>
-        <Row >
-          <Button onClick={()=>setHome(false)}
-            variant="primary"
-            size="lg"
-            style={{
-                position: 'absolute',
-                top: '60%',
-                left: '40%'
+    <Container >
+      <Row style={{
+              width: '350px',
+              height: '300px'
             }}>
-            <Link to="/Artists/Bookings">Bookings</Link>
-          </Button>{' '}
-        </Row>
-        <Row>
-          <Button variant="danger"
-            size="lg"
-            style={{
+          <Map
+            bookings={bookings}
+            googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBr4eib21LxBX8r8L25DOSicVW9nHwmHXM"
+            loadingElement={<div style={{ height: `100%` }} />}
+          />
+      </Row>
+      <Row >
+        <Button onClick={()=>setHome(false)}
+          variant="primary"
+          size="lg"
+          style={{
               position: 'absolute',
-              top: '80%',
-              left: '33%'
-            }}
-            onClick={()=>setHome(false)}>
-            <Link to="/Artists/Recommendations">Recommendations</Link>
-          </Button>{' '}
-        </Row>
-      </Container> : null}
-
-      <hr />
-
-      <Switch>
-        <Route path="/Artists/Bookings">
-          <Bookings bookings={bookings} />
-        </Route>
-        <Route path="/Artists/Recommendations">
-          <Recommendations />
-        </Route>
-      </Switch>
-    </Router>
+              top: '60%',
+              left: '40%'
+          }}>
+        </Button>{' '}
+      </Row>
+      <Row>
+        <Button variant="danger"
+          size="lg"
+          style={{
+            position: 'absolute',
+            top: '80%',
+            left: '33%'
+          }}
+          onClick={()=>setHome(false)}>
+        </Button>{' '}
+      </Row>
+    </Container>
   );
 };
 

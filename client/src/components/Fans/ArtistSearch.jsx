@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import { Container, Button, Accordion, Card, Image, Row } from 'react-bootstrap';
-import { IoMdArrowBack } from 'react-icons/Io';
-import { VscSettings } from 'react-icons/Vsc';
+import { IoMdArrowBack } from 'react-icons/io';
+import { VscSettings } from 'react-icons/vsc';
 import fansearch from './fansearch.jpeg';
 
 const ArtistSearch = () => {
@@ -37,19 +37,19 @@ const ArtistSearch = () => {
   return (
     <Container>
       <Row className='justify-content-between container-fluid'>
-        {/* <Link to='/app' component={App}> */}
+        <Link to='/app' component={App}>
         <IoMdArrowBack style={{margin:'.5vh', fontSize: '3vh', color: 'white'}}/>
-        {/* </Link> */}
+        </Link>
         <VscSettings style={{margin:'.5vh', fontSize: '3vh', color: 'white'}}/>
       </Row>
       <Row>
         <div className='container-fluid'>
-        <Image src={fansearch} width={'100%'} height={'auto'} className='position-relative'></Image>
-          <div className="input-group-prepend">
-            <input type="text"
-              className="form-control position-absolute"
-              placeholder="Search for Artists"
-              aria-label="Search for Artists"
+        <Image src={fansearch} width={'100%'} height={'auto'}></Image>
+          <div className='input-group-prepend'>
+            <input type='text'
+              className='form-control'
+              placeholder='Search for Artists'
+              aria-label='Search for Artists'
               onChange={event => handleSearch(event.target.value)}
               onFocus={handleFocus}>
             </input>
@@ -58,7 +58,7 @@ const ArtistSearch = () => {
       </Row>
       {input.length
         ? artists.filter(art => {
-          if (art.name.toLowerCase().includes(input.toLowerCase())) {
+          if (art.artist_name.toLowerCase().includes(input.toLowerCase())) {
             return art;
           }
         })
