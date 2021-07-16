@@ -1,6 +1,15 @@
 const router = require('express').Router();
-const { getBusinesses, postBooking, postFollows, deleteFollows, getBookings, deleteBooking, getFollows, getTourdates, postUser } = require('./controller.js');
-
+const {
+	getBusinesses,
+	postBooking,
+	postFollows,
+	deleteFollows,
+	getBookings,
+	deleteBooking,
+	getFollows,
+	postUser,
+	getSingleUser
+} = require('./controller.js');
 
 router.get('/businesses', getBusinesses);
 
@@ -8,7 +17,7 @@ router.get('/booking/view', getBookings);
 
 router.get('/follows', getFollows);
 
-router.get('/tourdates/', getTourdates);
+router.get('/user', getSingleUser);
 
 router.post('/booking/newbooking', postBooking);
 

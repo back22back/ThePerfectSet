@@ -20,7 +20,7 @@
     "planning",
     "rockstar"
   ],
-  "author": "Joey Rivera, Vy Tran, Andy Manakitivipart, Alex Causey, Jack Yang, Ethan Barker, Elizabeth Mendenhall",
+  "author": "Joey Rivera, Vy Tran, Anan Wolf, Alex Causey, Jack Yang, Ethan Barker, Elizabeth Mendenhall",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/TeamJeeJava/ThePerfectSet/issues"
@@ -41,9 +41,14 @@
     "react-bootstrap": "^1.6.1",
     "react-calendar": "^3.4.0",
     "react-dom": "^16.14.0",
+    "react-google-maps": "^9.4.5",
     "react-icons": "^4.2.0",
     "react-router-dom": "^5.2.0",
+<<<<<<< HEAD
     "react-time-picker": "^4.3.0"
+=======
+    "recompose": "^0.26.0"
+>>>>>>> ef84981563bb807ea86c283a047efb760a27a34f
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",
