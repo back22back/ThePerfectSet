@@ -34,10 +34,11 @@ const ArtistHome = ({ user_id }) => {
   // }
 
   return (
-    <Container >
+    <Container fluid>
       {/* <Row style={{
               width: '350px',
-              height: '300px'
+              height: '300px',
+              zIndex:-1
             }}>
           <Map
             bookings={bookings}
@@ -45,20 +46,20 @@ const ArtistHome = ({ user_id }) => {
             loadingElement={<div style={{ height: `100%` }} />}
           />
       </Row> */}
-      <Row>
-      <Button onClick={()=>setHome(false)}
+      <Row className='justify-content-center'>
+      <Button style={{zIndex:10, marginTop:'1vh'}}
             variant="secondary"
             size="lg"
             >
-            <Link to="/Artists/Bookings">Bookings</Link>
+            <Link to="/Artists/Bookings" style={{color:'#fff'}}>Bookings</Link>
           </Button>{' '}
       </Row>
-      <Row >
-        <Button onClick={()=>setHome(false)}
+      <Row className='justify-content-center'>
+        <Button style={{zIndex:10, marginTop:'1vh'}}
           variant="danger"
           size="lg"
           >
-            <Link to="/Artists/Recommendations">Recommendations</Link>
+            <Link to="/Artists/Recommendations" style={{color:'#fff'}}>Recommendations</Link>
           </Button>{' '}
         </Row>
       </Container>

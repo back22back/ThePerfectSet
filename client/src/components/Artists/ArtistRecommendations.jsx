@@ -31,7 +31,6 @@ const ArtistRecommendations = ({home, setHome}) => {
   const [lng, setLng] = useState(-21.398);
 
   useEffect(() => {
-    console.log(recommendedList);
     if (recommendedList.length !== 0) {
       setSearch(true);
     }
@@ -104,12 +103,12 @@ const ArtistRecommendations = ({home, setHome}) => {
       <Row className='justify-content-between'>
         <Link to="/Artists/Home">
           <IoMdArrowBack
-            style={{margin:'.5vh', fontSize: '3vh', color: '#fff'}}
+            style={{margin:'.5vh', marginTop: '1vh', fontSize: '3vh', color: '#fff'}}
           />
         </Link>
-        <h3 style={{color: '#fff'}}>Recommendations</h3>
+        <h3 style={{color: '#fff', marginTop: '.5vh'}}>Recommendations</h3>
         <VscSettings
-          style={{margin:'.5vh', fontSize: '3vh', color: '#fff'}}
+          style={{margin:'.5vh', marginTop: '1vh', fontSize: '3vh', color: '#fff'}}
           onClick={handleShowSettings}
         />
       </Row>
@@ -176,9 +175,7 @@ const ArtistRecommendations = ({home, setHome}) => {
             })}
         </Accordion>
       </Row>
-          : <Row>
-              <Image src="https://cdn.wallpapersafari.com/98/86/BF0GtP.jpg"></Image>
-            </Row>
+          : null
         }
     </Container>
     </>
