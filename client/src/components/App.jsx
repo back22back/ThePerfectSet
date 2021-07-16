@@ -6,7 +6,6 @@ import SplashPage from './registration-login/SplashPage.jsx'
 import Login from './registration-login/Login.jsx';
 import Register from './registration-login/Register.jsx';
 import RegistrationLogin from './registration-login/RegistrationLogin.jsx';
-
 import ArtistHome from './Artists/ArtistHome.jsx';
 import AppContext from './AppContext.js'
 import TestHome from './test/TestHome.jsx'
@@ -36,31 +35,20 @@ const App = () => {
 
   }, []);
 
-
-
-  if (!bookings) {
-    return <div>Loading...</div>
-  }
-
   return (
     <>
-    <ArtistHome bookings={bookings}/>
       <AppContext.Provider value={{username, setUsername, bio, setBio, website, setWebsite, serverUrl, isArtist, setIsArtist, theme}} >
-      <Router>
-      <Switch>
-        <Route path="/" exact component={SplashPage} />
-        <Route path="/Login" exact component={Login} />
-        <Route path="/Register" exact component={Register} />
-        <Route path="/TestHome" exact component={TestHome} />
-        <Route path="/Artist">
-          <ArtistHome bookings={bookings}/>
-        </Route>
-      </Switch>
-    </Router>
+        {/* <Home /> */}
+        <Router>
+          <Switch>
+            <Route path="/" exact component={SplashPage} />
+            <Route path="/Login" exact component={Login} />
+            <Route path="/Register" exact component={Register} />
+            <Route path="/TestHome" exact component={TestHome} />
+          </Switch>
+        </Router>
       </AppContext.Provider>
-    </>
-
-  )
+  );
 };
 
 
