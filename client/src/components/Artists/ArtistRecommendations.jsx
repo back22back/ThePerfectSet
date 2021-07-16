@@ -14,6 +14,7 @@ import GoogleMap from './GoogleMap.jsx';
 import SettingsModal from './SettingsModal.jsx';
 import DatePickerModal from './DatePickerModal.jsx';
 import ArtistHome from './ArtistHome.jsx';
+import AppContext from './../AppContext.js'
 
 const ArtistRecommendations = ({home, setHome}) => {
   const [search, setSearch] = useState(false);
@@ -29,7 +30,6 @@ const ArtistRecommendations = ({home, setHome}) => {
   const [businessName, setBusinessName] = useState('The Venetian Las Vegas');
   const [lat, setLat] = useState(36.121189);
   const [lng, setLng] = useState(-115.169657);
-  const {user_id, setUser_id, username, website, bio, setUsername, setBio, setWebsite, serverUrl, isArtist, setIsArtist} = useContext(AppContext)
   const {page, form, button, selected, heading} = useContext(AppContext).theme;
 
   useEffect(() => {
@@ -108,7 +108,7 @@ const ArtistRecommendations = ({home, setHome}) => {
             style={{margin:'.5vh', fontSize: '3vh', color: '#fff'}}
           />
         </Link>
-        <h3 style={{color: '#fff', margin: '.5vh'}}>Recommendations</h3>
+        <h3 style={button}>Recommendations</h3>
         <VscSettings
           style={{margin:'.5vh', fontSize: '3vh', color: '#fff'}}
           onClick={handleShowSettings}
@@ -167,6 +167,7 @@ const ArtistRecommendations = ({home, setHome}) => {
                         variant="success"
                         value={recommendedItem.id}
                         onClick={handleAddBooking}
+                        style={button}
                       >
                         Add to Bookings
                       </Button>

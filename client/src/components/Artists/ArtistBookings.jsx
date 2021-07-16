@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import ReactDom from 'react-dom';
 import { Link } from "react-router-dom";
 import { Container, Row, Col, Accordion, Card, Nav } from 'react-bootstrap';
@@ -6,6 +6,7 @@ import { IoMdArrowBack, IoMdCloseCircle } from 'react-icons/io';
 import { VscSettings } from 'react-icons/Vsc';
 import Calendar from 'react-calendar';
 import SettingsModal from './SettingsModal.jsx';
+import AppContext from './../AppContext.js'
 
 function formatDate(date) {
   var d = new Date(date),
@@ -28,6 +29,8 @@ const Bookings = ( {bookings} ) => {
 
   const handleCloseSettings = () => setShowSettings(false);
   const handleShowSettings = () => setShowSettings(true);
+  const {page, form, button, selected, heading} = useContext(AppContext).theme;
+
 
   useEffect(()=> {
     const filtered = bookings.filter(each => {
@@ -54,7 +57,7 @@ const Bookings = ( {bookings} ) => {
               onClick={()=>setHome(true)}
             />
           </Link>
-        <h3 style={{color: 'white'}}>Bookings</h3>
+        <h3 style={button}>Bookings</h3>
         <VscSettings
           style={{margin:'.5vh', fontSize: '3vh', color: 'white', zIndex: '2'}}
           onClick={handleShowSettings}

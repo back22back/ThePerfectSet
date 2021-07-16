@@ -12,6 +12,8 @@ import {
 const SettingsModal = ({showSettings, setShowSettings, handleCloseSettings}) => {
   const handleLogOut = () => console.log('logged out');
   const appContext = useContext(AppContext);
+  const {page, form, button, selected, heading} = useContext(AppContext).theme;
+
 
   return (
     <>
@@ -26,7 +28,7 @@ const SettingsModal = ({showSettings, setShowSettings, handleCloseSettings}) => 
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleLogOut}>
-            <Link to="/" style={{color: '#fff'}}>Log Out</Link>
+            <Link to="/" style={button}>Log Out</Link>
           </Button>
         </Modal.Footer>
       </Modal>
