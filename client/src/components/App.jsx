@@ -97,7 +97,7 @@ const App = () => {
           setIsArtist,
           theme,
           setTheme
-        }}
+        }}>
         <Router>
           <Switch>
             <Route path="/" exact component={SplashPage} />

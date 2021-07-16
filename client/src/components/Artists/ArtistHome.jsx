@@ -16,23 +16,8 @@ import Map from './Map.jsx';
 import AppContext from './../AppContext.js'
 
 const ArtistHome = ({ user_id, bookings }) => {
-<<<<<<< HEAD
-  const [home, setHome] = useState(true);
   const {page, form, button, selected, heading} = useContext(AppContext).theme;
 
-
-  useEffect(()=> {
-    // axios.get('/booking/view', {params:{user_id}})
-    // .then((bookingPromise)=> {
-    //   console.log(bookingPromise);
-    //   const sorted = bookingPromise.data.sort((a, b) => a.date - b.date);
-    //   setBookings(sorted);
-    // })
-    // .catch((err) => console.log(err));
-  }, [user_id]);
-
-=======
->>>>>>> 4208b656e39a3311ec46268e539b033ec334dcca
   if (!bookings) {
     return <div>Loading...</div>
   }
@@ -47,11 +32,7 @@ const ArtistHome = ({ user_id, bookings }) => {
           />
       </Row>
       <Row className='justify-content-center'>
-<<<<<<< HEAD
       <Button style={button}
-=======
-      <Button style={{zIndex:10, marginTop:'10vh'}}
->>>>>>> 4208b656e39a3311ec46268e539b033ec334dcca
             variant="secondary"
             size="lg"
             >
@@ -59,11 +40,7 @@ const ArtistHome = ({ user_id, bookings }) => {
           </Button>{' '}
       </Row>
       <Row className='justify-content-center'>
-<<<<<<< HEAD
         <Button style={button}
-=======
-        <Button style={{zIndex:10, marginTop:'10vh'}}
->>>>>>> 4208b656e39a3311ec46268e539b033ec334dcca
           variant="danger"
           size="lg"
           >
