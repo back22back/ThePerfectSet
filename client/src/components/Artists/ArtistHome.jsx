@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDom, { render } from 'react-dom';
+import axios from 'axios';
 import { Container, Row, Button } from 'react-bootstrap';
 import {
   BrowserRouter as Router,
@@ -14,10 +15,23 @@ import GoogleMap from './GoogleMap.jsx';
 import { withScriptjs } from "react-google-maps";
 import Map from './Map.jsx';
 
-const Home = ( {bookings} ) => {
-  console.log(bookings);
-  const [currentLocation,setCurrentLocation] = useState();
+const Home = ({ user_id }) => {
   const [home, setHome] = useState(true);
+  const [bookings, setBookings] = useState();
+
+  useEffect(()=> {
+    axios.get('/booking/view', {params:{user_id}})
+    .then((bookingPromise)=> {
+      const sorted = bookingPromise.data.sort((a, b) => a.date - b.date);
+      setBookings(sorted);
+    })
+    .catch((err) => console.log(err));
+
+  }, [user_id]);
+
+  if (!bookings) {
+    return <div>Loading...</div>
+  }
 
   return (
     <Router>
