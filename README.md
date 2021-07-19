@@ -4,6 +4,13 @@ In one week our team developed a web app designed for mobile to assist musicians
 
 # Table of Content
 
+1. [Introduction](https://github.com/TeamJeeJava/ThePerfectSet#introduction)
+2. [Application Details](https://github.com/TeamJeeJava/ThePerfectSet#what-does-this-application-do)
+3. [Application API](https://github.com/TeamJeeJava/ThePerfectSet#application-api)
+4. [Try it out](https://github.com/TeamJeeJava/ThePerfectSet#try-it-out)
+5. [Contributors](https://github.com/TeamJeeJava/ThePerfectSet#contributors)
+6. [Tech stack](https://github.com/TeamJeeJava/ThePerfectSet#tech-stack)
+
 # Introduction
 
 In one week our team developed a web app designed for mobile to assist musicians on the road, plan their shows and accommodations, and allow their fans to follow their tour.
