@@ -81,13 +81,13 @@ The settings modal, which appears as a music mixer icon in the upper-right hand 
 
 # Contributors
 
-- [Elizabeth Mendenhall - Co-Project Owner](https://github.com/ZoyaStudio)
-- [Anan Wolf - Co-Project Owner](https://github.com/ananwolf)
-- [Vy Tran - Architect](https://github.com/vtran1022)
-- [Joseph Rivera - UI Designer](https://github.com/JoeyRivera01)
+- [Elizabeth Mendenhall](https://github.com/ZoyaStudio)
+- [Anan Wolf](https://github.com/ananwolf)
+- [Vy Tran](https://github.com/vtran1022)
+- [Joseph Rivera](https://github.com/JoeyRivera01)
 - [Ethan Barker](https://github.com/ebbarker)
 - [Alexander Causey](https://github.com/alexandercausey)
-- [Jack Zongchen Yang](https://github.com/back22back)
+- [Jack Zongchen Yang](https://github.com/zongchen-yang)
 
 # Tech stack
 
